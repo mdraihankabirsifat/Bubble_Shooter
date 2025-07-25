@@ -48,7 +48,7 @@ double X, Y;
 int PoppingInstant;
 int ShowPopping = 0;
 int currentLevel = 1;
-int unlockedLevels = 1; // Start with only level 1 unlocked
+int unlockedLevels = 1;
 bool inHomepage = true;
 bool inLevelSelect = false;
 bool inGame = false;
