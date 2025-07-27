@@ -49,6 +49,11 @@ int PoppingInstant;
 int ShowPopping = 0;
 int currentLevel = 1;
 int unlockedLevels = 1;
+int currentLevelData[12][20]; // Current level data loaded from file
+
+// Ball limitation system
+int ballsRemaining = 30; // Balls left for current level
+int maxBallsForLevel = 30; // Maximum balls for current level
 bool inHomepage = true;
 bool inLevelSelect = false;
 bool inGame = false;
@@ -160,6 +165,50 @@ void unlockNextLevel();
 void saveLevelProgress();
 void loadLevelProgress();
 
+// Function to calculate maximum balls for a level
+int getMaxBallsForLevel(int levelNumber)
+{
+    // Formula: Level 1 = 30 balls, each level adds 5 more balls
+    // Level 1: 30, Level 2: 35, Level 3: 40, etc.
+    return 25 + (levelNumber * 5);
+}
+
+// Function to load level data from file
+void loadLevelFromFile(int levelNumber, int levelGrid[12][20])
+{
+    char filename[100];
+    sprintf(filename, "saves/levels/level%d.txt", levelNumber);
+    
+    FILE *file = fopen(filename, "r");
+    if (file != NULL)
+    {
+        // Read the grid from file
+        for (int i = 0; i < 12; i++)
+        {
+            for (int j = 0; j < 20; j++)
+            {
+                if (fscanf(file, "%d", &levelGrid[i][j]) != 1)
+                {
+                    // If reading fails, set to 0
+                    levelGrid[i][j] = 0;
+                }
+            }
+        }
+        fclose(file);
+    }
+    else
+    {
+        // If file doesn't exist, create empty level
+        for (int i = 0; i < 12; i++)
+        {
+            for (int j = 0; j < 20; j++)
+            {
+                levelGrid[i][j] = 0;
+            }
+        }
+    }
+}
+
 void startNewGame()
 {
     Score = 0;
@@ -175,6 +224,9 @@ void startNewGame()
     ShowPopping = false;
     inGameOver = false;
     inLevelComplete = false;
+    
+    // Reset ball count for current level
+    ballsRemaining = maxBallsForLevel;
 
     // Clear the entire grid first
     for (int r = 0; r < ROWS; r++)
@@ -518,7 +570,7 @@ int getRandomLevelColor()
             int colsInRow = (i % 2 == 0) ? COLS : (COLS - 1);
             for (int j = 0; j < colsInRow; j++)
             {
-                int color = levels[0][i][j]; // Get from predefined level data
+                int color = currentLevelData[i][j]; // Get from current level data
                 if (color >= 1 && color <= 5 && !colorsAvailable[color])
                 {
                     colorsAvailable[color] = true;
@@ -606,6 +658,13 @@ void loadLevel(int levelNumber)
     if (levelNumber >= 1 && levelNumber <= 20)
     {
         currentLevel = levelNumber;
+        
+        // Load level data from file into global variable
+        loadLevelFromFile(levelNumber, currentLevelData);
+        
+        // Initialize ball limitation system
+        maxBallsForLevel = getMaxBallsForLevel(levelNumber);
+        ballsRemaining = maxBallsForLevel;
 
         // Handle Level 1 specially with progressive display
         if (levelNumber == 1)
@@ -619,19 +678,19 @@ void loadLevel(int levelNumber)
                 }
             }
 
-            // Copy only the currently visible rows from the predefined level data
+            // Copy only the currently visible rows from the loaded level data
             int visibleRowCount = 4; // Initially show 4 rows
             for (int i = 0; i < visibleRowCount; i++)
             {
                 for (int j = 0; j < COLS; j++)
                 {
-                    grid[i][j] = levels[0][level1DisplayOffset + i][j]; // Copy from offset position
+                    grid[i][j] = currentLevelData[level1DisplayOffset + i][j]; // Copy from offset position
                 }
             }
 
             // Reset progressive system variables
             currentHiddenRowsUsed = 0;
-            level1DisplayOffset = 8; // Start showing from row 8 of the predefined data (show rows 8-11)
+            level1DisplayOffset = 8; // Start showing from row 8 of the loaded data (show rows 8-11)
             movesCount = 0;
             isAnimatingRowDrop = false;
             gridVerticalOffset = 0.0;
@@ -643,7 +702,7 @@ void loadLevel(int levelNumber)
             {
                 for (int j = 0; j < COLS; j++)
                 {
-                    grid[i][j] = levels[currentLevel - 1][i][j];
+                    grid[i][j] = currentLevelData[i][j];
                 }
             }
 
@@ -655,12 +714,12 @@ void loadLevel(int levelNumber)
         // Initialize progressive row system for level 1
         if (levelNumber == 1)
         {
-            // Setup hidden rows for level 1 - we'll use the first 2 rows from the predefined data
+            // Setup hidden rows for level 1 - we'll use the first 2 rows from the loaded data
             for (int i = 0; i < 2; i++) // Only first 2 rows are hidden initially
             {
                 for (int j = 0; j < COLS; j++)
                 {
-                    hiddenRows[i][j] = levels[0][i][j]; // Copy from predefined level data
+                    hiddenRows[i][j] = currentLevelData[i][j]; // Copy from loaded level data
                 }
             }
         }
@@ -870,7 +929,7 @@ void finalizeRowDrop()
     int row1Cols = COLS - 1; // Row 1 is odd, so it has COLS-1 columns
     for (int c = 0; c < row1Cols; c++)
     {
-        grid[1][c] = levels[0][level1DisplayOffset][c];
+        grid[1][c] = currentLevelData[level1DisplayOffset][c];
     }
 
     // Add second new row (will become row 0 - even)
@@ -878,7 +937,7 @@ void finalizeRowDrop()
     int row0Cols = COLS; // Row 0 is even, so it has COLS columns
     for (int c = 0; c < row0Cols; c++)
     {
-        grid[0][c] = levels[0][level1DisplayOffset][c];
+        grid[0][c] = currentLevelData[level1DisplayOffset][c];
     }
 
     // After row drop, detect and handle floating bubbles
@@ -1239,7 +1298,7 @@ void drawLevelSelect()
         }
 
         // Center the text within the button
-        iText(x + 22, y + 15, levelText, GLUT_BITMAP_HELVETICA_18);
+        iText(x + 22, y + 25, levelText, GLUT_BITMAP_HELVETICA_18);
     }
 
     // Simple Back to Home text (no box) with hover effect
@@ -1673,9 +1732,18 @@ void drawGameOver()
     iSetColor(255, 100, 100); // Light red
     drawCenteredText(150, 530, 500, 50, "LEVEL FAILED", "assets/fonts/arial.ttf", 42);
 
-    // Subtitle
+    // Subtitle - check if failed due to balls or bottom limit
     iSetColor(255, 200, 200);
-    drawCenteredText(150, 480, 500, 30, "Balls reached the bottom limit!", "assets/fonts/arial.ttf", 20);
+    if (ballsRemaining <= 0)
+    {
+        char ballMessage[100];
+        sprintf(ballMessage, "Out of balls! You had %d balls for this level.", maxBallsForLevel);
+        drawCenteredText(150, 480, 500, 30, ballMessage, "assets/fonts/arial.ttf", 18);
+    }
+    else
+    {
+        drawCenteredText(150, 480, 500, 30, "Balls reached the bottom limit!", "assets/fonts/arial.ttf", 20);
+    }
 
     // Menu buttons - centered
     int buttonWidth = 200;
@@ -2263,6 +2331,23 @@ void ShowScore()
 
     iSetColor(255, 255, 100);
     iText(150, GAME_WINDOW_HEIGHT + 14, scoreText, GLUT_BITMAP_HELVETICA_18);
+
+    // Ball count display
+    iSetColor(255, 255, 255);
+    iText(300, GAME_WINDOW_HEIGHT + 14, "BALLS : ", GLUT_BITMAP_HELVETICA_18);
+
+    char ballText[30];
+    sprintf(ballText, "%d", ballsRemaining);
+
+    // Change color based on remaining balls
+    if (ballsRemaining <= 5)
+        iSetColor(255, 100, 100); // Red when low
+    else if (ballsRemaining <= 10)
+        iSetColor(255, 255, 100); // Yellow when medium
+    else
+        iSetColor(100, 255, 100); // Green when plenty
+
+    iText(420, GAME_WINDOW_HEIGHT + 14, ballText, GLUT_BITMAP_HELVETICA_18);
 } // <Cluster Detection and Fallings>
 int visited[ROWS][COLS] = {0};
 
@@ -2473,6 +2558,16 @@ void ballMovement()
                     if (checkLevelComplete())
                     {
                         handleLevelComplete();
+                    }
+                    else
+                    {
+                        // Check if player ran out of balls
+                        if (ballsRemaining <= 0)
+                        {
+                            // Trigger game over
+                            inGameOver = true;
+                            inGame = false;
+                        }
                     }
                     return;
                 }
@@ -2863,15 +2958,7 @@ void iDraw()
             char levelText[30];
             sprintf(levelText, "Level: %d", currentLevel);
             iText(500, GAME_WINDOW_HEIGHT + 14, levelText, GLUT_BITMAP_HELVETICA_18);
-            // Move counter for progressive row system (only show for level 1)
-            if (currentLevel == 1 && level1DisplayOffset > 1) // Show when we can still drop rows
-            {
-                iSetColor(255, 200, 100); // Orange color for warning
-                char moveText[40];
-                int movesLeft = movesPerRowDrop - movesCount;
-                sprintf(moveText, "Next Drop: %d moves", movesLeft);
-                iText(250, GAME_WINDOW_HEIGHT + 14, moveText, GLUT_BITMAP_HELVETICA_12);
-            }
+            
             iSetColor(60, 60, 70);
             iFilledRectangle(650, GAME_WINDOW_HEIGHT + 10, 120, 30);
             iSetColor(255, 255, 255);
@@ -3178,6 +3265,15 @@ void iMouse(int button, int state, int mx, int my)
                 // Normal shooting logic
                 else if (!isBallMoving)
                 {
+                    // Check if player has balls remaining
+                    if (ballsRemaining <= 0)
+                    {
+                        // No balls left, trigger game over
+                        inGameOver = true;
+                        inGame = false;
+                        return;
+                    }
+                    
                     angle = atan2(my - (shooter_y + BUBBLE_RADIUS), mx - shooter_x);
                     if (my - (shooter_y + BUBBLE_RADIUS) >= 40)
                     {
@@ -3188,6 +3284,9 @@ void iMouse(int button, int state, int mx, int my)
                         ballBounceCount = 0; // Reset bounce counter for new ball
                         moveCounted = false; // Reset move counter flag for new ball
                         isBallMoving = true;
+                        
+                        // Decrease ball count when shot
+                        ballsRemaining--;
                     }
                 }
             } // Close the else block for normal game logic
