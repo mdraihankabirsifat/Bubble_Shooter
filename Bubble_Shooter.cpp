@@ -2488,29 +2488,29 @@ void PopBubblesInside(int r, int c)
     search6directionsFrom(r, c, ShootedBallColor);
 
     // Debug output for first row testing
-    if (r == 0)
-    {
-        printf("DEBUG PopBubbles: First row - R:%d C:%d Color:%d MatchCount:%d\n",
-               r, c, ShootedBallColor, BallMatchCount);
+    // if (r == 0)
+    // {
+    //     printf("DEBUG PopBubbles: First row - R:%d C:%d Color:%d MatchCount:%d\n",
+    //            r, c, ShootedBallColor, BallMatchCount);
 
-        printf("Grid state around position:\n");
-        for (int debugR = 0; debugR < min(3, ROWS); debugR++)
-        {
-            int maxCols = (debugR % 2 == 0) ? COLS : (COLS - 1);
-            printf("Row %d: ", debugR);
-            for (int debugC = 0; debugC < maxCols; debugC++)
-            {
-                printf("%d ", grid[debugR][debugC]);
-            }
-            printf("\n");
-        }
+    //     printf("Grid state around position:\n");
+    //     for (int debugR = 0; debugR < min(3, ROWS); debugR++)
+    //     {
+    //         int maxCols = (debugR % 2 == 0) ? COLS : (COLS - 1);
+    //         printf("Row %d: ", debugR);
+    //         for (int debugC = 0; debugC < maxCols; debugC++)
+    //         {
+    //             printf("%d ", grid[debugR][debugC]);
+    //         }
+    //         printf("\n");
+    //     }
 
-        printf("Matched balls:\n");
-        for (int i = 0; i < BallMatchCount; i++)
-        {
-            printf("  Match %d: R:%d C:%d\n", i, matched[i][0], matched[i][1]);
-        }
-    }
+    //     printf("Matched balls:\n");
+    //     for (int i = 0; i < BallMatchCount; i++)
+    //     {
+    //         printf("  Match %d: R:%d C:%d\n", i, matched[i][0], matched[i][1]);
+    //     }
+    // }
 
     if (BallMatchCount >= 3)
     {
