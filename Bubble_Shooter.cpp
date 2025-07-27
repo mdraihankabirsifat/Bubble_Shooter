@@ -602,7 +602,7 @@ void loadLevel(int levelNumber)
 {
     // Reset high score save flag for new level
     highScoreSaved = false;
-    
+
     if (levelNumber >= 1 && levelNumber <= 20)
     {
         currentLevel = levelNumber;
@@ -950,27 +950,20 @@ void addHighScore(char *name, int score, int level)
 void drawHighScorePage()
 {
     iClear();
-
-    // Display settings background image
     iShowImage(0, 0, "assets/images/bouncing ball/setttings.png");
-
-    // Title
     iSetColor(255, 215, 0); // Gold
     iText(GAME_WINDOW_WIDTH / 2 - 80, 650, "HIGH SCORES", GLUT_BITMAP_HELVETICA_18);
 
     // Headers
     iSetColor(200, 200, 200);
-    iText(100, 580, "Rank", GLUT_BITMAP_HELVETICA_18);
-    iText(200, 580, "Name", GLUT_BITMAP_HELVETICA_18);
-    iText(400, 580, "Score", GLUT_BITMAP_HELVETICA_18);
-    iText(550, 580, "Level", GLUT_BITMAP_HELVETICA_18);
-
-    // High scores list
+    iText(150, 580, "Rank", GLUT_BITMAP_HELVETICA_18);
+    iText(230, 580, "Name", GLUT_BITMAP_HELVETICA_18);
+    iText(430, 580, "Score", GLUT_BITMAP_HELVETICA_18);
+    iText(580, 580, "Level", GLUT_BITMAP_HELVETICA_18);
+    
     for (int i = 0; i < highScoreCount; i++)
     {
         int y = 540 - i * 40;
-
-        // Rank color (gold for 1st, silver for 2nd, bronze for 3rd)
         if (i == 0)
             iSetColor(255, 215, 0); // Gold
         else if (i == 1)
@@ -985,10 +978,10 @@ void drawHighScorePage()
         sprintf(scoreText, "%d", highScores[i].score);
         sprintf(levelText, "%d", highScores[i].level);
 
-        iText(110, y, rankText, GLUT_BITMAP_HELVETICA_12);
-        iText(200, y, highScores[i].name, GLUT_BITMAP_HELVETICA_12);
-        iText(400, y, scoreText, GLUT_BITMAP_HELVETICA_12);
-        iText(550, y, levelText, GLUT_BITMAP_HELVETICA_12);
+        iText(160, y, rankText, GLUT_BITMAP_HELVETICA_18);
+        iText(230, y, highScores[i].name, GLUT_BITMAP_HELVETICA_18);
+        iText(430, y, scoreText, GLUT_BITMAP_HELVETICA_18);
+        iText(590, y, levelText, GLUT_BITMAP_HELVETICA_18);
     }
 
     // Back button
@@ -1008,13 +1001,10 @@ void drawNameInputPage()
     iShowImage(0, 0, "assets/images/bouncing ball/setttings.png");
 
     iSetColor(255, 215, 0);
-    iText(GAME_WINDOW_WIDTH / 2 - 100, 500, "Enter Your Name", GLUT_BITMAP_HELVETICA_18);
-
-    iSetColor(200, 200, 200);
-    iText(GAME_WINDOW_WIDTH / 2 - 200, 400, "Your name will be saved with your high score", GLUT_BITMAP_HELVETICA_12);
+    iText(GAME_WINDOW_WIDTH / 2 - 70, 470, "Enter Your Name", GLUT_BITMAP_TIMES_ROMAN_24);
 
     // Name input box
-    int boxX = GAME_WINDOW_WIDTH / 2 - 150, boxY = 320, boxW = 300, boxH = 50;
+    int boxX = GAME_WINDOW_WIDTH / 2 - 170, boxY = 380, boxW = 360, boxH = 50;
     iSetColor(50, 50, 50);
     iFilledRectangle(boxX, boxY, boxW, boxH);
     iSetColor(255, 255, 255);
@@ -1028,40 +1018,52 @@ void drawNameInputPage()
 
     iText(boxX + 10 + strlen(playerName) * 10, boxY + 25, "_", GLUT_BITMAP_HELVETICA_18);
 
-    iSetColor(150, 150, 150);
-    iText(GAME_WINDOW_WIDTH / 2 - 180, 250, "Type your name and press ENTER to continue", GLUT_BITMAP_HELVETICA_12);
-    
     if (strlen(playerName) > 0)
     {
-        int buttonX = GAME_WINDOW_WIDTH / 2 - 75, buttonY = 150, buttonW = 150, buttonH = 50;
-        iSetColor(70, 130, 180);
+        int buttonX = GAME_WINDOW_WIDTH / 2 - 60, buttonY = 250, buttonW = 150, buttonH = 50;
+
+        // Check if hovering over continue button
+        bool isHoveringContinue = isPointInRect(mouseX, mouseY, buttonX, buttonY, buttonW, buttonH);
+
+        if (isHoveringContinue)
+        {
+            iSetColor(100, 150, 200); // Lighter blue when hovering
+        }
+        else
+        {
+            iSetColor(70, 130, 180); // Normal blue
+        }
+
         iFilledRectangle(buttonX, buttonY, buttonW, buttonH);
         iSetColor(255, 255, 255);
         iRectangle(buttonX, buttonY, buttonW, buttonH);
-        iText(buttonX + 50, buttonY + 25, "Continue", GLUT_BITMAP_HELVETICA_12);
+
+        if (isHoveringContinue)
+        {
+            iSetColor(255, 255, 0); // Yellow text when hovering
+        }
+        else
+        {
+            iSetColor(255, 255, 255); // White text normally
+        }
+        iText(buttonX + 30, buttonY + 20, "Continue", GLUT_BITMAP_HELVETICA_18);
     }
 
-    // Back button in bottom left corner
+    // Back button - transparent with hover effect
     bool isHoveringBack = isPointInRect(mouseX, mouseY, 50, 50, 100, 40);
-    int backWidth = isHoveringBack ? 110 : 100;
-    int backHeight = isHoveringBack ? 44 : 40;
-    int backX = isHoveringBack ? 45 : 50;
-    int backY = isHoveringBack ? 48 : 50;
-
-    iSetColor(70, 70, 70);
-    iFilledRectangle(backX, backY, backWidth, backHeight);
-    iSetColor(255, 255, 255);
-    iRectangle(backX, backY, backWidth, backHeight);
 
     if (isHoveringBack)
     {
-        iSetColor(255, 255, 0);
+        // Light colored rectangle around button when hovering
+        iSetColor(100, 100, 100); // Light gray background
+        iFilledRectangle(45, 48, 110, 44);
+        iSetColor(255, 255, 0); // Yellow text when hovering
     }
     else
     {
-        iSetColor(255, 255, 255);
+        iSetColor(255, 255, 255); // White text normally
     }
-    iText(backX + 30, backY + 20, "Back", GLUT_BITMAP_HELVETICA_12);
+    iText(75, 70, "Back", GLUT_BITMAP_HELVETICA_18);
 }
 
 void handleLevelComplete()
@@ -1074,7 +1076,7 @@ void handleLevelComplete()
         addHighScore(playerName, Score, currentLevel);
         highScoreSaved = true; // Mark as saved to prevent duplicates
     }
-    
+
     // Unlock next level
     unlockNextLevel();
 }
@@ -1091,13 +1093,13 @@ void unlockNextLevel()
 
 void saveLevelProgress()
 {
-    // Create saves directory if it doesn't exist
-    #ifdef _WIN32
-        CreateDirectoryA("saves", NULL);
-    #else
-        mkdir("saves", 0777);
-    #endif
-    
+// Create saves directory if it doesn't exist
+#ifdef _WIN32
+    CreateDirectoryA("saves", NULL);
+#else
+    mkdir("saves", 0777);
+#endif
+
     FILE *file = fopen("saves/level_progress.txt", "w");
     if (file != NULL)
     {
@@ -1114,8 +1116,10 @@ void loadLevelProgress()
         fscanf(file, "%d", &unlockedLevels);
         fclose(file);
         // Ensure at least level 1 is unlocked
-        if (unlockedLevels < 1) unlockedLevels = 1;
-        if (unlockedLevels > 20) unlockedLevels = 20;
+        if (unlockedLevels < 1)
+            unlockedLevels = 1;
+        if (unlockedLevels > 20)
+            unlockedLevels = 20;
     }
     else
     {
@@ -1127,55 +1131,12 @@ void drawLevelSelect()
 {
     iClear();
 
-    // Navy gradient background with stars - extended to cover full window
-    for (int i = 0; i < GAME_WINDOW_HEIGHT + 100; i += 4) // Extended to cover title bar area
-    {
-        // Deep navy gradient: dark navy blue to midnight blue
-        int blueComponent = 15 + (i * 35) / (GAME_WINDOW_HEIGHT + 100); // 15 to 50 (navy blue)
-        int greenComponent = 5 + (i * 15) / (GAME_WINDOW_HEIGHT + 100); // 5 to 20 (slight green tint)
-        int redComponent = 2 + (i * 8) / (GAME_WINDOW_HEIGHT + 100);    // 2 to 10 (minimal red)
-        iSetColor(redComponent, greenComponent, blueComponent);
-        // Draw 4 lines at once to fill gaps
-        iLine(0, i, GAME_WINDOW_WIDTH, i);
-        if (i + 1 < GAME_WINDOW_HEIGHT + 100)
-            iLine(0, i + 1, GAME_WINDOW_WIDTH, i + 1);
-        if (i + 2 < GAME_WINDOW_HEIGHT + 100)
-            iLine(0, i + 2, GAME_WINDOW_WIDTH, i + 2);
-        if (i + 3 < GAME_WINDOW_HEIGHT + 100)
-            iLine(0, i + 3, GAME_WINDOW_WIDTH, i + 3);
-    }
-
-    // Beautiful stars
-    for (int i = 0; i < 15; i++)
-    {
-        int x = (i * 127 + 31) % GAME_WINDOW_WIDTH; // Pseudo-random x
-        int y = (i * 89 + 53) % GAME_WINDOW_HEIGHT; // Pseudo-random y
-
-        // Simple dot stars with navy-appropriate colors
-        int starBrightness = i % 3;
-        if (starBrightness == 0)
-        {
-            // Dim white-blue stars
-            iSetColor(160, 170, 200);
-            iFilledCircle(x, y, 1);
-        }
-        else if (starBrightness == 1)
-        {
-            // Medium silver stars
-            iSetColor(180, 180, 190);
-            iFilledCircle(x, y, 1);
-        }
-        else
-        {
-            // Bright white stars (rare)
-            iSetColor(220, 220, 230);
-            iFilledCircle(x, y, 1);
-        }
-    }
+    // Display background image
+    iShowImage(0, 0, "assets/images/bouncing ball/setttings.png");
 
     // Title
     iSetColor(0, 191, 255); // Ocean blue
-    iText(GAME_WINDOW_WIDTH/2 - 80, 700, "SELECT LEVEL", GLUT_BITMAP_HELVETICA_18);
+    iText(GAME_WINDOW_WIDTH / 2 - 80, 700, "SELECT LEVEL", GLUT_BITMAP_HELVETICA_18);
 
     // Draw level buttons in a 4x5 grid with enhanced styling and hover effects
     for (int i = 0; i < 20; i++)
@@ -1197,13 +1158,13 @@ void drawLevelSelect()
 
         // Enhanced button styling
         bool isLevelUnlocked = (i + 1) <= unlockedLevels;
-        
+
         if (!isLevelUnlocked)
         {
             // Locked level - gray styling
             iSetColor(50, 50, 50); // Dark gray
             iFilledRectangle(x, y, buttonWidth, buttonHeight);
-            
+
             // Darker inner area
             iSetColor(30, 30, 30);
             iFilledRectangle(x + 2, y + 2, buttonWidth - 4, buttonHeight - 4);
@@ -1276,7 +1237,7 @@ void drawLevelSelect()
         {
             iSetColor(255, 255, 255); // White for other levels
         }
-        
+
         // Center the text within the button
         iText(x + 22, y + 15, levelText, GLUT_BITMAP_HELVETICA_18);
     }
@@ -1544,14 +1505,14 @@ void drawTribute()
 
     // Back button in bottom left corner with hover effect
     bool isHoveringBack = isPointInRect(mouseX, mouseY, 50, 50, 100, 40);
-    
+
     // Light colored rectangle when hovering
     if (isHoveringBack)
     {
         iSetColor(255, 255, 255); // White background when hovering
         iFilledRectangle(45, 45, 110, 50);
     }
-    
+
     // Button background
     int backWidth = isHoveringBack ? 110 : 100;
     int backHeight = isHoveringBack ? 50 : 40;
@@ -1577,51 +1538,10 @@ void drawTribute()
 
 void drawPauseMenu()
 {
-    // Navy gradient background overlay (same as main game)
-    for (int i = 0; i < GAME_WINDOW_HEIGHT + 50; i += 4) // Skip 3 lines, draw 4th for performance
-    {
-        // Deep navy gradient: dark navy blue to midnight blue
-        int blueComponent = 15 + (i * 35) / GAME_WINDOW_HEIGHT; // 15 to 50 (navy blue)
-        int greenComponent = 5 + (i * 15) / GAME_WINDOW_HEIGHT; // 5 to 20 (slight green tint)
-        int redComponent = 2 + (i * 8) / GAME_WINDOW_HEIGHT;    // 2 to 10 (minimal red)
-        iSetColor(redComponent, greenComponent, blueComponent);
-        // Draw 4 lines at once to fill gaps
-        iLine(0, i, GAME_WINDOW_WIDTH, i);
-        if (i + 1 < GAME_WINDOW_HEIGHT + 50)
-            iLine(0, i + 1, GAME_WINDOW_WIDTH, i + 1);
-        if (i + 2 < GAME_WINDOW_HEIGHT + 50)
-            iLine(0, i + 2, GAME_WINDOW_WIDTH, i + 2);
-        if (i + 3 < GAME_WINDOW_HEIGHT + 50)
-            iLine(0, i + 3, GAME_WINDOW_WIDTH, i + 3);
-    }
+    iClear();
 
-    // Beautiful stars but optimized count (10 stars for pause menu)
-    for (int i = 0; i < 10; i++)
-    {
-        int x = (i * 127 + 31) % GAME_WINDOW_WIDTH;        // Pseudo-random x
-        int y = (i * 89 + 53) % (GAME_WINDOW_HEIGHT + 50); // Pseudo-random y
-
-        // Simple dot stars with navy-appropriate colors
-        int starBrightness = i % 3;
-        if (starBrightness == 0)
-        {
-            // Dim white-blue stars
-            iSetColor(160, 170, 200);
-            iFilledCircle(x, y, 1);
-        }
-        else if (starBrightness == 1)
-        {
-            // Medium silver stars
-            iSetColor(180, 180, 190);
-            iFilledCircle(x, y, 1);
-        }
-        else
-        {
-            // Bright white stars (rare)
-            iSetColor(220, 220, 230);
-            iFilledCircle(x, y, 1);
-        }
-    }
+    // Display background image
+    iShowImage(0, 0, "assets/images/bouncing ball/setttings.png");
 
     // Menu background with navy theme
     iSetColor(20, 30, 60);
@@ -1813,34 +1733,8 @@ void drawLevelComplete()
 {
     iClear();
 
-    // Beautiful starry background for victory
-    for (int i = 0; i < GAME_WINDOW_HEIGHT + 100; i += 4)
-    {
-        // Gold gradient background: dark gold to bright gold
-        int redComponent = 80 + (i * 175) / (GAME_WINDOW_HEIGHT + 100);   // 80 to 255 (gold red)
-        int greenComponent = 60 + (i * 155) / (GAME_WINDOW_HEIGHT + 100); // 60 to 215 (gold green)
-        int blueComponent = 10 + (i * 40) / (GAME_WINDOW_HEIGHT + 100);   // 10 to 50 (minimal blue)
-        iSetColor(redComponent, greenComponent, blueComponent);
-        iLine(0, i, GAME_WINDOW_WIDTH, i);
-        if (i + 1 < GAME_WINDOW_HEIGHT + 100)
-            iLine(0, i + 1, GAME_WINDOW_WIDTH, i + 1);
-        if (i + 2 < GAME_WINDOW_HEIGHT + 100)
-            iLine(0, i + 2, GAME_WINDOW_WIDTH, i + 2);
-        if (i + 3 < GAME_WINDOW_HEIGHT + 100)
-            iLine(0, i + 3, GAME_WINDOW_WIDTH, i + 3);
-    }
-
-    // Victory stars
-    for (int i = 0; i < 20; i++)
-    {
-        int x = (i * 137 + 41) % GAME_WINDOW_WIDTH;
-        int y = (i * 97 + 63) % (GAME_WINDOW_HEIGHT + 100);
-
-        iSetColor(255, 255, 200); // Bright golden stars
-        iFilledCircle(x, y, 2);
-        iSetColor(255, 255, 255); // White center
-        iFilledCircle(x, y, 1);
-    }
+    // Display background image
+    iShowImage(0, 0, "assets/images/bouncing ball/setttings.png");
 
     // Level Complete background
     iSetColor(20, 80, 20); // Dark green background
@@ -2756,6 +2650,11 @@ void iDraw()
     {
         drawLevelSelect();
     }
+    else if (inGame && inPauseMenu)
+    {
+        // Show pause menu as full screen when paused
+        drawPauseMenu();
+    }
     else if (inGame)
     {
         // Update animations
@@ -2978,11 +2877,6 @@ void iDraw()
             iSetColor(255, 255, 255);
             iText(685, GAME_WINDOW_HEIGHT + 18, "Back", GLUT_BITMAP_HELVETICA_12);
         }
-        // Show pause menu overlay if paused
-        if (inPauseMenu)
-        {
-            drawPauseMenu();
-        }
     }
 }
 
@@ -3018,7 +2912,7 @@ void iMouse(int button, int state, int mx, int my)
                 inGameOver = false;
                 inLevelSelect = true;
                 inGame = false;
-                
+
                 // Restart background music when returning to level selection
                 iStopAllSounds();
                 if (musicEnabled)
@@ -3042,7 +2936,7 @@ void iMouse(int button, int state, int mx, int my)
                 inLevelComplete = false;
                 inLevelSelect = true;
                 inGame = false;
-                
+
                 // Restart background music when returning to level selection
                 iStopAllSounds();
                 if (musicEnabled)
@@ -3213,11 +3107,11 @@ void iMouse(int button, int state, int mx, int my)
         else if (inNameInput)
         {
             // Continue button (if name is not empty)
-            if (strlen(playerName) > 0 && isPointInRect(mx, my, GAME_WINDOW_WIDTH / 2 - 75, 150, 150, 50))
+            if (strlen(playerName) > 0 && isPointInRect(mx, my, GAME_WINDOW_WIDTH / 2 - 60, 250, 150, 50))
             {
                 inNameInput = false;
                 inLevelSelect = true;
-                
+
                 // Start background music when entering level selection
                 iStopAllSounds();
                 if (musicEnabled)
@@ -3230,7 +3124,7 @@ void iMouse(int button, int state, int mx, int my)
             {
                 inNameInput = false;
                 inHomepage = true;
-                
+
                 // Start background music when going back to homepage
                 if (musicEnabled)
                 {
@@ -3318,7 +3212,7 @@ void iKeyboard(unsigned char key, int state)
             {
                 inNameInput = false;
                 inLevelSelect = true;
-                
+
                 // Start background music when entering level selection
                 iStopAllSounds();
                 if (musicEnabled)
@@ -3327,11 +3221,11 @@ void iKeyboard(unsigned char key, int state)
                 }
             }
             break;
-        case 27: // ESC key
+        case 27:                          // ESC key
             strcpy(playerName, "Player"); // Default name
             inNameInput = false;
             inLevelSelect = true;
-            
+
             // Start background music when entering level selection
             iStopAllSounds();
             if (musicEnabled)
@@ -3372,7 +3266,7 @@ void iKeyboard(unsigned char key, int state)
     }
 
     // Reset swap key state when key is released
-    if ((key == ' ' ) && state == GLUT_UP)
+    if ((key == ' ') && state == GLUT_UP)
     {
         swapKeyPressed = false;
     }
@@ -3514,7 +3408,7 @@ int main(int argc, char *argv[])
 
         // Initialize high score system
         loadHighScores();
-        
+
         // Initialize level progress system
         loadLevelProgress();
 
