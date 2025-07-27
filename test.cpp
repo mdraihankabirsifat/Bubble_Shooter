@@ -1316,8 +1316,55 @@ void drawHomepage()
 {
     iClear();
 
-    // Display home background image
-    iShowImage(0, 0, "assets/images/bouncing ball/home.png");
+    // Navy gradient background with stars - extended to cover full window
+    for (int i = 0; i < GAME_WINDOW_HEIGHT + 100; i += 4) // Extended to cover title bar area
+    {
+        // Deep navy gradient: dark navy blue to midnight blue
+        int blueComponent = 15 + (i * 35) / (GAME_WINDOW_HEIGHT + 100); // 15 to 50 (navy blue)
+        int greenComponent = 5 + (i * 15) / (GAME_WINDOW_HEIGHT + 100); // 5 to 20 (slight green tint)
+        int redComponent = 2 + (i * 8) / (GAME_WINDOW_HEIGHT + 100);    // 2 to 10 (minimal red)
+        iSetColor(redComponent, greenComponent, blueComponent);
+        // Draw 4 lines at once to fill gaps
+        iLine(0, i, GAME_WINDOW_WIDTH, i);
+        if (i + 1 < GAME_WINDOW_HEIGHT + 100)
+            iLine(0, i + 1, GAME_WINDOW_WIDTH, i + 1);
+        if (i + 2 < GAME_WINDOW_HEIGHT + 100)
+            iLine(0, i + 2, GAME_WINDOW_WIDTH, i + 2);
+        if (i + 3 < GAME_WINDOW_HEIGHT + 100)
+            iLine(0, i + 3, GAME_WINDOW_WIDTH, i + 3);
+    }
+
+    // Beautiful stars
+    for (int i = 0; i < 20; i++) // More stars for homepage
+    {
+        int x = (i * 127 + 31) % GAME_WINDOW_WIDTH; // Pseudo-random x
+        int y = (i * 89 + 53) % GAME_WINDOW_HEIGHT; // Pseudo-random y
+
+        // Simple dot stars with navy-appropriate colors
+        int starBrightness = i % 3;
+        if (starBrightness == 0)
+        {
+            // Dim white-blue stars
+            iSetColor(160, 170, 200);
+            iFilledCircle(x, y, 1);
+        }
+        else if (starBrightness == 1)
+        {
+            // Medium silver stars
+            iSetColor(180, 180, 190);
+            iFilledCircle(x, y, 1);
+        }
+        else
+        {
+            // Bright white stars (rare)
+            iSetColor(220, 220, 230);
+            iFilledCircle(x, y, 1);
+        }
+    }
+
+    // Title
+    iSetColor(0, 191, 255); // Ocean blue
+    drawCenteredText(0, 650, GAME_WINDOW_WIDTH, 48, "BUBBLE SHOOTER", "assets/fonts/arial.ttf", 48);
 
     // Menu buttons
     int buttonWidth = 200;
