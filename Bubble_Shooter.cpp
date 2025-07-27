@@ -951,15 +951,8 @@ void drawHighScorePage()
 {
     iClear();
 
-    // Navy gradient background
-    for (int i = 0; i < GAME_WINDOW_HEIGHT + 100; i += 4)
-    {
-        int blue = 20 + (i * 40) / GAME_WINDOW_HEIGHT;
-        if (blue > 60)
-            blue = 60;
-        iSetColor(10, 10, blue);
-        iFilledRectangle(0, i, GAME_WINDOW_WIDTH, 4);
-    }
+    // Display settings background image
+    iShowImage(0, 0, "assets/images/bouncing ball/setttings.png");
 
     // Title
     iSetColor(255, 215, 0); // Gold
@@ -1011,15 +1004,8 @@ void drawNameInputPage()
 {
     iClear();
 
-    // Navy gradient background
-    for (int i = 0; i < GAME_WINDOW_HEIGHT + 100; i += 4)
-    {
-        int blue = 20 + (i * 40) / GAME_WINDOW_HEIGHT;
-        if (blue > 60)
-            blue = 60;
-        iSetColor(10, 10, blue);
-        iFilledRectangle(0, i, GAME_WINDOW_WIDTH, 4);
-    }
+    // Display settings background image
+    iShowImage(0, 0, "assets/images/bouncing ball/setttings.png");
 
     iSetColor(255, 215, 0);
     iText(GAME_WINDOW_WIDTH / 2 - 100, 500, "Enter Your Name", GLUT_BITMAP_HELVETICA_18);
@@ -1440,51 +1426,8 @@ void drawSettings()
 {
     iClear();
 
-    // Navy gradient background with stars - extended to cover full window
-    for (int i = 0; i < GAME_WINDOW_HEIGHT + 100; i += 4) // Extended to cover title bar area
-    {
-        // Deep navy gradient: dark navy blue to midnight blue
-        int blueComponent = 15 + (i * 35) / (GAME_WINDOW_HEIGHT + 100); // 15 to 50 (navy blue)
-        int greenComponent = 5 + (i * 15) / (GAME_WINDOW_HEIGHT + 100); // 5 to 20 (slight green tint)
-        int redComponent = 2 + (i * 8) / (GAME_WINDOW_HEIGHT + 100);    // 2 to 10 (minimal red)
-        iSetColor(redComponent, greenComponent, blueComponent);
-        // Draw 4 lines at once to fill gaps
-        iLine(0, i, GAME_WINDOW_WIDTH, i);
-        if (i + 1 < GAME_WINDOW_HEIGHT + 100)
-            iLine(0, i + 1, GAME_WINDOW_WIDTH, i + 1);
-        if (i + 2 < GAME_WINDOW_HEIGHT + 100)
-            iLine(0, i + 2, GAME_WINDOW_WIDTH, i + 2);
-        if (i + 3 < GAME_WINDOW_HEIGHT)
-            iLine(0, i + 3, GAME_WINDOW_WIDTH, i + 3);
-    }
-
-    // Beautiful stars
-    for (int i = 0; i < 12; i++)
-    {
-        int x = (i * 127 + 31) % GAME_WINDOW_WIDTH; // Pseudo-random x
-        int y = (i * 89 + 53) % GAME_WINDOW_HEIGHT; // Pseudo-random y
-
-        // Simple dot stars with navy-appropriate colors
-        int starBrightness = i % 3;
-        if (starBrightness == 0)
-        {
-            // Dim white-blue stars
-            iSetColor(160, 170, 200);
-            iFilledCircle(x, y, 1);
-        }
-        else if (starBrightness == 1)
-        {
-            // Medium silver stars
-            iSetColor(180, 180, 190);
-            iFilledCircle(x, y, 1);
-        }
-        else
-        {
-            // Bright white stars (rare)
-            iSetColor(220, 220, 230);
-            iFilledCircle(x, y, 1);
-        }
-    }
+    // Display settings background image
+    iShowImage(0, 0, "assets/images/bouncing ball/setttings.png");
 
     // Title
     iSetColor(0, 191, 255); // Ocean blue
@@ -3016,13 +2959,11 @@ void iDraw()
                 }
             }
             drawStyledBall(310, 40, shootingBallColorNext);
-
             // Level text (no background for performance)
             iSetColor(255, 255, 255);
             char levelText[30];
             sprintf(levelText, "Level: %d", currentLevel);
             iText(500, GAME_WINDOW_HEIGHT + 14, levelText, GLUT_BITMAP_HELVETICA_18);
-
             // Move counter for progressive row system (only show for level 1)
             if (currentLevel == 1 && level1DisplayOffset > 1) // Show when we can still drop rows
             {
@@ -3032,17 +2973,11 @@ void iDraw()
                 sprintf(moveText, "Next Drop: %d moves", movesLeft);
                 iText(250, GAME_WINDOW_HEIGHT + 14, moveText, GLUT_BITMAP_HELVETICA_12);
             }
-
-            // Simple Back button (minimal rendering)
             iSetColor(60, 60, 70);
             iFilledRectangle(650, GAME_WINDOW_HEIGHT + 10, 120, 30);
-
-            // Back text
             iSetColor(255, 255, 255);
             iText(685, GAME_WINDOW_HEIGHT + 18, "Back", GLUT_BITMAP_HELVETICA_12);
         }
-        // GAMING
-
         // Show pause menu overlay if paused
         if (inPauseMenu)
         {
