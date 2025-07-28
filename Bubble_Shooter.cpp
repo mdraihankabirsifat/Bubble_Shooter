@@ -51,8 +51,149 @@ int currentLevel = 1;
 int unlockedLevels = 1;
 int currentLevelData[12][20]; // Current level data loaded from file
 
+// Hardcoded levels array (10 levels total)
+int levels[10][12][20] = {
+    // Level 1 - Easy Tutorial: 12 total rows, show 4 initially, drop 2 every 5 moves
+    {
+        {1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 1, 1, 1, 1, 1, 1, 2, 2},  // Hidden row 1 (easiest - big groups)
+        {2, 2, 2, 2, 2, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 1, 1, 1, 1, 1},  // Hidden row 2 (easiest - big groups)
+        {1, 1, 1, 2, 2, 2, 1, 1, 1, 2, 2, 2, 1, 1, 1, 2, 2, 2, 1, 1},  // Hidden row 3 (medium groups)
+        {2, 2, 1, 1, 1, 2, 2, 1, 1, 1, 2, 2, 1, 1, 1, 2, 2, 1, 1, 2},  // Hidden row 4 (medium groups)
+        {1, 1, 2, 2, 1, 1, 2, 2, 1, 1, 2, 2, 1, 1, 2, 2, 1, 1, 2, 2},  // Hidden row 5 (pairs)
+        {2, 1, 1, 2, 2, 1, 1, 2, 2, 1, 1, 2, 2, 1, 1, 2, 2, 1, 1, 2},  // Hidden row 6 (pairs)
+        {1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2},  // Hidden row 7 (alternating)
+        {2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1},  // Hidden row 8 (alternating)
+        {1, 1, 1, 2, 2, 1, 1, 1, 2, 2, 1, 1, 1, 2, 2, 1, 1, 1, 2, 2},  // Initially visible row 1
+        {2, 2, 1, 1, 2, 2, 1, 1, 2, 2, 1, 1, 2, 2, 1, 1, 2, 2, 1, 1},  // Initially visible row 2
+        {1, 2, 2, 1, 1, 2, 2, 1, 1, 2, 2, 1, 1, 2, 2, 1, 1, 2, 2, 1},  // Initially visible row 3
+        {2, 1, 1, 2, 1, 1, 2, 1, 1, 2, 1, 1, 2, 1, 1, 2, 1, 1, 2, 1}}, // Initially visible row 4
+    // Level 2 - Easy: 3 colors, more random grouped pattern  
+    {
+        {3, 1, 3, 2, 1, 2, 3, 1, 2, 3, 1, 2, 3, 1, 2, 3, 1, 2, 3, 1}, // Hidden row 1
+        {2, 3, 1, 3, 2, 1, 2, 3, 1, 2, 3, 1, 2, 3, 1, 2, 3, 1, 2, 3}, // Hidden row 2
+        {1, 2, 3, 1, 3, 2, 1, 2, 3, 1, 2, 3, 1, 2, 3, 1, 2, 3, 1, 2}, // Hidden row 3
+        {3, 1, 2, 3, 1, 3, 2, 1, 2, 3, 1, 2, 3, 1, 2, 3, 1, 2, 3, 1}, // Hidden row 4
+        {2, 3, 1, 2, 3, 1, 3, 2, 1, 2, 3, 1, 2, 3, 1, 2, 3, 1, 2, 3}, // Hidden row 5
+        {1, 2, 3, 1, 2, 3, 1, 3, 2, 1, 2, 3, 1, 2, 3, 1, 2, 3, 1, 2}, // Hidden row 6
+        {3, 1, 2, 3, 1, 2, 3, 1, 2, 3, 1, 2, 3, 1, 2, 3, 1, 2, 3, 1}, // Hidden row 7
+        {2, 3, 1, 2, 3, 1, 2, 3, 1, 2, 3, 1, 2, 3, 1, 2, 3, 1, 2, 3}, // Hidden row 8
+        {1, 2, 1, 3, 3, 2, 1, 1, 3, 2, 2, 3, 1, 2, 3, 1, 3, 2, 1, 2}, // Initially visible row 1
+        {3, 1, 2, 1, 2, 3, 3, 2, 1, 3, 1, 1, 2, 3, 1, 2, 1, 3, 2, 3}, // Initially visible row 2
+        {2, 3, 3, 2, 1, 1, 2, 3, 2, 1, 3, 2, 3, 1, 2, 3, 2, 1, 3, 1}, // Initially visible row 3
+        {1, 1, 2, 3, 2, 3, 1, 1, 3, 2, 1, 3, 2, 1, 3, 2, 3, 1, 2, 3}}, // Initially visible row 4
+    // Level 3 - Easy: 3 colors, random scattered pattern
+    {
+        {1, 3, 2, 1, 3, 2, 1, 3, 2, 1, 3, 2, 1, 3, 2, 1, 3, 2, 1, 3}, // Hidden row 1
+        {3, 2, 1, 3, 2, 1, 3, 2, 1, 3, 2, 1, 3, 2, 1, 3, 2, 1, 3, 2}, // Hidden row 2
+        {2, 1, 3, 2, 1, 3, 2, 1, 3, 2, 1, 3, 2, 1, 3, 2, 1, 3, 2, 1}, // Hidden row 3
+        {3, 2, 1, 3, 2, 1, 3, 2, 1, 3, 2, 1, 3, 2, 1, 3, 2, 1, 3, 2}, // Hidden row 4
+        {1, 3, 2, 1, 3, 2, 1, 3, 2, 1, 3, 2, 1, 3, 2, 1, 3, 2, 1, 3}, // Hidden row 5
+        {2, 1, 3, 2, 1, 3, 2, 1, 3, 2, 1, 3, 2, 1, 3, 2, 1, 3, 2, 1}, // Hidden row 6
+        {3, 2, 1, 3, 2, 1, 3, 2, 1, 3, 2, 1, 3, 2, 1, 3, 2, 1, 3, 2}, // Hidden row 7
+        {1, 3, 2, 1, 3, 2, 1, 3, 2, 1, 3, 2, 1, 3, 2, 1, 3, 2, 1, 3}, // Hidden row 8
+        {2, 1, 3, 2, 1, 3, 1, 2, 1, 3, 2, 1, 3, 2, 1, 3, 2, 3, 1, 2}, // Initially visible row 1
+        {1, 3, 2, 1, 3, 1, 2, 3, 2, 1, 3, 2, 1, 3, 2, 1, 3, 1, 2, 3}, // Initially visible row 2
+        {3, 2, 1, 3, 2, 2, 3, 1, 3, 2, 1, 3, 2, 1, 3, 2, 1, 2, 3, 1}, // Initially visible row 3
+        {1, 2, 3, 1, 2, 3, 1, 2, 1, 3, 2, 1, 3, 2, 3, 1, 2, 3, 1, 2}}, // Initially visible row 4
+    // Level 4 - Easy-Medium: 4 colors, random pattern
+    {
+        {4, 2, 1, 3, 4, 2, 1, 3, 4, 2, 1, 3, 4, 2, 1, 3, 4, 2, 1, 3}, // Hidden row 1
+        {1, 3, 4, 2, 1, 3, 4, 2, 1, 3, 4, 2, 1, 3, 4, 2, 1, 3, 4, 2}, // Hidden row 2
+        {3, 1, 2, 4, 3, 1, 2, 4, 3, 1, 2, 4, 3, 1, 2, 4, 3, 1, 2, 4}, // Hidden row 3
+        {2, 4, 3, 1, 2, 4, 3, 1, 2, 4, 3, 1, 2, 4, 3, 1, 2, 4, 3, 1}, // Hidden row 4
+        {4, 1, 3, 2, 4, 1, 3, 2, 4, 1, 3, 2, 4, 1, 3, 2, 4, 1, 3, 2}, // Hidden row 5
+        {3, 2, 4, 1, 3, 2, 4, 1, 3, 2, 4, 1, 3, 2, 4, 1, 3, 2, 4, 1}, // Hidden row 6
+        {1, 4, 2, 3, 1, 4, 2, 3, 1, 4, 2, 3, 1, 4, 2, 3, 1, 4, 2, 3}, // Hidden row 7
+        {2, 3, 1, 4, 2, 3, 1, 4, 2, 3, 1, 4, 2, 3, 1, 4, 2, 3, 1, 4}, // Hidden row 8
+        {2, 4, 1, 3, 2, 1, 4, 3, 2, 4, 1, 3, 4, 2, 1, 3, 4, 2, 1, 3}, // Initially visible row 1
+        {3, 1, 4, 2, 3, 4, 2, 1, 3, 1, 4, 2, 1, 3, 4, 2, 1, 3, 4, 2}, // Initially visible row 2
+        {1, 3, 2, 4, 1, 2, 3, 4, 1, 3, 2, 4, 3, 1, 2, 4, 3, 1, 2, 4}, // Initially visible row 3
+        {4, 2, 3, 1, 4, 3, 1, 2, 4, 2, 3, 1, 2, 4, 3, 1, 2, 4, 3, 1}}, // Initially visible row 4
+    // Level 5 - Medium: 4 colors, longer V-shape pattern
+    {
+        {4, 3, 2, 1, 4, 3, 2, 1, 4, 3, 2, 1, 4, 3, 2, 1, 4, 3, 2, 1}, // Hidden row 1
+        {1, 2, 3, 4, 1, 2, 3, 4, 1, 2, 3, 4, 1, 2, 3, 4, 1, 2, 3, 4}, // Hidden row 2
+        {3, 4, 1, 2, 3, 4, 1, 2, 3, 4, 1, 2, 3, 4, 1, 2, 3, 4, 1, 2}, // Hidden row 3
+        {2, 1, 4, 3, 2, 1, 4, 3, 2, 1, 4, 3, 2, 1, 4, 3, 2, 1, 4, 3}, // Hidden row 4
+        {1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1}, // Hidden row 5
+        {2, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 2}, // Hidden row 6
+        {3, 2, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 2, 3}, // Hidden row 7
+        {4, 3, 2, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 2, 3, 4}, // Hidden row 8
+        {1, 4, 3, 2, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 2, 3, 4, 1}, // Initially visible row 1
+        {2, 1, 4, 3, 2, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 2, 3, 4, 1, 2}, // Initially visible row 2
+        {3, 2, 1, 4, 3, 2, 1, 0, 0, 0, 0, 0, 0, 1, 2, 3, 4, 1, 2, 3}, // Initially visible row 3
+        {4, 3, 2, 1, 4, 3, 2, 1, 0, 0, 0, 0, 1, 2, 3, 4, 1, 2, 3, 4}}, // Initially visible row 4
+    // Level 6 - Medium: 5 colors, pyramid pattern
+    {
+        {0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+        {0, 0, 0, 0, 0, 0, 0, 0, 2, 1, 1, 2, 0, 0, 0, 0, 0, 0, 0, 0},
+        {0, 0, 0, 0, 0, 0, 0, 3, 2, 1, 1, 2, 3, 0, 0, 0, 0, 0, 0, 0},
+        {0, 0, 0, 0, 0, 0, 4, 3, 2, 1, 1, 2, 3, 4, 0, 0, 0, 0, 0, 0},
+        {0, 0, 0, 0, 0, 5, 4, 3, 2, 1, 1, 2, 3, 4, 5, 0, 0, 0, 0, 0},
+        {0, 0, 0, 0, 1, 5, 4, 3, 2, 1, 1, 2, 3, 4, 5, 1, 0, 0, 0, 0},
+        {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+        {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+        {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+        {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+        {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+        {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}},
+    // Level 7 - Medium-Hard: 5 colors, circle pattern
+    {
+        {0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0},
+        {0, 0, 0, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1, 0, 0, 0},
+        {0, 0, 1, 2, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 2, 1, 0, 0},
+        {0, 1, 2, 3, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 3, 2, 1, 0},
+        {1, 2, 3, 4, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 4, 3, 2, 1},
+        {1, 2, 3, 4, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 4, 3, 2, 1},
+        {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+        {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+        {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+        {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+        {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+        {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}},
+    // Level 8 - Hard: 5 colors, reverse V pattern
+    {
+        {1, 2, 3, 4, 5, 1, 2, 3, 4, 5, 5, 4, 3, 2, 1, 5, 4, 3, 2, 1},
+        {0, 1, 2, 3, 4, 5, 1, 2, 3, 4, 4, 3, 2, 1, 5, 4, 3, 2, 1, 0},
+        {0, 0, 1, 2, 3, 4, 5, 1, 2, 3, 3, 2, 1, 5, 4, 3, 2, 1, 0, 0},
+        {0, 0, 0, 1, 2, 3, 4, 5, 1, 2, 2, 1, 5, 4, 3, 2, 1, 0, 0, 0},
+        {0, 0, 0, 0, 1, 2, 3, 4, 5, 1, 1, 5, 4, 3, 2, 1, 0, 0, 0, 0},
+        {0, 0, 0, 0, 0, 1, 2, 3, 4, 5, 5, 4, 3, 2, 1, 0, 0, 0, 0, 0},
+        {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+        {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+        {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+        {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+        {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+        {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}},
+    // Level 9 - Hard: 5 colors, diamond outline pattern
+    {
+        {0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+        {0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0},
+        {0, 0, 0, 0, 0, 0, 0, 3, 0, 0, 0, 0, 3, 0, 0, 0, 0, 0, 0, 0},
+        {0, 0, 0, 0, 0, 0, 4, 0, 0, 0, 0, 0, 0, 4, 0, 0, 0, 0, 0, 0},
+        {0, 0, 0, 0, 0, 5, 0, 0, 0, 0, 0, 0, 0, 0, 5, 0, 0, 0, 0, 0},
+        {0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0},
+        {0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0},
+        {0, 0, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 0, 0},
+        {0, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4, 0},
+        {5, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 5},
+        {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+        {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}},
+    // Level 10 - Very Hard: 5 colors, complex mixed pattern
+    {
+        {1, 5, 3, 2, 4, 0, 0, 1, 5, 3, 3, 5, 1, 0, 0, 4, 2, 3, 5, 1},
+        {0, 2, 4, 1, 0, 0, 3, 5, 2, 4, 4, 2, 5, 3, 0, 0, 1, 4, 2, 0},
+        {3, 0, 1, 5, 2, 4, 0, 0, 1, 3, 3, 1, 0, 0, 4, 2, 5, 1, 0, 3},
+        {5, 4, 0, 3, 1, 2, 5, 4, 0, 0, 0, 0, 4, 5, 2, 1, 3, 0, 4, 5},
+        {2, 1, 3, 0, 5, 4, 2, 1, 3, 5, 5, 3, 1, 2, 4, 5, 0, 3, 1, 2},
+        {4, 3, 5, 2, 0, 1, 4, 3, 5, 2, 2, 5, 3, 4, 1, 0, 2, 5, 3, 4},
+        {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+        {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+        {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+        {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}}};
+
 // Ball limitation system
-int ballsRemaining = 30; // Balls left for current level
+int ballsRemaining = 30;   // Balls left for current level
 int maxBallsForLevel = 30; // Maximum balls for current level
 bool inHomepage = true;
 bool inLevelSelect = false;
@@ -145,6 +286,7 @@ const int POP_STAGGER_DELAY = 50;       // 50ms delay between each bubble (faste
 
 bool moveCounted = false;    // Flag to track if current move has been counted
 int level1DisplayOffset = 8; // Start showing from row 8 (0-indexed), so initially show rows 8-11 (4 rows)
+int currentLevelDisplayOffset = 8; // Universal display offset for all levels
 bool musicEnabled = true;
 bool isDraggingVolume = false;
 int backgroundMusicChannel = -1;
@@ -173,32 +315,24 @@ int getMaxBallsForLevel(int levelNumber)
     return 25 + (levelNumber * 5);
 }
 
-// Function to load level data from file
+// Function to load level data from hardcoded array
 void loadLevelFromFile(int levelNumber, int levelGrid[12][20])
 {
-    char filename[100];
-    sprintf(filename, "saves/levels/level%d.txt", levelNumber);
-    
-    FILE *file = fopen(filename, "r");
-    if (file != NULL)
+    // Use hardcoded levels instead of reading from files
+    if (levelNumber >= 1 && levelNumber <= 10)
     {
-        // Read the grid from file
+        // Copy from hardcoded levels array
         for (int i = 0; i < 12; i++)
         {
             for (int j = 0; j < 20; j++)
             {
-                if (fscanf(file, "%d", &levelGrid[i][j]) != 1)
-                {
-                    // If reading fails, set to 0
-                    levelGrid[i][j] = 0;
-                }
+                levelGrid[i][j] = levels[levelNumber - 1][i][j];
             }
         }
-        fclose(file);
     }
     else
     {
-        // If file doesn't exist, create empty level
+        // If level doesn't exist, create empty level
         for (int i = 0; i < 12; i++)
         {
             for (int j = 0; j < 20; j++)
@@ -224,7 +358,7 @@ void startNewGame()
     ShowPopping = false;
     inGameOver = false;
     inLevelComplete = false;
-    
+
     // Reset ball count for current level
     ballsRemaining = maxBallsForLevel;
 
@@ -244,7 +378,7 @@ void startNewGame()
 
 void goToNextLevel()
 {
-    if (currentLevel < 20)
+    if (currentLevel < 10)
     {
         currentLevel++;
         Score = 0;
@@ -281,244 +415,6 @@ void goToNextLevel()
         inLevelSelect = true;
     }
 }
-
-int levels[20][12][20] = {
-    // Level 1 - Easy Tutorial: 12 total rows, show 4 initially, drop 2 every 5 moves
-    {
-        {1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 1, 1, 1, 1, 1, 1, 2, 2}, // Hidden row 1 (easiest - big groups)
-        {2, 2, 2, 2, 2, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 1, 1, 1, 1},    // Hidden row 2 (easiest - big groups)
-        {1, 1, 1, 2, 2, 2, 1, 1, 1, 2, 2, 2, 1, 1, 1, 2, 2, 2, 1, 1}, // Hidden row 3 (medium groups)
-        {2, 2, 1, 1, 1, 2, 2, 1, 1, 1, 2, 2, 1, 1, 1, 2, 2, 1, 1},    // Hidden row 4 (medium groups)
-        {1, 1, 2, 2, 1, 1, 2, 2, 1, 1, 2, 2, 1, 1, 2, 2, 1, 1, 2, 2}, // Hidden row 5 (pairs)
-        {2, 1, 1, 2, 2, 1, 1, 2, 2, 1, 1, 2, 2, 1, 1, 2, 2, 1, 1},    // Hidden row 6 (pairs)
-        {1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2}, // Hidden row 7 (alternating)
-        {2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2},    // Hidden row 8 (alternating)
-        {1, 1, 1, 2, 2, 1, 1, 1, 2, 2, 1, 1, 1, 2, 2, 1, 1, 1, 2, 2}, // Initially visible row 1
-        {2, 2, 1, 1, 2, 2, 1, 1, 2, 2, 1, 1, 2, 2, 1, 1, 2, 2, 1},    // Initially visible row 2
-        {1, 2, 2, 1, 1, 2, 2, 1, 1, 2, 2, 1, 1, 2, 2, 1, 1, 2, 2, 1}, // Initially visible row 3
-        {2, 1, 1, 2, 1, 1, 2, 1, 1, 2, 1, 1, 2, 1, 1, 2, 1, 1, 2}},   // Initially visible row 4
-    // Level 2 - Easy: 3 colors, more random grouped pattern
-    {
-        {1, 2, 1, 3, 3, 2, 1, 1, 3, 2, 2, 3, 1, 2, 3, 1, 3, 2, 1, 2},
-        {3, 1, 2, 1, 2, 3, 3, 2, 1, 3, 1, 1, 2, 3, 1, 2, 1, 3, 2, 3},
-        {2, 3, 3, 2, 1, 1, 2, 3, 2, 1, 3, 2, 3, 1, 2, 3, 2, 1, 3, 1},
-        {1, 1, 2, 3, 2, 3, 1, 1, 3, 2, 1, 3, 2, 1, 3, 2, 3, 1, 2, 3},
-        {3, 2, 1, 1, 3, 2, 2, 3, 1, 1, 3, 2, 1, 3, 2, 1, 1, 2, 3, 2},
-        {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-        {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}},
-    // Level 3 - Easy: 3 colors, random scattered pattern
-    {
-        {2, 1, 3, 2, 1, 3, 1, 2, 1, 3, 2, 1, 3, 2, 1, 3, 2, 3, 1, 2},
-        {1, 3, 2, 1, 3, 1, 2, 3, 2, 1, 3, 2, 1, 3, 2, 1, 3, 1, 2, 3},
-        {3, 2, 1, 3, 2, 2, 3, 1, 3, 2, 1, 3, 2, 1, 3, 2, 1, 2, 3, 1},
-        {1, 2, 3, 1, 2, 3, 1, 2, 1, 3, 2, 1, 3, 2, 3, 1, 2, 3, 1, 2},
-        {2, 3, 1, 2, 3, 1, 3, 2, 3, 1, 2, 3, 1, 2, 1, 3, 2, 1, 3, 2},
-        {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-        {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}},
-    // Level 4 - Easy-Medium: 4 colors, random pattern
-    {
-        {2, 4, 1, 3, 2, 1, 4, 3, 2, 4, 1, 3, 4, 2, 1, 3, 4, 2, 1, 3},
-        {3, 1, 4, 2, 3, 4, 2, 1, 3, 1, 4, 2, 1, 3, 4, 2, 1, 3, 4, 2},
-        {1, 3, 2, 4, 1, 2, 3, 4, 1, 3, 2, 4, 3, 1, 2, 4, 3, 1, 2, 4},
-        {4, 2, 3, 1, 4, 3, 1, 2, 4, 2, 3, 1, 2, 4, 3, 1, 2, 4, 3, 1},
-        {2, 1, 4, 3, 2, 4, 1, 3, 2, 1, 4, 3, 1, 2, 4, 3, 1, 2, 4, 3},
-        {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-        {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-        {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-        {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-        {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}},
-    // Level 5 - Medium: 4 colors, longer V-shape pattern
-    {
-        {1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
-        {2, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 2},
-        {3, 2, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 2, 3},
-        {4, 3, 2, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 2, 3, 4},
-        {1, 4, 3, 2, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 2, 3, 4, 1},
-        {2, 1, 4, 3, 2, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 2, 3, 4, 1, 2},
-        {3, 2, 1, 4, 3, 2, 1, 0, 0, 0, 0, 0, 0, 1, 2, 3, 4, 1, 2, 3},
-        {4, 3, 2, 1, 4, 3, 2, 1, 0, 0, 0, 0, 1, 2, 3, 4, 1, 2, 3, 4},
-        {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-        {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}},
-    // Level 6 - Medium: 5 colors, pyramid pattern
-    {
-        {0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-        {0, 0, 0, 0, 0, 0, 0, 0, 2, 1, 1, 2, 0, 0, 0, 0, 0, 0, 0, 0},
-        {0, 0, 0, 0, 0, 0, 0, 3, 2, 1, 1, 2, 3, 0, 0, 0, 0, 0, 0, 0},
-        {0, 0, 0, 0, 0, 0, 4, 3, 2, 1, 1, 2, 3, 4, 0, 0, 0, 0, 0, 0},
-        {0, 0, 0, 0, 0, 5, 4, 3, 2, 1, 1, 2, 3, 4, 5, 0, 0, 0, 0, 0},
-        {0, 0, 0, 0, 1, 5, 4, 3, 2, 1, 1, 2, 3, 4, 5, 1, 0, 0, 0, 0},
-        {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-        {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-        {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-        {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}},
-    // Level 7 - Medium-Hard: 5 colors, circle pattern
-    {
-        {0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0},
-        {0, 0, 0, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1, 0, 0, 0},
-        {0, 0, 1, 2, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 2, 1, 0, 0},
-        {0, 1, 2, 3, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 3, 2, 1, 0},
-        {1, 2, 3, 4, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 4, 3, 2, 1},
-        {1, 2, 3, 4, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 4, 3, 2, 1},
-        {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-        {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-        {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-        {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}},
-    // Level 8 - Hard: 5 colors, reverse V pattern
-    {
-        {1, 2, 3, 4, 5, 1, 2, 3, 4, 5, 5, 4, 3, 2, 1, 5, 4, 3, 2, 1},
-        {0, 1, 2, 3, 4, 5, 1, 2, 3, 4, 4, 3, 2, 1, 5, 4, 3, 2, 1, 0},
-        {0, 0, 1, 2, 3, 4, 5, 1, 2, 3, 3, 2, 1, 5, 4, 3, 2, 1, 0, 0},
-        {0, 0, 0, 1, 2, 3, 4, 5, 1, 2, 2, 1, 5, 4, 3, 2, 1, 0, 0, 0},
-        {0, 0, 0, 0, 1, 2, 3, 4, 5, 1, 1, 5, 4, 3, 2, 1, 0, 0, 0, 0},
-        {0, 0, 0, 0, 0, 1, 2, 3, 4, 5, 5, 4, 3, 2, 1, 0, 0, 0, 0, 0},
-        {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-        {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-        {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-        {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}},
-    // Level 9 - Hard: 5 colors, diamond outline pattern
-    {
-        {0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-        {0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0},
-        {0, 0, 0, 0, 0, 0, 0, 3, 0, 0, 0, 0, 3, 0, 0, 0, 0, 0, 0, 0},
-        {0, 0, 0, 0, 0, 0, 4, 0, 0, 0, 0, 0, 0, 4, 0, 0, 0, 0, 0, 0},
-        {0, 0, 0, 0, 0, 5, 0, 0, 0, 0, 0, 0, 0, 0, 5, 0, 0, 0, 0, 0},
-        {0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0},
-        {0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0},
-        {0, 0, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 0, 0},
-        {0, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4, 0},
-        {5, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 5}},
-    // Level 10 - Very Hard: 5 colors, complex mixed pattern
-    {
-        {1, 5, 3, 2, 4, 0, 0, 1, 5, 3, 3, 5, 1, 0, 0, 4, 2, 3, 5, 1},
-        {0, 2, 4, 1, 0, 0, 3, 5, 2, 4, 4, 2, 5, 3, 0, 0, 1, 4, 2, 0},
-        {3, 0, 1, 5, 2, 4, 0, 0, 1, 3, 3, 1, 0, 0, 4, 2, 5, 1, 0, 3},
-        {5, 4, 0, 3, 1, 2, 5, 4, 0, 0, 0, 0, 4, 5, 2, 1, 3, 0, 4, 5},
-        {2, 1, 3, 0, 5, 4, 2, 1, 3, 5, 5, 3, 1, 2, 4, 5, 0, 3, 1, 2},
-        {4, 3, 5, 2, 0, 1, 4, 3, 5, 2, 2, 5, 3, 4, 1, 0, 2, 5, 3, 4},
-        {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-        {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-        {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-        {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}},
-    // Level 11
-    {
-        {1, 5, 3, 2, 4, 1, 5, 3, 2, 4, 1, 5, 3, 2, 4, 1, 5, 3, 2, 4},
-        {4, 2, 1, 5, 3, 4, 2, 1, 5, 3, 4, 2, 1, 5, 3, 4, 2, 1, 5, 3},
-        {2, 4, 5, 3, 1, 2, 4, 5, 3, 1, 2, 4, 5, 3, 1, 2, 4, 5, 3, 1},
-        {5, 3, 2, 1, 4, 5, 3, 2, 1, 4, 5, 3, 2, 1, 4, 5, 3, 2, 1, 4},
-        {3, 1, 4, 5, 2, 3, 1, 4, 5, 2, 3, 1, 4, 5, 2, 3, 1, 4, 5, 2},
-        {2, 5, 1, 4, 3, 2, 5, 1, 4, 3, 2, 5, 1, 4, 3, 2, 5, 1, 4, 3},
-        {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-        {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-        {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-        {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}},
-    // Level 12
-    {
-        {4, 1, 2, 5, 3, 4, 1, 2, 5, 3, 4, 1, 2, 5, 3, 4, 1, 2, 5, 3},
-        {3, 5, 4, 1, 2, 3, 5, 4, 1, 2, 3, 5, 4, 1, 2, 3, 5, 4, 1, 2},
-        {5, 2, 1, 3, 4, 5, 2, 1, 3, 4, 5, 2, 1, 3, 4, 5, 2, 1, 3, 4},
-        {1, 4, 3, 2, 5, 1, 4, 3, 2, 5, 1, 4, 3, 2, 5, 1, 4, 3, 2, 5},
-        {2, 3, 5, 4, 1, 2, 3, 5, 4, 1, 2, 3, 5, 4, 1, 2, 3, 5, 4, 1},
-        {3, 1, 4, 2, 5, 3, 1, 4, 2, 5, 3, 1, 4, 2, 5, 3, 1, 4, 2, 5},
-        {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-        {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-        {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-        {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}},
-    // Level 13
-    {
-        {2, 3, 4, 1, 5, 2, 3, 4, 1, 5, 2, 3, 4, 1, 5, 2, 3, 4, 1, 5},
-        {5, 1, 3, 4, 2, 5, 1, 3, 4, 2, 5, 1, 3, 4, 2, 5, 1, 3, 4, 2},
-        {3, 4, 2, 5, 1, 3, 4, 2, 5, 1, 3, 4, 2, 5, 1, 3, 4, 2, 5, 1},
-        {1, 2, 5, 3, 4, 1, 2, 5, 3, 4, 1, 2, 5, 3, 4, 1, 2, 5, 3, 4},
-        {4, 5, 1, 2, 3, 4, 5, 1, 2, 3, 4, 5, 1, 2, 3, 4, 5, 1, 2, 3},
-        {1, 4, 3, 5, 2, 1, 4, 3, 5, 2, 1, 4, 3, 5, 2, 1, 4, 3, 5, 2},
-        {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-        {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-        {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-        {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}},
-    // Level 14
-    {
-        {5, 1, 4, 3, 2, 5, 1, 4, 3, 2, 5, 1, 4, 3, 2, 5, 1, 4, 3, 2},
-        {2, 4, 5, 1, 3, 2, 4, 5, 1, 3, 2, 4, 5, 1, 3, 2, 4, 5, 1, 3},
-        {1, 3, 2, 4, 5, 1, 3, 2, 4, 5, 1, 3, 2, 4, 5, 1, 3, 2, 4, 5},
-        {4, 5, 3, 2, 1, 4, 5, 3, 2, 1, 4, 5, 3, 2, 1, 4, 5, 3, 2, 1},
-        {3, 2, 1, 5, 4, 3, 2, 1, 5, 4, 3, 2, 1, 5, 4, 3, 2, 1, 5, 4},
-        {5, 3, 4, 1, 2, 5, 3, 4, 1, 2, 5, 3, 4, 1, 2, 5, 3, 4, 1, 2},
-        {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-        {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-        {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-        {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}},
-    // Level 15
-    {
-        {3, 4, 5, 2, 1, 3, 4, 5, 2, 1, 3, 4, 5, 2, 1, 3, 4, 5, 2, 1},
-        {1, 2, 3, 5, 4, 1, 2, 3, 5, 4, 1, 2, 3, 5, 4, 1, 2, 3, 5, 4},
-        {4, 5, 1, 3, 2, 4, 5, 1, 3, 2, 4, 5, 1, 3, 2, 4, 5, 1, 3, 2},
-        {2, 1, 4, 5, 3, 2, 1, 4, 5, 3, 2, 1, 4, 5, 3, 2, 1, 4, 5, 3},
-        {5, 3, 2, 1, 4, 5, 3, 2, 1, 4, 5, 3, 2, 1, 4, 5, 3, 2, 1, 4},
-        {4, 2, 5, 3, 1, 4, 2, 5, 3, 1, 4, 2, 5, 3, 1, 4, 2, 5, 3, 1},
-        {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-        {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-        {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-        {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}},
-    // Level 16
-    {
-        {1, 2, 5, 4, 3, 1, 2, 5, 4, 3, 1, 2, 5, 4, 3, 1, 2, 5, 4, 3},
-        {3, 4, 1, 2, 5, 3, 4, 1, 2, 5, 3, 4, 1, 2, 5, 3, 4, 1, 2, 5},
-        {5, 1, 3, 4, 2, 5, 1, 3, 4, 2, 5, 1, 3, 4, 2, 5, 1, 3, 4, 2},
-        {2, 5, 4, 1, 3, 2, 5, 4, 1, 3, 2, 5, 4, 1, 3, 2, 5, 4, 1, 3},
-        {4, 3, 2, 5, 1, 4, 3, 2, 5, 1, 4, 3, 2, 5, 1, 4, 3, 2, 5, 1},
-        {1, 5, 2, 3, 4, 1, 5, 2, 3, 4, 1, 5, 2, 3, 4, 1, 5, 2, 3, 4},
-        {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-        {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-        {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-        {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}},
-    // Level 17
-    {
-        {4, 5, 2, 3, 1, 4, 5, 2, 3, 1, 4, 5, 2, 3, 1, 4, 5, 2, 3, 1},
-        {2, 1, 4, 5, 3, 2, 1, 4, 5, 3, 2, 1, 4, 5, 3, 2, 1, 4, 5, 3},
-        {3, 4, 1, 2, 5, 3, 4, 1, 2, 5, 3, 4, 1, 2, 5, 3, 4, 1, 2, 5},
-        {5, 2, 3, 1, 4, 5, 2, 3, 1, 4, 5, 2, 3, 1, 4, 5, 2, 3, 1, 4},
-        {1, 3, 5, 4, 2, 1, 3, 5, 4, 2, 1, 3, 5, 4, 2, 1, 3, 5, 4, 2},
-        {3, 1, 2, 5, 4, 3, 1, 2, 5, 4, 3, 1, 2, 5, 4, 3, 1, 2, 5, 4},
-        {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-        {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-        {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-        {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}},
-    // Level 18
-    {
-        {2, 4, 3, 1, 5, 2, 4, 3, 1, 5, 2, 4, 3, 1, 5, 2, 4, 3, 1, 5},
-        {5, 3, 2, 4, 1, 5, 3, 2, 4, 1, 5, 3, 2, 4, 1, 5, 3, 2, 4, 1},
-        {1, 5, 4, 2, 3, 1, 5, 4, 2, 3, 1, 5, 4, 2, 3, 1, 5, 4, 2, 3},
-        {3, 1, 5, 4, 2, 3, 1, 5, 4, 2, 3, 1, 5, 4, 2, 3, 1, 5, 4, 2},
-        {4, 2, 1, 3, 5, 4, 2, 1, 3, 5, 4, 2, 1, 3, 5, 4, 2, 1, 3, 5},
-        {2, 3, 5, 1, 4, 2, 3, 5, 1, 4, 2, 3, 5, 1, 4, 2, 3, 5, 1, 4},
-        {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-        {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-        {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-        {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}},
-    // Level 19
-    {
-        {5, 3, 1, 4, 2, 5, 3, 1, 4, 2, 5, 3, 1, 4, 2, 5, 3, 1, 4, 2},
-        {1, 4, 5, 2, 3, 1, 4, 5, 2, 3, 1, 4, 5, 2, 3, 1, 4, 5, 2, 3},
-        {2, 5, 3, 1, 4, 2, 5, 3, 1, 4, 2, 5, 3, 1, 4, 2, 5, 3, 1, 4},
-        {4, 1, 2, 5, 3, 4, 1, 2, 5, 3, 4, 1, 2, 5, 3, 4, 1, 2, 5, 3},
-        {3, 2, 4, 1, 5, 3, 2, 4, 1, 5, 3, 2, 4, 1, 5, 3, 2, 4, 1, 5},
-        {5, 4, 3, 2, 1, 5, 4, 3, 2, 1, 5, 4, 3, 2, 1, 5, 4, 3, 2, 1},
-        {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-        {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-        {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-        {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}},
-    // Level 20
-    {
-        {1, 5, 2, 3, 4, 1, 5, 2, 3, 4, 1, 5, 2, 3, 4, 1, 5, 2, 3, 4},
-        {4, 2, 3, 1, 5, 4, 2, 3, 1, 5, 4, 2, 3, 1, 5, 4, 2, 3, 1, 5},
-        {3, 1, 4, 5, 2, 3, 1, 4, 5, 2, 3, 1, 4, 5, 2, 3, 1, 4, 5, 2},
-        {5, 4, 1, 2, 3, 5, 4, 1, 2, 3, 5, 4, 1, 2, 3, 5, 4, 1, 2, 3},
-        {2, 3, 5, 4, 1, 2, 3, 5, 4, 1, 2, 3, 5, 4, 1, 2, 3, 5, 4, 1},
-        {4, 1, 3, 2, 5, 4, 1, 3, 2, 5, 4, 1, 3, 2, 5, 4, 1, 3, 2, 5},
-        {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-        {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-        {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
-        {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}}};
 
 // Helper function to get text width (improved approximation)
 int getTextWidth(const char *text, int fontSize)
@@ -562,10 +458,10 @@ int getRandomLevelColor()
         }
     }
 
-    // For level 1 progressive system, also scan remaining hidden rows from predefined level data
-    if (currentLevel == 1 && level1DisplayOffset > 1) // Only when we can still drop rows
+    // For progressive system, also scan remaining hidden rows from predefined level data
+    if (currentLevelDisplayOffset > 1) // Only when we can still drop rows
     {
-        for (int i = 0; i < level1DisplayOffset; i++) // Only scan remaining hidden rows
+        for (int i = 0; i < currentLevelDisplayOffset; i++) // Only scan remaining hidden rows
         {
             int colsInRow = (i % 2 == 0) ? COLS : (COLS - 1);
             for (int j = 0; j < colsInRow; j++)
@@ -583,14 +479,20 @@ int getRandomLevelColor()
     // If no colors found, use default colors for the level
     if (colorCount == 0)
     {
-        if (currentLevel == 1)
+        if (currentLevel <= 3)
         {
-            // Level 1 uses colors 1, 2, 3
+            // Levels 1-3 use colors 1, 2, 3
             return rand() % 3 + 1;
+        }
+        else if (currentLevel <= 6)
+        {
+            // Levels 4-6 use colors 1, 2, 3, 4
+            return rand() % 4 + 1;
         }
         else
         {
-            return rand() % 3 + 1;
+            // Levels 7-10 use colors 1, 2, 3, 4, 5
+            return rand() % 5 + 1;
         }
     }
 
@@ -655,80 +557,59 @@ void loadLevel(int levelNumber)
     // Reset high score save flag for new level
     highScoreSaved = false;
 
-    if (levelNumber >= 1 && levelNumber <= 20)
+    if (levelNumber >= 1 && levelNumber <= 10)
     {
         currentLevel = levelNumber;
-        
-        // Load level data from file into global variable
+
+        // Load level data from hardcoded array into global variable
         loadLevelFromFile(levelNumber, currentLevelData);
-        
+
         // Initialize ball limitation system
         maxBallsForLevel = getMaxBallsForLevel(levelNumber);
         ballsRemaining = maxBallsForLevel;
 
-        // Handle Level 1 specially with progressive display
-        if (levelNumber == 1)
+        // Apply progressive display system to all levels (like Level 1)
+        // Initialize the grid with empty rows
+        for (int i = 0; i < Rows; i++)
         {
-            // Initialize the grid with empty rows
-            for (int i = 0; i < Rows; i++)
+            for (int j = 0; j < COLS; j++)
             {
-                for (int j = 0; j < COLS; j++)
-                {
-                    grid[i][j] = 0;
-                }
+                grid[i][j] = 0;
             }
-
-            // Copy only the currently visible rows from the loaded level data
-            int visibleRowCount = 4; // Initially show 4 rows
-            for (int i = 0; i < visibleRowCount; i++)
-            {
-                for (int j = 0; j < COLS; j++)
-                {
-                    grid[i][j] = currentLevelData[level1DisplayOffset + i][j]; // Copy from offset position
-                }
-            }
-
-            // Reset progressive system variables
-            currentHiddenRowsUsed = 0;
-            level1DisplayOffset = 8; // Start showing from row 8 of the loaded data (show rows 8-11)
-            movesCount = 0;
-            isAnimatingRowDrop = false;
-            gridVerticalOffset = 0.0;
-        }
-        else
-        {
-            // For other levels, copy normally
-            for (int i = 0; i < Rows; i++)
-            {
-                for (int j = 0; j < COLS; j++)
-                {
-                    grid[i][j] = currentLevelData[i][j];
-                }
-            }
-
-            // Reset progressive system for other levels
-            currentHiddenRowsUsed = maxHiddenRows; // Disable system
-            movesCount = 0;
         }
 
-        // Initialize progressive row system for level 1
-        if (levelNumber == 1)
+        // Use the same progressive system as Level 1 for all levels
+        int initialVisibleRows = 4; // All levels start with 4 visible rows  
+        int startOffset = 8; // Start showing from row 8 for all levels (like Level 1)
+        
+        // Copy only the currently visible rows from the loaded level data
+        for (int i = 0; i < initialVisibleRows; i++)
         {
-            // Setup hidden rows for level 1 - we'll use the first 2 rows from the loaded data
-            for (int i = 0; i < 2; i++) // Only first 2 rows are hidden initially
+            for (int j = 0; j < COLS; j++)
             {
-                for (int j = 0; j < COLS; j++)
-                {
-                    hiddenRows[i][j] = currentLevelData[i][j]; // Copy from loaded level data
-                }
+                grid[i][j] = currentLevelData[startOffset + i][j]; // Copy from offset position
+            }
+        }
+
+        // Reset progressive system variables for all levels
+        currentHiddenRowsUsed = 0;
+        currentLevelDisplayOffset = startOffset; // Universal offset for all levels
+        movesCount = 0;
+        isAnimatingRowDrop = false;
+        gridVerticalOffset = 0.0;
+
+        // Setup hidden rows for all levels - use the first rows from the loaded data
+        for (int i = 0; i < maxHiddenRows && i < startOffset; i++)
+        {
+            for (int j = 0; j < COLS; j++)
+            {
+                hiddenRows[i][j] = currentLevelData[i][j]; // Copy from loaded level data
             }
         }
 
         inLevelSelect = false;
         inGame = true;
-        // Stop background music when entering game (small delay to let click sound finish)
-        // Note: Using a timer would be better, but for simplicity we'll let the click sound play
-        iStopAllSounds();
+        // Keep background music playing during gameplay for better experience
 
         // Reset game state
         Score = 0;
@@ -754,7 +635,7 @@ void checkForRowDrop()
         }
     }
 
-    if (currentLevel == 1 && level1DisplayOffset > 1 && !moveCounted && !popAnimationsActive && !isAnimatingRowDrop) // Need at least 2 rows to drop
+    if (currentLevelDisplayOffset > 1 && !moveCounted && !popAnimationsActive && !isAnimatingRowDrop) // Need at least 2 rows to drop
     {
         moveCounted = true; // Mark this move as counted
         movesCount++;
@@ -780,7 +661,7 @@ bool hasTopRowBalls()
 // Helper function to check if there are hidden rows remaining
 bool hasHiddenRows()
 {
-    return (currentLevel == 1 && level1DisplayOffset > 1); // Need at least 2 rows to drop
+    return (currentLevelDisplayOffset > 1); // Need at least 2 rows to drop
 }
 
 // Update animation offset for smooth row dropping
@@ -925,19 +806,19 @@ void finalizeRowDrop()
 
     // Add 2 new rows at the top from the predefined level data
     // Add first new row (will become row 1 - odd)
-    level1DisplayOffset--;
+    currentLevelDisplayOffset--;
     int row1Cols = COLS - 1; // Row 1 is odd, so it has COLS-1 columns
     for (int c = 0; c < row1Cols; c++)
     {
-        grid[1][c] = currentLevelData[level1DisplayOffset][c];
+        grid[1][c] = currentLevelData[currentLevelDisplayOffset][c];
     }
 
     // Add second new row (will become row 0 - even)
-    level1DisplayOffset--;
+    currentLevelDisplayOffset--;
     int row0Cols = COLS; // Row 0 is even, so it has COLS columns
     for (int c = 0; c < row0Cols; c++)
     {
-        grid[0][c] = currentLevelData[level1DisplayOffset][c];
+        grid[0][c] = currentLevelData[currentLevelDisplayOffset][c];
     }
 
     // After row drop, detect and handle floating bubbles
@@ -1019,7 +900,7 @@ void drawHighScorePage()
     iText(230, 580, "Name", GLUT_BITMAP_HELVETICA_18);
     iText(430, 580, "Score", GLUT_BITMAP_HELVETICA_18);
     iText(580, 580, "Level", GLUT_BITMAP_HELVETICA_18);
-    
+
     for (int i = 0; i < highScoreCount; i++)
     {
         int y = 540 - i * 40;
@@ -1143,7 +1024,7 @@ void handleLevelComplete()
 // Level progression functions
 void unlockNextLevel()
 {
-    if (currentLevel < 20 && unlockedLevels == currentLevel)
+    if (currentLevel < 10 && unlockedLevels == currentLevel)
     {
         unlockedLevels = currentLevel + 1;
         saveLevelProgress();
@@ -1197,14 +1078,14 @@ void drawLevelSelect()
     iSetColor(0, 191, 255); // Ocean blue
     iText(GAME_WINDOW_WIDTH / 2 - 80, 700, "SELECT LEVEL", GLUT_BITMAP_HELVETICA_18);
 
-    // Draw level buttons in a 4x5 grid with enhanced styling and hover effects
-    for (int i = 0; i < 20; i++)
+    // Draw level buttons in a 2x5 grid with enhanced styling and hover effects
+    for (int i = 0; i < 10; i++)
     {
         int row = i / 5;
         int col = i % 5;
 
         int baseX = 100 + col * 120;
-        int baseY = 550 - row * 100;
+        int baseY = 450 - row * 100;
 
         // Check if hovering for size increase effect
         bool isHovering = isPointInRect(mouseX, mouseY, baseX, baseY, 80, 60);
@@ -2463,7 +2344,7 @@ void ballMovement()
         ball_y = GAME_WINDOW_HEIGHT - BUBBLE_RADIUS;
 
         // Check if all hidden rows are used (all rows visible)
-        if (level1DisplayOffset <= 1) // All rows visible when <= 1 (need 2 to drop)
+        if (currentLevelDisplayOffset <= 1) // All rows visible when <= 1 (need 2 to drop)
         {
             // All rows are visible - ball should stick to top wall
             isBallMoving = false;
@@ -2579,7 +2460,7 @@ void ballMovement()
 // Function to drop a new row from hidden rows
 void dropNewRow()
 {
-    if (currentLevel != 1 || level1DisplayOffset <= 1) // Need at least 2 rows left to drop
+    if (currentLevelDisplayOffset <= 1) // Need at least 2 rows left to drop
         return;
 
     // Start the velocity-based row drop animation
@@ -2958,7 +2839,7 @@ void iDraw()
             char levelText[30];
             sprintf(levelText, "Level: %d", currentLevel);
             iText(500, GAME_WINDOW_HEIGHT + 14, levelText, GLUT_BITMAP_HELVETICA_18);
-            
+
             iSetColor(60, 60, 70);
             iFilledRectangle(650, GAME_WINDOW_HEIGHT + 10, 120, 30);
             iSetColor(255, 255, 255);
@@ -3000,9 +2881,8 @@ void iMouse(int button, int state, int mx, int my)
                 inLevelSelect = true;
                 inGame = false;
 
-                // Restart background music when returning to level selection
-                iStopAllSounds();
-                if (musicEnabled)
+                // Restart background music when returning to level selection if not already playing
+                if (backgroundMusicChannel == -1 && musicEnabled)
                 {
                     backgroundMusicChannel = iPlaySound("assets/sounds/bg.wav", true, musicVolume);
                 }
@@ -3024,9 +2904,8 @@ void iMouse(int button, int state, int mx, int my)
                 inLevelSelect = true;
                 inGame = false;
 
-                // Restart background music when returning to level selection
-                iStopAllSounds();
-                if (musicEnabled)
+                // Restart background music when returning to level selection if not already playing
+                if (backgroundMusicChannel == -1 && musicEnabled)
                 {
                     backgroundMusicChannel = iPlaySound("assets/sounds/bg.wav", true, musicVolume);
                 }
@@ -3157,13 +3036,13 @@ void iMouse(int button, int state, int mx, int my)
             // Check if clicked on a level button
             else
             {
-                for (int i = 0; i < 20; i++)
+                for (int i = 0; i < 10; i++)
                 {
                     int row = i / 5;
                     int col = i % 5;
 
                     int x = 100 + col * 120;
-                    int y = 550 - row * 100;
+                    int y = 450 - row * 100;
 
                     if (isPointInRect(mx, my, x, y, 80, 60))
                     {
@@ -3199,9 +3078,8 @@ void iMouse(int button, int state, int mx, int my)
                 inNameInput = false;
                 inLevelSelect = true;
 
-                // Start background music when entering level selection
-                iStopAllSounds();
-                if (musicEnabled)
+                // Start background music when entering level selection if not already playing
+                if (backgroundMusicChannel == -1 && musicEnabled)
                 {
                     backgroundMusicChannel = iPlaySound("assets/sounds/bg.wav", true, musicVolume);
                 }
@@ -3247,9 +3125,8 @@ void iMouse(int button, int state, int mx, int my)
                     inPauseMenu = false;
                     inLevelSelect = true;
                     isBallMoving = false;
-                    // Restart background music when exiting game
-                    iStopAllSounds();
-                    if (musicEnabled)
+                    // Restart background music when exiting game if not already playing
+                    if (backgroundMusicChannel == -1 && musicEnabled)
                     {
                         backgroundMusicChannel = iPlaySound("assets/sounds/bg.wav", true, musicVolume);
                     }
@@ -3273,7 +3150,7 @@ void iMouse(int button, int state, int mx, int my)
                         inGame = false;
                         return;
                     }
-                    
+
                     angle = atan2(my - (shooter_y + BUBBLE_RADIUS), mx - shooter_x);
                     if (my - (shooter_y + BUBBLE_RADIUS) >= 40)
                     {
@@ -3284,7 +3161,7 @@ void iMouse(int button, int state, int mx, int my)
                         ballBounceCount = 0; // Reset bounce counter for new ball
                         moveCounted = false; // Reset move counter flag for new ball
                         isBallMoving = true;
-                        
+
                         // Decrease ball count when shot
                         ballsRemaining--;
                     }
@@ -3441,7 +3318,7 @@ void iKeyboard(unsigned char key, int state)
     if (inLevelSelect && key >= '1' && key <= '9')
     {
         int level = key - '0';
-        if (level <= 20)
+        if (level <= 10)
             loadLevel(level);
     }
 
