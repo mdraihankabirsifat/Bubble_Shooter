@@ -67,139 +67,140 @@ int levels[10][12][20] = {
         {2, 2, 1, 1, 2, 2, 1, 1, 2, 2, 1, 1, 2, 2, 1, 1, 2, 2, 1, 1},  // Initially visible row 2
         {1, 2, 2, 1, 1, 2, 2, 1, 1, 2, 2, 1, 1, 2, 2, 1, 1, 2, 2, 1},  // Initially visible row 3
         {2, 1, 1, 2, 1, 1, 2, 1, 1, 2, 1, 1, 2, 1, 1, 2, 1, 1, 2, 1}}, // Initially visible row 4
-    // Level 2 - Easy: 3 colors, more random grouped pattern  
+    // Level 2 - Easy: 3 colors, more random grouped pattern
     {
-        {3, 1, 3, 2, 1, 2, 3, 1, 2, 3, 1, 2, 3, 1, 2, 3, 1, 2, 3, 1}, // Hidden row 1
-        {2, 3, 1, 3, 2, 1, 2, 3, 1, 2, 3, 1, 2, 3, 1, 2, 3, 1, 2, 3}, // Hidden row 2
-        {1, 2, 3, 1, 3, 2, 1, 2, 3, 1, 2, 3, 1, 2, 3, 1, 2, 3, 1, 2}, // Hidden row 3
-        {3, 1, 2, 3, 1, 3, 2, 1, 2, 3, 1, 2, 3, 1, 2, 3, 1, 2, 3, 1}, // Hidden row 4
-        {2, 3, 1, 2, 3, 1, 3, 2, 1, 2, 3, 1, 2, 3, 1, 2, 3, 1, 2, 3}, // Hidden row 5
-        {1, 2, 3, 1, 2, 3, 1, 3, 2, 1, 2, 3, 1, 2, 3, 1, 2, 3, 1, 2}, // Hidden row 6
-        {3, 1, 2, 3, 1, 2, 3, 1, 2, 3, 1, 2, 3, 1, 2, 3, 1, 2, 3, 1}, // Hidden row 7
-        {2, 3, 1, 2, 3, 1, 2, 3, 1, 2, 3, 1, 2, 3, 1, 2, 3, 1, 2, 3}, // Hidden row 8
-        {1, 2, 1, 3, 3, 2, 1, 1, 3, 2, 2, 3, 1, 2, 3, 1, 3, 2, 1, 2}, // Initially visible row 1
-        {3, 1, 2, 1, 2, 3, 3, 2, 1, 3, 1, 1, 2, 3, 1, 2, 1, 3, 2, 3}, // Initially visible row 2
-        {2, 3, 3, 2, 1, 1, 2, 3, 2, 1, 3, 2, 3, 1, 2, 3, 2, 1, 3, 1}, // Initially visible row 3
+        {3, 1, 3, 2, 1, 2, 3, 1, 2, 3, 1, 2, 3, 1, 2, 3, 1, 2, 3, 1},  // Hidden row 1
+        {2, 3, 1, 3, 2, 1, 2, 3, 1, 2, 3, 1, 2, 3, 1, 2, 3, 1, 2, 3},  // Hidden row 2
+        {1, 2, 3, 1, 3, 2, 1, 2, 3, 1, 2, 3, 1, 2, 3, 1, 2, 3, 1, 2},  // Hidden row 3
+        {3, 1, 2, 3, 1, 3, 2, 1, 2, 3, 1, 2, 3, 1, 2, 3, 1, 2, 3, 1},  // Hidden row 4
+        {2, 3, 1, 2, 3, 1, 3, 2, 1, 2, 3, 1, 2, 3, 1, 2, 3, 1, 2, 3},  // Hidden row 5
+        {1, 2, 3, 1, 2, 3, 1, 3, 2, 1, 2, 3, 1, 2, 3, 1, 2, 3, 1, 2},  // Hidden row 6
+        {3, 1, 2, 3, 1, 2, 3, 1, 2, 3, 1, 2, 3, 1, 2, 3, 1, 2, 3, 1},  // Hidden row 7
+        {2, 3, 1, 2, 3, 1, 2, 3, 1, 2, 3, 1, 2, 3, 1, 2, 3, 1, 2, 3},  // Hidden row 8
+        {1, 2, 1, 3, 3, 2, 1, 1, 3, 2, 2, 3, 1, 2, 3, 1, 3, 2, 1, 2},  // Initially visible row 1
+        {3, 1, 2, 1, 2, 3, 3, 2, 1, 3, 1, 1, 2, 3, 1, 2, 1, 3, 2, 3},  // Initially visible row 2
+        {2, 3, 3, 2, 1, 1, 2, 3, 2, 1, 3, 2, 3, 1, 2, 3, 2, 1, 3, 1},  // Initially visible row 3
         {1, 1, 2, 3, 2, 3, 1, 1, 3, 2, 1, 3, 2, 1, 3, 2, 3, 1, 2, 3}}, // Initially visible row 4
     // Level 3 - Easy: 3 colors, random scattered pattern
     {
-        {1, 3, 2, 1, 3, 2, 1, 3, 2, 1, 3, 2, 1, 3, 2, 1, 3, 2, 1, 3}, // Hidden row 1
-        {3, 2, 1, 3, 2, 1, 3, 2, 1, 3, 2, 1, 3, 2, 1, 3, 2, 1, 3, 2}, // Hidden row 2
-        {2, 1, 3, 2, 1, 3, 2, 1, 3, 2, 1, 3, 2, 1, 3, 2, 1, 3, 2, 1}, // Hidden row 3
-        {3, 2, 1, 3, 2, 1, 3, 2, 1, 3, 2, 1, 3, 2, 1, 3, 2, 1, 3, 2}, // Hidden row 4
-        {1, 3, 2, 1, 3, 2, 1, 3, 2, 1, 3, 2, 1, 3, 2, 1, 3, 2, 1, 3}, // Hidden row 5
-        {2, 1, 3, 2, 1, 3, 2, 1, 3, 2, 1, 3, 2, 1, 3, 2, 1, 3, 2, 1}, // Hidden row 6
-        {3, 2, 1, 3, 2, 1, 3, 2, 1, 3, 2, 1, 3, 2, 1, 3, 2, 1, 3, 2}, // Hidden row 7
-        {1, 3, 2, 1, 3, 2, 1, 3, 2, 1, 3, 2, 1, 3, 2, 1, 3, 2, 1, 3}, // Hidden row 8
-        {2, 1, 3, 2, 1, 3, 1, 2, 1, 3, 2, 1, 3, 2, 1, 3, 2, 3, 1, 2}, // Initially visible row 1
-        {1, 3, 2, 1, 3, 1, 2, 3, 2, 1, 3, 2, 1, 3, 2, 1, 3, 1, 2, 3}, // Initially visible row 2
-        {3, 2, 1, 3, 2, 2, 3, 1, 3, 2, 1, 3, 2, 1, 3, 2, 1, 2, 3, 1}, // Initially visible row 3
+        {1, 3, 2, 1, 3, 2, 1, 3, 2, 1, 3, 2, 1, 3, 2, 1, 3, 2, 1, 3},  // Hidden row 1
+        {3, 2, 1, 3, 2, 1, 3, 2, 1, 3, 2, 1, 3, 2, 1, 3, 2, 1, 3, 2},  // Hidden row 2
+        {2, 1, 3, 2, 1, 3, 2, 1, 3, 2, 1, 3, 2, 1, 3, 2, 1, 3, 2, 1},  // Hidden row 3
+        {3, 2, 1, 3, 2, 1, 3, 2, 1, 3, 2, 1, 3, 2, 1, 3, 2, 1, 3, 2},  // Hidden row 4
+        {1, 3, 2, 1, 3, 2, 1, 3, 2, 1, 3, 2, 1, 3, 2, 1, 3, 2, 1, 3},  // Hidden row 5
+        {2, 1, 3, 2, 1, 3, 2, 1, 3, 2, 1, 3, 2, 1, 3, 2, 1, 3, 2, 1},  // Hidden row 6
+        {3, 2, 1, 3, 2, 1, 3, 2, 1, 3, 2, 1, 3, 2, 1, 3, 2, 1, 3, 2},  // Hidden row 7
+        {1, 3, 2, 1, 3, 2, 1, 3, 2, 1, 3, 2, 1, 3, 2, 1, 3, 2, 1, 3},  // Hidden row 8
+        {2, 1, 3, 2, 1, 3, 1, 2, 1, 3, 2, 1, 3, 2, 1, 3, 2, 3, 1, 2},  // Initially visible row 1
+        {1, 3, 2, 1, 3, 1, 2, 3, 2, 1, 3, 2, 1, 3, 2, 1, 3, 1, 2, 3},  // Initially visible row 2
+        {3, 2, 1, 3, 2, 2, 3, 1, 3, 2, 1, 3, 2, 1, 3, 2, 1, 2, 3, 1},  // Initially visible row 3
         {1, 2, 3, 1, 2, 3, 1, 2, 1, 3, 2, 1, 3, 2, 3, 1, 2, 3, 1, 2}}, // Initially visible row 4
     // Level 4 - Easy-Medium: 4 colors, random pattern
     {
-        {4, 2, 1, 3, 4, 2, 1, 3, 4, 2, 1, 3, 4, 2, 1, 3, 4, 2, 1, 3}, // Hidden row 1
-        {1, 3, 4, 2, 1, 3, 4, 2, 1, 3, 4, 2, 1, 3, 4, 2, 1, 3, 4, 2}, // Hidden row 2
-        {3, 1, 2, 4, 3, 1, 2, 4, 3, 1, 2, 4, 3, 1, 2, 4, 3, 1, 2, 4}, // Hidden row 3
-        {2, 4, 3, 1, 2, 4, 3, 1, 2, 4, 3, 1, 2, 4, 3, 1, 2, 4, 3, 1}, // Hidden row 4
-        {4, 1, 3, 2, 4, 1, 3, 2, 4, 1, 3, 2, 4, 1, 3, 2, 4, 1, 3, 2}, // Hidden row 5
-        {3, 2, 4, 1, 3, 2, 4, 1, 3, 2, 4, 1, 3, 2, 4, 1, 3, 2, 4, 1}, // Hidden row 6
-        {1, 4, 2, 3, 1, 4, 2, 3, 1, 4, 2, 3, 1, 4, 2, 3, 1, 4, 2, 3}, // Hidden row 7
-        {2, 3, 1, 4, 2, 3, 1, 4, 2, 3, 1, 4, 2, 3, 1, 4, 2, 3, 1, 4}, // Hidden row 8
-        {2, 4, 1, 3, 2, 1, 4, 3, 2, 4, 1, 3, 4, 2, 1, 3, 4, 2, 1, 3}, // Initially visible row 1
-        {3, 1, 4, 2, 3, 4, 2, 1, 3, 1, 4, 2, 1, 3, 4, 2, 1, 3, 4, 2}, // Initially visible row 2
-        {1, 3, 2, 4, 1, 2, 3, 4, 1, 3, 2, 4, 3, 1, 2, 4, 3, 1, 2, 4}, // Initially visible row 3
+        {4, 2, 1, 3, 4, 2, 1, 3, 4, 2, 1, 3, 4, 2, 1, 3, 4, 2, 1, 3},  // Hidden row 1
+        {1, 3, 4, 2, 1, 3, 4, 2, 1, 3, 4, 2, 1, 3, 4, 2, 1, 3, 4, 2},  // Hidden row 2
+        {3, 1, 2, 4, 3, 1, 2, 4, 3, 1, 2, 4, 3, 1, 2, 4, 3, 1, 2, 4},  // Hidden row 3
+        {2, 4, 3, 1, 2, 4, 3, 1, 2, 4, 3, 1, 2, 4, 3, 1, 2, 4, 3, 1},  // Hidden row 4
+        {4, 1, 3, 2, 4, 1, 3, 2, 4, 1, 3, 2, 4, 1, 3, 2, 4, 1, 3, 2},  // Hidden row 5
+        {3, 2, 4, 1, 3, 2, 4, 1, 3, 2, 4, 1, 3, 2, 4, 1, 3, 2, 4, 1},  // Hidden row 6
+        {1, 4, 2, 3, 1, 4, 2, 3, 1, 4, 2, 3, 1, 4, 2, 3, 1, 4, 2, 3},  // Hidden row 7
+        {2, 3, 1, 4, 2, 3, 1, 4, 2, 3, 1, 4, 2, 3, 1, 4, 2, 3, 1, 4},  // Hidden row 8
+        {2, 4, 1, 3, 2, 1, 4, 3, 2, 4, 1, 3, 4, 2, 1, 3, 4, 2, 1, 3},  // Initially visible row 1
+        {3, 1, 4, 2, 3, 4, 2, 1, 3, 1, 4, 2, 1, 3, 4, 2, 1, 3, 4, 2},  // Initially visible row 2
+        {1, 3, 2, 4, 1, 2, 3, 4, 1, 3, 2, 4, 3, 1, 2, 4, 3, 1, 2, 4},  // Initially visible row 3
         {4, 2, 3, 1, 4, 3, 1, 2, 4, 2, 3, 1, 2, 4, 3, 1, 2, 4, 3, 1}}, // Initially visible row 4
     // Level 5 - Medium: 4 colors, longer V-shape pattern
     {
-        {4, 3, 2, 1, 4, 3, 2, 1, 4, 3, 2, 1, 4, 3, 2, 1, 4, 3, 2, 1}, // Hidden row 1
-        {1, 2, 3, 4, 1, 2, 3, 4, 1, 2, 3, 4, 1, 2, 3, 4, 1, 2, 3, 4}, // Hidden row 2
-        {3, 4, 1, 2, 3, 4, 1, 2, 3, 4, 1, 2, 3, 4, 1, 2, 3, 4, 1, 2}, // Hidden row 3
-        {2, 1, 4, 3, 2, 1, 4, 3, 2, 1, 4, 3, 2, 1, 4, 3, 2, 1, 4, 3}, // Hidden row 4
-        {1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1}, // Hidden row 5
-        {2, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 2}, // Hidden row 6
-        {3, 2, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 2, 3}, // Hidden row 7
-        {4, 3, 2, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 2, 3, 4}, // Hidden row 8
-        {1, 4, 3, 2, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 2, 3, 4, 1}, // Initially visible row 1
-        {2, 1, 4, 3, 2, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 2, 3, 4, 1, 2}, // Initially visible row 2
-        {3, 2, 1, 4, 3, 2, 1, 0, 0, 0, 0, 0, 0, 1, 2, 3, 4, 1, 2, 3}, // Initially visible row 3
+        {4, 3, 2, 1, 4, 3, 2, 1, 4, 3, 2, 1, 4, 3, 2, 1, 4, 3, 2, 1},  // Hidden row 1
+        {1, 2, 3, 4, 1, 2, 3, 4, 1, 2, 3, 4, 1, 2, 3, 4, 1, 2, 3, 4},  // Hidden row 2
+        {3, 4, 1, 2, 3, 4, 1, 2, 3, 4, 1, 2, 3, 4, 1, 2, 3, 4, 1, 2},  // Hidden row 3
+        {2, 1, 4, 3, 2, 1, 4, 3, 2, 1, 4, 3, 2, 1, 4, 3, 2, 1, 4, 3},  // Hidden row 4
+        {1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},  // Hidden row 5
+        {2, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 2},  // Hidden row 6
+        {3, 2, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 2, 3},  // Hidden row 7
+        {4, 3, 2, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 2, 3, 4},  // Hidden row 8
+        {1, 4, 3, 2, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 2, 3, 4, 1},  // Initially visible row 1
+        {2, 1, 4, 3, 2, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 2, 3, 4, 1, 2},  // Initially visible row 2
+        {3, 2, 1, 4, 3, 2, 1, 0, 0, 0, 0, 0, 0, 1, 2, 3, 4, 1, 2, 3},  // Initially visible row 3
         {4, 3, 2, 1, 4, 3, 2, 1, 0, 0, 0, 0, 1, 2, 3, 4, 1, 2, 3, 4}}, // Initially visible row 4
     // Level 6 - Medium: 5 colors, pyramid pattern
     {
-        {5, 4, 3, 2, 1, 5, 4, 3, 2, 1, 1, 2, 3, 4, 5, 1, 2, 3, 4, 5}, // Hidden row 1
-        {1, 5, 4, 3, 2, 1, 5, 4, 3, 2, 2, 3, 4, 5, 1, 2, 3, 4, 5, 1}, // Hidden row 2
-        {2, 1, 5, 4, 3, 2, 1, 5, 4, 3, 3, 4, 5, 1, 2, 3, 4, 5, 1, 2}, // Hidden row 3
-        {3, 2, 1, 5, 4, 3, 2, 1, 5, 4, 4, 5, 1, 2, 3, 4, 5, 1, 2, 3}, // Hidden row 4
-        {4, 3, 2, 1, 5, 4, 3, 2, 1, 5, 5, 1, 2, 3, 4, 5, 1, 2, 3, 4}, // Hidden row 5
-        {5, 4, 3, 2, 1, 5, 4, 3, 2, 1, 1, 2, 3, 4, 5, 1, 2, 3, 4, 5}, // Hidden row 6
-        {1, 5, 4, 3, 2, 1, 5, 4, 3, 2, 2, 3, 4, 5, 1, 2, 3, 4, 5, 1}, // Hidden row 7
-        {2, 1, 5, 4, 3, 2, 1, 5, 4, 3, 3, 4, 5, 1, 2, 3, 4, 5, 1, 2}, // Hidden row 8
-        {0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0}, // Initially visible row 1
-        {0, 0, 0, 0, 0, 0, 0, 0, 2, 1, 1, 2, 0, 0, 0, 0, 0, 0, 0, 0}, // Initially visible row 2
-        {0, 0, 0, 0, 0, 0, 0, 3, 2, 1, 1, 2, 3, 0, 0, 0, 0, 0, 0, 0}, // Initially visible row 3
+        {5, 4, 3, 2, 1, 5, 4, 3, 2, 1, 1, 2, 3, 4, 5, 1, 2, 3, 4, 5},  // Hidden row 1
+        {1, 5, 4, 3, 2, 1, 5, 4, 3, 2, 2, 3, 4, 5, 1, 2, 3, 4, 5, 1},  // Hidden row 2
+        {2, 1, 5, 4, 3, 2, 1, 5, 4, 3, 3, 4, 5, 1, 2, 3, 4, 5, 1, 2},  // Hidden row 3
+        {3, 2, 1, 5, 4, 3, 2, 1, 5, 4, 4, 5, 1, 2, 3, 4, 5, 1, 2, 3},  // Hidden row 4
+        {4, 3, 2, 1, 5, 4, 3, 2, 1, 5, 5, 1, 2, 3, 4, 5, 1, 2, 3, 4},  // Hidden row 5
+        {5, 4, 3, 2, 1, 5, 4, 3, 2, 1, 1, 2, 3, 4, 5, 1, 2, 3, 4, 5},  // Hidden row 6
+        {1, 5, 4, 3, 2, 1, 5, 4, 3, 2, 2, 3, 4, 5, 1, 2, 3, 4, 5, 1},  // Hidden row 7
+        {2, 1, 5, 4, 3, 2, 1, 5, 4, 3, 3, 4, 5, 1, 2, 3, 4, 5, 1, 2},  // Hidden row 8
+        {0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0},  // Initially visible row 1
+        {0, 0, 0, 0, 0, 0, 0, 0, 2, 1, 1, 2, 0, 0, 0, 0, 0, 0, 0, 0},  // Initially visible row 2
+        {0, 0, 0, 0, 0, 0, 0, 3, 2, 1, 1, 2, 3, 0, 0, 0, 0, 0, 0, 0},  // Initially visible row 3
         {0, 0, 0, 0, 0, 0, 4, 3, 2, 1, 1, 2, 3, 4, 0, 0, 0, 0, 0, 0}}, // Initially visible row 4
     // Level 7 - Medium-Hard: 5 colors, circle pattern
     {
-        {5, 4, 3, 2, 1, 5, 4, 3, 2, 1, 1, 2, 3, 4, 5, 1, 2, 3, 4, 5}, // Hidden row 1
-        {1, 5, 4, 3, 2, 1, 5, 4, 3, 2, 2, 3, 4, 5, 1, 2, 3, 4, 5, 1}, // Hidden row 2
-        {2, 1, 5, 4, 3, 2, 1, 5, 4, 3, 3, 4, 5, 1, 2, 3, 4, 5, 1, 2}, // Hidden row 3
-        {3, 2, 1, 5, 4, 3, 2, 1, 5, 4, 4, 5, 1, 2, 3, 4, 5, 1, 2, 3}, // Hidden row 4
-        {0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0}, // Hidden row 5
-        {0, 0, 0, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1, 0, 0, 0}, // Hidden row 6
-        {0, 0, 1, 2, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 2, 1, 0, 0}, // Hidden row 7
-        {0, 1, 2, 3, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 3, 2, 1, 0}, // Hidden row 8
-        {0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0}, // Initially visible row 1
-        {0, 0, 0, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1, 0, 0, 0}, // Initially visible row 2
-        {0, 0, 1, 2, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 2, 1, 0, 0}, // Initially visible row 3
+        {5, 4, 3, 2, 1, 5, 4, 3, 2, 1, 1, 2, 3, 4, 5, 1, 2, 3, 4, 5},  // Hidden row 1
+        {1, 5, 4, 3, 2, 1, 5, 4, 3, 2, 2, 3, 4, 5, 1, 2, 3, 4, 5, 1},  // Hidden row 2
+        {2, 1, 5, 4, 3, 2, 1, 5, 4, 3, 3, 4, 5, 1, 2, 3, 4, 5, 1, 2},  // Hidden row 3
+        {3, 2, 1, 5, 4, 3, 2, 1, 5, 4, 4, 5, 1, 2, 3, 4, 5, 1, 2, 3},  // Hidden row 4
+        {0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0},  // Hidden row 5
+        {0, 0, 0, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1, 0, 0, 0},  // Hidden row 6
+        {0, 0, 1, 2, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 2, 1, 0, 0},  // Hidden row 7
+        {0, 1, 2, 3, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 3, 2, 1, 0},  // Hidden row 8
+        {0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0},  // Initially visible row 1
+        {0, 0, 0, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1, 0, 0, 0},  // Initially visible row 2
+        {0, 0, 1, 2, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 2, 1, 0, 0},  // Initially visible row 3
         {0, 1, 2, 3, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 3, 2, 1, 0}}, // Initially visible row 4
     // Level 8 - Hard: 5 colors, reverse V pattern
     {
-        {5, 1, 4, 2, 3, 5, 1, 4, 2, 3, 3, 2, 4, 1, 5, 3, 2, 4, 1, 5}, // Hidden row 1
-        {4, 5, 1, 4, 2, 3, 5, 1, 4, 2, 2, 4, 1, 5, 3, 2, 4, 1, 5, 3}, // Hidden row 2
-        {3, 4, 5, 1, 4, 2, 3, 5, 1, 4, 4, 1, 5, 3, 2, 4, 1, 5, 3, 2}, // Hidden row 3
-        {2, 3, 4, 5, 1, 4, 2, 3, 5, 1, 1, 5, 3, 2, 4, 1, 5, 3, 2, 4}, // Hidden row 4
-        {1, 2, 3, 4, 5, 1, 2, 3, 4, 5, 5, 4, 3, 2, 1, 5, 4, 3, 2, 1}, // Hidden row 5
-        {0, 1, 2, 3, 4, 5, 1, 2, 3, 4, 4, 3, 2, 1, 5, 4, 3, 2, 1, 0}, // Hidden row 6
-        {0, 0, 1, 2, 3, 4, 5, 1, 2, 3, 3, 2, 1, 5, 4, 3, 2, 1, 0, 0}, // Hidden row 7
-        {0, 0, 0, 1, 2, 3, 4, 5, 1, 2, 2, 1, 5, 4, 3, 2, 1, 0, 0, 0}, // Hidden row 8
-        {1, 2, 3, 4, 5, 1, 2, 3, 4, 5, 5, 4, 3, 2, 1, 5, 4, 3, 2, 1}, // Initially visible row 1
-        {0, 1, 2, 3, 4, 5, 1, 2, 3, 4, 4, 3, 2, 1, 5, 4, 3, 2, 1, 0}, // Initially visible row 2
-        {0, 0, 1, 2, 3, 4, 5, 1, 2, 3, 3, 2, 1, 5, 4, 3, 2, 1, 0, 0}, // Initially visible row 3
+        {5, 1, 4, 2, 3, 5, 1, 4, 2, 3, 3, 2, 4, 1, 5, 3, 2, 4, 1, 5},  // Hidden row 1
+        {4, 5, 1, 4, 2, 3, 5, 1, 4, 2, 2, 4, 1, 5, 3, 2, 4, 1, 5, 3},  // Hidden row 2
+        {3, 4, 5, 1, 4, 2, 3, 5, 1, 4, 4, 1, 5, 3, 2, 4, 1, 5, 3, 2},  // Hidden row 3
+        {2, 3, 4, 5, 1, 4, 2, 3, 5, 1, 1, 5, 3, 2, 4, 1, 5, 3, 2, 4},  // Hidden row 4
+        {1, 2, 3, 4, 5, 1, 2, 3, 4, 5, 5, 4, 3, 2, 1, 5, 4, 3, 2, 1},  // Hidden row 5
+        {0, 1, 2, 3, 4, 5, 1, 2, 3, 4, 4, 3, 2, 1, 5, 4, 3, 2, 1, 0},  // Hidden row 6
+        {0, 0, 1, 2, 3, 4, 5, 1, 2, 3, 3, 2, 1, 5, 4, 3, 2, 1, 0, 0},  // Hidden row 7
+        {0, 0, 0, 1, 2, 3, 4, 5, 1, 2, 2, 1, 5, 4, 3, 2, 1, 0, 0, 0},  // Hidden row 8
+        {1, 2, 3, 4, 5, 1, 2, 3, 4, 5, 5, 4, 3, 2, 1, 5, 4, 3, 2, 1},  // Initially visible row 1
+        {0, 1, 2, 3, 4, 5, 1, 2, 3, 4, 4, 3, 2, 1, 5, 4, 3, 2, 1, 0},  // Initially visible row 2
+        {0, 0, 1, 2, 3, 4, 5, 1, 2, 3, 3, 2, 1, 5, 4, 3, 2, 1, 0, 0},  // Initially visible row 3
         {0, 0, 0, 1, 2, 3, 4, 5, 1, 2, 2, 1, 5, 4, 3, 2, 1, 0, 0, 0}}, // Initially visible row 4
     // Level 9 - Hard: 5 colors, diamond outline pattern
     {
-        {4, 3, 2, 1, 5, 4, 3, 2, 1, 5, 5, 1, 2, 3, 4, 5, 1, 2, 3, 4}, // Hidden row 1
-        {5, 4, 3, 2, 1, 5, 4, 3, 2, 1, 1, 2, 3, 4, 5, 1, 2, 3, 4, 5}, // Hidden row 2
-        {1, 5, 4, 3, 2, 1, 5, 4, 3, 2, 2, 3, 4, 5, 1, 2, 3, 4, 5, 1}, // Hidden row 3
-        {2, 1, 5, 4, 3, 2, 1, 5, 4, 3, 3, 4, 5, 1, 2, 3, 4, 5, 1, 2}, // Hidden row 4
-        {0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0}, // Hidden row 5
-        {0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0}, // Hidden row 6
-        {0, 0, 0, 0, 0, 0, 0, 3, 0, 0, 0, 0, 3, 0, 0, 0, 0, 0, 0, 0}, // Hidden row 7
-        {0, 0, 0, 0, 0, 0, 4, 0, 0, 0, 0, 0, 0, 4, 0, 0, 0, 0, 0, 0}, // Hidden row 8
-        {0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0}, // Initially visible row 1
-        {0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0}, // Initially visible row 2
-        {0, 0, 0, 0, 0, 0, 0, 3, 0, 0, 0, 0, 3, 0, 0, 0, 0, 0, 0, 0}, // Initially visible row 3
+        {4, 3, 2, 1, 5, 4, 3, 2, 1, 5, 5, 1, 2, 3, 4, 5, 1, 2, 3, 4},  // Hidden row 1
+        {5, 4, 3, 2, 1, 5, 4, 3, 2, 1, 1, 2, 3, 4, 5, 1, 2, 3, 4, 5},  // Hidden row 2
+        {1, 5, 4, 3, 2, 1, 5, 4, 3, 2, 2, 3, 4, 5, 1, 2, 3, 4, 5, 1},  // Hidden row 3
+        {2, 1, 5, 4, 3, 2, 1, 5, 4, 3, 3, 4, 5, 1, 2, 3, 4, 5, 1, 2},  // Hidden row 4
+        {0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0},  // Hidden row 5
+        {0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0},  // Hidden row 6
+        {0, 0, 0, 0, 0, 0, 0, 3, 0, 0, 0, 0, 3, 0, 0, 0, 0, 0, 0, 0},  // Hidden row 7
+        {0, 0, 0, 0, 0, 0, 4, 0, 0, 0, 0, 0, 0, 4, 0, 0, 0, 0, 0, 0},  // Hidden row 8
+        {0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0},  // Initially visible row 1
+        {0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0},  // Initially visible row 2
+        {0, 0, 0, 0, 0, 0, 0, 3, 0, 0, 0, 0, 3, 0, 0, 0, 0, 0, 0, 0},  // Initially visible row 3
         {0, 0, 0, 0, 0, 0, 4, 0, 0, 0, 0, 0, 0, 4, 0, 0, 0, 0, 0, 0}}, // Initially visible row 4
     // Level 10 - Very Hard: 5 colors, complex mixed pattern
     {
-        {3, 1, 4, 5, 2, 3, 1, 4, 5, 2, 2, 5, 4, 1, 3, 2, 5, 4, 1, 3}, // Hidden row 1
-        {2, 3, 1, 4, 5, 2, 3, 1, 4, 5, 5, 4, 1, 3, 2, 5, 4, 1, 3, 2}, // Hidden row 2
-        {1, 5, 3, 2, 4, 0, 0, 1, 5, 3, 3, 5, 1, 0, 0, 4, 2, 3, 5, 1}, // Hidden row 3
-        {0, 2, 4, 1, 0, 0, 3, 5, 2, 4, 4, 2, 5, 3, 0, 0, 1, 4, 2, 0}, // Hidden row 4
-        {3, 0, 1, 5, 2, 4, 0, 0, 1, 3, 3, 1, 0, 0, 4, 2, 5, 1, 0, 3}, // Hidden row 5
-        {5, 4, 0, 3, 1, 2, 5, 4, 0, 0, 0, 0, 4, 5, 2, 1, 3, 0, 4, 5}, // Hidden row 6
-        {2, 1, 3, 0, 5, 4, 2, 1, 3, 5, 5, 3, 1, 2, 4, 5, 0, 3, 1, 2}, // Hidden row 7
-        {4, 3, 5, 2, 0, 1, 4, 3, 5, 2, 2, 5, 3, 4, 1, 0, 2, 5, 3, 4}, // Hidden row 8
-        {1, 5, 3, 2, 4, 0, 0, 1, 5, 3, 3, 5, 1, 0, 0, 4, 2, 3, 5, 1}, // Initially visible row 1
-        {0, 2, 4, 1, 0, 0, 3, 5, 2, 4, 4, 2, 5, 3, 0, 0, 1, 4, 2, 0}, // Initially visible row 2
-        {3, 0, 1, 5, 2, 4, 0, 0, 1, 3, 3, 1, 0, 0, 4, 2, 5, 1, 0, 3}, // Initially visible row 3
-        {5, 4, 0, 3, 1, 2, 5, 4, 0, 0, 0, 0, 4, 5, 2, 1, 3, 0, 4, 5}}};  // Initially visible row 4// Ball limitation system
-int ballsRemaining = 30;   // Balls left for current level
-int maxBallsForLevel = 30; // Maximum balls for current level
+        {3, 1, 4, 5, 2, 3, 1, 4, 5, 2, 2, 5, 4, 1, 3, 2, 5, 4, 1, 3},   // Hidden row 1
+        {2, 3, 1, 4, 5, 2, 3, 1, 4, 5, 5, 4, 1, 3, 2, 5, 4, 1, 3, 2},   // Hidden row 2
+        {1, 5, 3, 2, 4, 0, 0, 1, 5, 3, 3, 5, 1, 0, 0, 4, 2, 3, 5, 1},   // Hidden row 3
+        {0, 2, 4, 1, 0, 0, 3, 5, 2, 4, 4, 2, 5, 3, 0, 0, 1, 4, 2, 0},   // Hidden row 4
+        {3, 0, 1, 5, 2, 4, 0, 0, 1, 3, 3, 1, 0, 0, 4, 2, 5, 1, 0, 3},   // Hidden row 5
+        {5, 4, 0, 3, 1, 2, 5, 4, 0, 0, 0, 0, 4, 5, 2, 1, 3, 0, 4, 5},   // Hidden row 6
+        {2, 1, 3, 0, 5, 4, 2, 1, 3, 5, 5, 3, 1, 2, 4, 5, 0, 3, 1, 2},   // Hidden row 7
+        {4, 3, 5, 2, 0, 1, 4, 3, 5, 2, 2, 5, 3, 4, 1, 0, 2, 5, 3, 4},   // Hidden row 8
+        {1, 5, 3, 2, 4, 0, 0, 1, 5, 3, 3, 5, 1, 0, 0, 4, 2, 3, 5, 1},   // Initially visible row 1
+        {0, 2, 4, 1, 0, 0, 3, 5, 2, 4, 4, 2, 5, 3, 0, 0, 1, 4, 2, 0},   // Initially visible row 2
+        {3, 0, 1, 5, 2, 4, 0, 0, 1, 3, 3, 1, 0, 0, 4, 2, 5, 1, 0, 3},   // Initially visible row 3
+        {5, 4, 0, 3, 1, 2, 5, 4, 0, 0, 0, 0, 4, 5, 2, 1, 3, 0, 4, 5}}}; // Initially visible row 4// Ball limitation system
+int ballsRemaining = 30;                                                // Balls left for current level
+int maxBallsForLevel = 30;                                              // Maximum balls for current level
 bool inHomepage = true;
 bool inLevelSelect = false;
 bool inGame = false;
 bool inSettings = false;
 bool inTribute = false;
+bool inInstruction = false;
 bool inPauseMenu = false;
 bool inGameOver = false;
 bool inLevelComplete = false;
@@ -284,8 +285,8 @@ int poppingBubbleCount = 0;
 const int POP_ANIMATION_DURATION = 200; // 200ms per bubble pop (much faster)
 const int POP_STAGGER_DELAY = 50;       // 50ms delay between each bubble (faster chain reaction)
 
-bool moveCounted = false;    // Flag to track if current move has been counted
-int level1DisplayOffset = 8; // Start showing from row 8 (0-indexed), so initially show rows 8-11 (4 rows)
+bool moveCounted = false;          // Flag to track if current move has been counted
+int level1DisplayOffset = 8;       // Start showing from row 8 (0-indexed), so initially show rows 8-11 (4 rows)
 int currentLevelDisplayOffset = 8; // Universal display offset for all levels
 bool musicEnabled = true;
 bool isDraggingVolume = false;
@@ -579,9 +580,9 @@ void loadLevel(int levelNumber)
         }
 
         // Use the same progressive system as Level 1 for all levels
-        int initialVisibleRows = 4; // All levels start with 4 visible rows  
-        int startOffset = 8; // Start showing from row 8 for all levels (like Level 1)
-        
+        int initialVisibleRows = 4; // All levels start with 4 visible rows
+        int startOffset = 8;        // Start showing from row 8 for all levels (like Level 1)
+
         // Copy only the currently visible rows from the loaded level data
         for (int i = 0; i < initialVisibleRows; i++)
         {
@@ -1321,6 +1322,67 @@ void drawHomepage()
         iSetColor(255, 255, 255); // White text normally
     }
     drawCenteredText(exitX, exitY, exitWidth, exitHeight, "Exit", "assets/fonts/arial.ttf", 24);
+    // instruction button
+    bool isHoveringhelp = isPointInRect(mouseX, mouseY, 300, startY - 5 * buttonSpacing, buttonWidth, buttonHeight);
+    int helpWidth = isHoveringhelp ? buttonWidth + 10 : buttonWidth;
+    int helpHeight = isHoveringhelp ? buttonHeight + 6 : buttonHeight;
+    int helpX = isHoveringhelp ? 295 : 300;
+    int helpY = isHoveringhelp ? (startY - 5 * buttonSpacing - 3) : (startY - 5 * buttonSpacing);
+
+    iSetColor(150, 50, 50); // Red color for exit
+    iFilledRectangle(helpX, helpY, helpWidth, helpHeight);
+    iSetColor(255, 255, 255);
+    iRectangle(helpX, helpY, helpWidth, helpHeight);
+
+    if (isHoveringhelp)
+    {
+        iSetColor(255, 255, 0); // Yellow text when hovering
+    }
+    else
+    {
+        iSetColor(255, 255, 255); // White text normally
+    }
+    drawCenteredText(helpX, helpY, helpWidth, helpHeight, "Instructions", "assets/fonts/arial.ttf", 24);
+}
+
+void drawInstruction()
+{
+    iClear();
+
+    // Display instruction image (make sure this image contains the instructions visually)
+    iShowImage(0, 0, "assets/images/bouncing ball/instructions.png");
+
+    // Back button in bottom left corner with hover effect
+    bool isHoveringBack = isPointInRect(mouseX, mouseY, 50, 50, 100, 40);
+
+    // Light colored rectangle when hovering
+    if (isHoveringBack)
+    {
+        iSetColor(255, 255, 255); // White background when hovering
+        iFilledRectangle(45, 45, 110, 50);
+    }
+
+    // Button background
+    int backWidth = isHoveringBack ? 110 : 100;
+    int backHeight = isHoveringBack ? 50 : 40;
+    int backX = isHoveringBack ? 45 : 50;
+    int backY = isHoveringBack ? 45 : 50;
+
+    iSetColor(70, 70, 70);
+    iFilledRectangle(backX, backY, backWidth, backHeight);
+    iSetColor(255, 255, 255);
+    iRectangle(backX, backY, backWidth, backHeight);
+
+    // Button text
+    if (isHoveringBack)
+    {
+        iSetColor(255, 255, 0); // Yellow text when hovering
+    }
+    else
+    {
+        iSetColor(255, 255, 255); // White text normally
+    }
+    iText(backX + 30, backY + 20, "Back", GLUT_BITMAP_HELVETICA_12);
 }
 
 void drawSettings()
@@ -2614,6 +2676,10 @@ void iDraw()
     {
         drawTribute();
     }
+    else if (inInstruction)
+    {
+        drawInstruction();
+    }
     else if (inHighScore)
     {
         drawHighScorePage();
@@ -2946,6 +3012,13 @@ void iMouse(int button, int state, int mx, int my)
             {
                 exit(0); // Exit the game
             }
+            // Instruction button
+            else if (isPointInRect(mx, my, 300, 50, 200, 60))
+            {
+                inHomepage = false;
+                inInstruction = true;
+                drawInstruction();
+            }
         }
         else if (inSettings)
         {
@@ -3022,6 +3095,15 @@ void iMouse(int button, int state, int mx, int my)
             if (isPointInRect(mx, my, 50, 50, 100, 40))
             {
                 inTribute = false;
+                inHomepage = true;
+            }
+        }
+        else if (inInstruction)
+        {
+            // Back button in bottom left corner
+            if (isPointInRect(mx, my, 50, 50, 100, 40))
+            {
+                inInstruction = false;
                 inHomepage = true;
             }
         }
@@ -3254,6 +3336,7 @@ void iKeyboard(unsigned char key, int state)
         inLevelSelect = false;
         inSettings = false;
         inTribute = false;
+        inInstruction = false; // gg
         inGameOver = false;
         inLevelComplete = false;
         inHomepage = true;
@@ -3380,6 +3463,7 @@ int main(int argc, char *argv[])
         inGame = false;
         inSettings = false;
         inTribute = false;
+        inInstruction = false;
 
         // Initialize high score system
         loadHighScores();
