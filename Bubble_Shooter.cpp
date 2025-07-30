@@ -1103,6 +1103,7 @@ void drawHomepage()
     iClear();
     // Display home background image
     iShowImage(0, 0, "assets/images/bouncing ball/home.png");
+    
     // Menu buttons
     int buttonWidth = 200;
     int buttonHeight = 60;
@@ -1114,7 +1115,7 @@ void drawHomepage()
     int enterHeight = isHoveringEnter ? buttonHeight + 6 : buttonHeight;
     int enterX = isHoveringEnter ? 295 : 300;
     int enterY = isHoveringEnter ? startY - 3 : startY;
-    iSetColor(50, 150, 50);
+    iSetColor(0, 51, 102);
     iFilledRectangle(enterX, enterY, enterWidth, enterHeight);
     iSetColor(255, 255, 255);
     iRectangle(enterX, enterY, enterWidth, enterHeight);
@@ -1125,7 +1126,7 @@ void drawHomepage()
     }
     else
     {
-        iSetColor(255, 255, 255); // White text normally
+        iSetColor(0, 0, 0); // White text normally
     }
     drawCenteredText(enterX + 14, enterY, enterWidth, enterHeight, "Enter Game", "assets/fonts/arial.ttf", 24);
     // Settings button
@@ -1135,7 +1136,7 @@ void drawHomepage()
     int settingsX = isHoveringSettings ? 295 : 300;
     int settingsY = isHoveringSettings ? (startY - buttonSpacing - 3) : (startY - buttonSpacing);
 
-    iSetColor(50, 50, 150);
+    iSetColor(0, 76, 153);
     iFilledRectangle(settingsX, settingsY, settingsWidth, settingsHeight);
     iSetColor(255, 255, 255);
     iRectangle(settingsX, settingsY, settingsWidth, settingsHeight);
@@ -1145,7 +1146,7 @@ void drawHomepage()
     }
     else
     {
-        iSetColor(255, 255, 255); // White text normally
+        iSetColor(0, 0, 0); // White text normally
     }
     drawCenteredText(settingsX + 12, settingsY, settingsWidth, settingsHeight, "Settings", "assets/fonts/arial.ttf", 24);
     // Tribute button
@@ -1154,7 +1155,7 @@ void drawHomepage()
     int tributeHeight = isHoveringTribute ? buttonHeight + 6 : buttonHeight;
     int tributeX = isHoveringTribute ? 295 : 300;
     int tributeY = isHoveringTribute ? (startY - 2 * buttonSpacing - 3) : (startY - 2 * buttonSpacing);
-    iSetColor(150, 50, 50);
+    iSetColor(0, 102, 206);
     iFilledRectangle(tributeX, tributeY, tributeWidth, tributeHeight);
     iSetColor(255, 255, 255);
     iRectangle(tributeX, tributeY, tributeWidth, tributeHeight);
@@ -1164,7 +1165,7 @@ void drawHomepage()
     }
     else
     {
-        iSetColor(255, 255, 255); // White text normally
+        iSetColor(0, 0, 0); // White text normally
     }
     drawCenteredText(tributeX + 12, tributeY, tributeWidth, tributeHeight, "Tribute", "assets/fonts/arial.ttf", 24);
     // High Score button
@@ -1173,7 +1174,7 @@ void drawHomepage()
     int highScoreHeight = isHoveringHighScore ? buttonHeight + 6 : buttonHeight;
     int highScoreX = isHoveringHighScore ? 295 : 300;
     int highScoreY = isHoveringHighScore ? (startY - 3 * buttonSpacing - 3) : (startY - 3 * buttonSpacing);
-    iSetColor(100, 50, 150); // Purple color for high score
+    iSetColor(0, 128, 255); // Purple color for high score
     iFilledRectangle(highScoreX, highScoreY, highScoreWidth, highScoreHeight);
     iSetColor(255, 255, 255);
     iRectangle(highScoreX, highScoreY, highScoreWidth, highScoreHeight);
@@ -1183,7 +1184,7 @@ void drawHomepage()
     }
     else
     {
-        iSetColor(255, 255, 255); // White text normally
+        iSetColor(0, 0, 0); // White text normally
     }
     drawCenteredText(highScoreX + 15, highScoreY, highScoreWidth, highScoreHeight, "High Score", "assets/fonts/arial.ttf", 24);
     // Exit button
@@ -1192,7 +1193,7 @@ void drawHomepage()
     int exitHeight = isHoveringExit ? buttonHeight + 6 : buttonHeight;
     int exitX = isHoveringExit ? 295 : 300;
     int exitY = isHoveringExit ? (startY - 4 * buttonSpacing - 3) : (startY - 4 * buttonSpacing);
-    iSetColor(150, 50, 50); // Red color for exit
+    iSetColor(51, 153, 255); // Red color for exit
     iFilledRectangle(exitX, exitY, exitWidth, exitHeight);
     iSetColor(255, 255, 255);
     iRectangle(exitX, exitY, exitWidth, exitHeight);
@@ -1202,7 +1203,7 @@ void drawHomepage()
     }
     else
     {
-        iSetColor(255, 255, 255); // White text normally
+        iSetColor(0, 0, 0); // White text normally
     }
     drawCenteredText(exitX + 9, exitY, exitWidth, exitHeight, "Exit", "assets/fonts/arial.ttf", 24);
     // instruction button
@@ -1211,7 +1212,7 @@ void drawHomepage()
     int helpHeight = isHoveringhelp ? buttonHeight + 6 : buttonHeight;
     int helpX = isHoveringhelp ? 295 : 300;
     int helpY = isHoveringhelp ? (startY - 5 * buttonSpacing - 3) : (startY - 5 * buttonSpacing);
-    iSetColor(96, 96, 96); // Red color for Instruction button rect
+    iSetColor(102, 178, 255); // Red color for Instruction button rect
     iFilledRectangle(helpX, helpY, helpWidth, helpHeight);
     iSetColor(255, 255, 255);
     iRectangle(helpX, helpY, helpWidth, helpHeight);
@@ -1221,7 +1222,7 @@ void drawHomepage()
     }
     else
     {
-        iSetColor(255, 255, 255); // White text normally
+        iSetColor(0, 0, 0); // White text normally
     }
     drawCenteredText(helpX + 20, helpY, helpWidth, helpHeight, "Instructions", "assets/fonts/arial.ttf", 24);
 }
