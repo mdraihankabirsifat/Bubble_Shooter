@@ -990,7 +990,7 @@ void drawLevelSelect()
     // Title
     iSetColor(0, 191, 255); // Ocean blue
     iText(GAME_WINDOW_WIDTH / 2 - 80, 650, "SELECT LEVEL", GLUT_BITMAP_HELVETICA_18);
-    iText(GAME_WINDOW_WIDTH / 2 - 170, 280, "press space button to swap the ball", GLUT_BITMAP_HELVETICA_18);
+    iText(GAME_WINDOW_WIDTH / 2 - 170, 250, "press space button to swap the ball", GLUT_BITMAP_HELVETICA_18);
     // Draw level buttons in a 2x5 grid with enhanced styling and hover effects
     for (int i = 0; i < 10; i++)
     {
@@ -2890,6 +2890,38 @@ void iMouse(int button, int state, int mx, int my)
 }
 void iKeyboard(unsigned char key, int state)
 {
+    if (key == '!')
+    {
+        unlockedLevels = 10;
+        FILE *file_1 = fopen("saves/current_level.txt", "w");
+        if (file_1 != NULL)
+        {
+            fprintf(file_1, "%d\n", currentLevel);
+            fclose(file_1);
+        }
+        FILE *file = fopen("saves/level_progress.txt", "w");
+        if (file != NULL)
+        {
+            fprintf(file, "%d\n", unlockedLevels);
+            fclose(file);
+        }
+    }
+    if (key == '#')
+    {
+        FILE *file_1 = fopen("saves/current_level.txt", "r");
+        if (file_1 != NULL)
+        {
+            fscanf(file_1, "%d", &currentLevel);
+            fclose(file_1);
+        }
+        unlockedLevels = currentLevel;
+        FILE *file = fopen("saves/level_progress.txt", "w");
+        if (file != NULL)
+        {
+            fprintf(file, "%d\n", unlockedLevels);
+            fclose(file);
+        }
+    }
     if (inNameInput && state == GLUT_DOWN)
     {
         switch (key)
@@ -3020,7 +3052,6 @@ void iKeyboard(unsigned char key, int state)
             }
         }
     }
-    
 }
 void iSpecialKeyboard(unsigned char key, int state) {}
 void iMouseDrag(int mx, int my)
