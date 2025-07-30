@@ -1227,7 +1227,7 @@ void drawHomepage()
     {
         iSetColor(255, 255, 255); // White text normally
     }
-    drawCenteredText(enterX+14, enterY, enterWidth, enterHeight, "Enter Game", "assets/fonts/arial.ttf", 24);
+    drawCenteredText(enterX, enterY, enterWidth, enterHeight, "Enter Game", "assets/fonts/arial.ttf", 24);
 
     // Settings button
     bool isHoveringSettings = isPointInRect(mouseX, mouseY, 300, startY - buttonSpacing, buttonWidth, buttonHeight);
@@ -1249,7 +1249,7 @@ void drawHomepage()
     {
         iSetColor(255, 255, 255); // White text normally
     }
-    drawCenteredText(settingsX+12, settingsY, settingsWidth, settingsHeight, "Settings", "assets/fonts/arial.ttf", 24);
+    drawCenteredText(settingsX, settingsY, settingsWidth, settingsHeight, "Settings", "assets/fonts/arial.ttf", 24);
 
     // Tribute button
     bool isHoveringTribute = isPointInRect(mouseX, mouseY, 300, startY - 2 * buttonSpacing, buttonWidth, buttonHeight);
@@ -1271,7 +1271,7 @@ void drawHomepage()
     {
         iSetColor(255, 255, 255); // White text normally
     }
-    drawCenteredText(tributeX+12, tributeY, tributeWidth, tributeHeight, "Tribute", "assets/fonts/arial.ttf", 24);
+    drawCenteredText(tributeX, tributeY, tributeWidth, tributeHeight, "Tribute", "assets/fonts/arial.ttf", 24);
 
     // High Score button
     bool isHoveringHighScore = isPointInRect(mouseX, mouseY, 300, startY - 3 * buttonSpacing, buttonWidth, buttonHeight);
@@ -1293,7 +1293,7 @@ void drawHomepage()
     {
         iSetColor(255, 255, 255); // White text normally
     }
-    drawCenteredText(highScoreX+15, highScoreY, highScoreWidth, highScoreHeight, "High Score", "assets/fonts/arial.ttf", 24);
+    drawCenteredText(highScoreX, highScoreY, highScoreWidth, highScoreHeight, "High Score", "assets/fonts/arial.ttf", 24);
 
     // Exit button
     bool isHoveringExit = isPointInRect(mouseX, mouseY, 300, startY - 4 * buttonSpacing, buttonWidth, buttonHeight);
@@ -1311,12 +1311,11 @@ void drawHomepage()
     {
         iSetColor(255, 255, 0); // Yellow text when hovering
     }
-
     else
     {
         iSetColor(255, 255, 255); // White text normally
     }
-    drawCenteredText(exitX+9, exitY, exitWidth, exitHeight, "Exit", "assets/fonts/arial.ttf", 24);
+    drawCenteredText(exitX, exitY, exitWidth, exitHeight, "Exit", "assets/fonts/arial.ttf", 24);
     // instruction button
     bool isHoveringhelp = isPointInRect(mouseX, mouseY, 300, startY - 5 * buttonSpacing, buttonWidth, buttonHeight);
     int helpWidth = isHoveringhelp ? buttonWidth + 10 : buttonWidth;
@@ -1337,7 +1336,7 @@ void drawHomepage()
     {
         iSetColor(255, 255, 255); // White text normally
     }
-    drawCenteredText(helpX+20, helpY, helpWidth, helpHeight, "Instructions", "assets/fonts/arial.ttf", 24);
+    drawCenteredText(helpX, helpY, helpWidth, helpHeight, "Instructions", "assets/fonts/arial.ttf", 24);
 }
 
 void drawInstruction()
@@ -1607,7 +1606,7 @@ void drawPauseMenu()
     iSetColor(180, 80, 80);
     iRectangle(centerX + 5, startY - 2 * buttonSpacing + 5, buttonWidth - 10, buttonHeight - 10);
     iSetColor(255, 255, 255); // White text for contrast - centered
-    drawCenteredText(centerX+30, startY - 2 * buttonSpacing, buttonWidth, buttonHeight, "Exit to Levels", "assets/fonts/arial.ttf", 24);
+    drawCenteredText(centerX, startY - 2 * buttonSpacing, buttonWidth, buttonHeight, "Exit to Levels", "assets/fonts/arial.ttf", 24);
 }
 
 void drawGameOver()
@@ -1754,13 +1753,13 @@ void drawLevelComplete()
 
     // Title - green color for success
     iSetColor(100, 255, 100);
-    drawCenteredText(150+10, 530, 500, 50, "LEVEL COMPLETE!", "assets/fonts/arial.ttf", 42);
+    drawCenteredText(150, 530, 500, 50, "LEVEL COMPLETE!", "assets/fonts/arial.ttf", 42);
 
     // Subtitle
     iSetColor(200, 255, 200);
     char levelText[50];
     sprintf(levelText, "Level %d completed successfully!", currentLevel);
-    drawCenteredText(150+54, 480, 500, 30, levelText, "assets/fonts/arial.ttf", 20);
+    drawCenteredText(150, 480, 500, 30, levelText, "assets/fonts/arial.ttf", 20);
 
     // Menu buttons - centered
     int buttonWidth = 200;
@@ -1791,7 +1790,7 @@ void drawLevelComplete()
         {
             iSetColor(255, 255, 255); // White text normally
         }
-        drawCenteredText(nextLevelX+15, nextLevelY, nextLevelWidth, nextLevelHeight, "Next Level", "assets/fonts/arial.ttf", 24);
+        drawCenteredText(nextLevelX, nextLevelY, nextLevelWidth, nextLevelHeight, "Next Level", "assets/fonts/arial.ttf", 24);
     }
 
     // Back button (blue)
@@ -1814,7 +1813,7 @@ void drawLevelComplete()
     {
         iSetColor(255, 255, 255);
     }
-    drawCenteredText(backX+24, backY, backWidth, backHeight, "Back to Levels", "assets/fonts/arial.ttf", 24);
+    drawCenteredText(backX, backY, backWidth, backHeight, "Back to Levels", "assets/fonts/arial.ttf", 24);
 }
 
 void setColorByNumber(int color)
