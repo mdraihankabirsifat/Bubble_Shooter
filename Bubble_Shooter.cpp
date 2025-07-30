@@ -2625,24 +2625,6 @@ void ShowIncrementAnimation(int PoppedBubbleColor)
     }
 }
 
-// popping animation
-void ShowPopAnim()
-{
-
-    // int now = iGetTimer();
-    if (ShowPopping)
-    {
-        int now = iGetTimer();
-        if (now - PoppingInstant < 500)
-        {
-            iFilledCircle(X, Y, BUBBLE_RADIUS / 5);
-        }
-        else
-            ShowPopping = false;
-    }
-}
-// popping animation
-
 void iDraw()
 {
     iClear();
@@ -2742,7 +2724,6 @@ void iDraw()
                 }
             }
 
-            ShowPopAnim();
             ShowIncrementAnimation(PoppedBubbleColor);
 
             ShowScore();
