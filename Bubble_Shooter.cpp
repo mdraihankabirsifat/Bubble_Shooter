@@ -973,8 +973,8 @@ void loadLevelProgress()
         // Ensure at least level 1 is unlocked
         if (unlockedLevels < 1)
             unlockedLevels = 1;
-        if (unlockedLevels > 20)
-            unlockedLevels = 20;
+        if (unlockedLevels > 10)
+            unlockedLevels = 10;
     }
     else
     {
@@ -990,7 +990,9 @@ void drawLevelSelect()
     // Title
     iSetColor(0, 191, 255); // Ocean blue
     iText(GAME_WINDOW_WIDTH / 2 - 80, 650, "SELECT LEVEL", GLUT_BITMAP_HELVETICA_18);
-    iText(GAME_WINDOW_WIDTH / 2 - 170, 250, "press space button to swap the ball", GLUT_BITMAP_HELVETICA_18);
+    iText(GAME_WINDOW_WIDTH / 2 - 180, 250, "press space button to swap the bubble", GLUT_BITMAP_HELVETICA_18);
+    iSetColor(255, 255, 255);
+    iText(GAME_WINDOW_WIDTH / 2 - 180, 50, "press '>' to unlock all levels & press '<' to set previous", GLUT_BITMAP_HELVETICA_12);
     // Draw level buttons in a 2x5 grid with enhanced styling and hover effects
     for (int i = 0; i < 10; i++)
     {
@@ -1068,7 +1070,7 @@ void drawLevelSelect()
         }
         else if (isHovering)
         {
-            iSetColor(255, 100, 100); // Bright red when hovering over any level button
+            iSetColor(204, 204, 0); // Bright red when hovering over any level button
         }
         else if (i + 1 == currentLevel)
         {
@@ -1103,7 +1105,7 @@ void drawHomepage()
     iClear();
     // Display home background image
     iShowImage(0, 0, "assets/images/bouncing ball/home.png");
-    
+
     // Menu buttons
     int buttonWidth = 200;
     int buttonHeight = 60;
@@ -1271,14 +1273,14 @@ void drawSettings()
     drawCenteredText(0, 650, GAME_WINDOW_WIDTH, 48, "SETTINGS", "assets/fonts/arial.ttf", 48);
     // Sound Settings
     iSetColor(135, 206, 250); // Light sky blue
-    iText(200, 550, "Sound Settings", GLUT_BITMAP_HELVETICA_18);
+    iText(200, 560, "Sound Settings", GLUT_BITMAP_HELVETICA_18);
     // Sound Enable/Disable with hover size effect
     bool isSoundHovering = isPointInRect(mouseX, mouseY, 200, 500, 150, 40);
     int soundWidth = isSoundHovering ? 158 : 150;
     int soundHeight = isSoundHovering ? 44 : 40;
     int soundX = isSoundHovering ? 196 : 200;
     int soundY = isSoundHovering ? 498 : 500;
-    iSetColor(soundEnabled ? 50 : 150, soundEnabled ? 150 : 50, 50);
+    iSetColor(soundEnabled ? 0 : 160, soundEnabled ? 102 : 160, soundEnabled ? 204 : 160);
     iFilledRectangle(soundX, soundY, soundWidth, soundHeight);
     iSetColor(255, 255, 255);
     iRectangle(soundX, soundY, soundWidth, soundHeight);
@@ -1288,15 +1290,15 @@ void drawSettings()
     }
     else
     {
-        iSetColor(255, 255, 255); // White text normally
+        iSetColor(0, 0, 0); // White text normally
     }
     drawCenteredText(soundX, soundY, soundWidth, soundHeight, soundEnabled ? "Sound: ON" : "Sound: OFF", "assets/fonts/arial.ttf", 20);
     // Sound Volume
-    iSetColor(255, 255, 255);
-    iText(200, 470, "Sound Volume:", GLUT_BITMAP_HELVETICA_18);
+    iSetColor(255, 255, 255); // Light sky blue
+    iText(210, 470, "Sound Volume:", GLUT_BITMAP_HELVETICA_18);
     iSetColor(100, 100, 100);
     iFilledRectangle(380, 465, 200, 20);
-    iSetColor(0, 255, 0);
+    iSetColor(102, 0, 204);
     iFilledRectangle(380, 465, (soundVolume * 200) / 100, 20);
     iSetColor(255, 255, 255);
     iRectangle(380, 465, 200, 20);
@@ -1304,15 +1306,15 @@ void drawSettings()
     sprintf(volumeText, "%d%%", soundVolume);
     iText(590, 470, volumeText, GLUT_BITMAP_HELVETICA_12);
     // Music Settings
-    iSetColor(255, 255, 255);
-    iText(200, 400, "Music Settings", GLUT_BITMAP_HELVETICA_18);
+    iSetColor(135, 206, 250); // Light sky blue
+    iText(200, 410, "Music Settings", GLUT_BITMAP_HELVETICA_18);
     // Music Enable/Disable with hover size effect
     bool isMusicHovering = isPointInRect(mouseX, mouseY, 200, 350, 150, 40);
     int musicWidth = isMusicHovering ? 158 : 150;
     int musicHeight = isMusicHovering ? 44 : 40;
     int musicX = isMusicHovering ? 196 : 200;
     int musicY = isMusicHovering ? 348 : 350;
-    iSetColor(musicEnabled ? 50 : 150, musicEnabled ? 150 : 50, 50);
+    iSetColor(musicEnabled ? 0 : 160, musicEnabled ? 102 : 160, musicEnabled ? 204 : 160);
     iFilledRectangle(musicX, musicY, musicWidth, musicHeight);
     iSetColor(255, 255, 255);
     iRectangle(musicX, musicY, musicWidth, musicHeight);
@@ -1322,15 +1324,15 @@ void drawSettings()
     }
     else
     {
-        iSetColor(255, 255, 255); // White text normally
+        iSetColor(0, 0, 0); // White text normally
     }
-    drawCenteredText(musicX, musicY, musicWidth, musicHeight, musicEnabled ? "Music: ON" : "Music: OFF", "assets/fonts/arial.ttf", 20);
+    drawCenteredText(musicX, musicY, musicWidth, musicHeight, musicEnabled ? "Music: ON" : "Music: OFF", "assets/fonts/arial.ttf", 24);
     // Music Volume
     iSetColor(255, 255, 255);
-    iText(200, 320, "Music Volume:", GLUT_BITMAP_HELVETICA_18);
+    iText(210, 315, "Music Volume:", GLUT_BITMAP_HELVETICA_18);
     iSetColor(100, 100, 100);
     iFilledRectangle(380, 315, 200, 20);
-    iSetColor(0, 255, 0);
+    iSetColor(102, 0, 204);
     iFilledRectangle(380, 315, (musicVolume * 200) / 100, 20);
     iSetColor(255, 255, 255);
     iRectangle(380, 315, 200, 20);
@@ -1413,23 +1415,23 @@ void drawPauseMenu()
     int startY = 440;
     int centerX = 275; // This centers the buttons horizontally
     // Resume button (green like main menu)
-    iSetColor(50, 150, 50);
+    iSetColor(102, 0, 204);
     iFilledRectangle(centerX, startY, buttonWidth, buttonHeight);
     iSetColor(135, 206, 250); // Light sky blue text
     iRectangle(centerX, startY, buttonWidth, buttonHeight);
     // Inner highlight
     iSetColor(80, 180, 80);
     iRectangle(centerX + 5, startY + 5, buttonWidth - 10, buttonHeight - 10);
-    iSetColor(255, 255, 255); // White text for contrast - centered
+    iSetColor(0, 0, 0); // White text for contrast - centered
     drawCenteredText(centerX, startY, buttonWidth, buttonHeight, "Resume", "assets/fonts/arial.ttf", 28);
     // Sound button (dynamic color based on state)
     if (soundEnabled)
     {
-        iSetColor(50, 120, 180); // Blue when ON
+        iSetColor(127, 0, 255); // Blue when ON
     }
     else
     {
-        iSetColor(120, 60, 60); // Dark red when OFF
+        iSetColor(204, 153, 255); // Dark red when OFF
     }
     iFilledRectangle(centerX, startY - buttonSpacing, buttonWidth, buttonHeight);
     iSetColor(135, 206, 250); // Light sky blue border
@@ -1444,19 +1446,19 @@ void drawPauseMenu()
         iSetColor(150, 90, 90);
     }
     iRectangle(centerX + 5, startY - buttonSpacing + 5, buttonWidth - 10, buttonHeight - 10);
-    iSetColor(0, 191, 255); // Ocean blue text - centered
+    iSetColor(0, 0, 0); // Ocean blue text - centered
     drawCenteredText(centerX, startY - buttonSpacing, buttonWidth, buttonHeight,
                      soundEnabled ? "Sound: ON" : "Sound: OFF", "assets/fonts/arial.ttf", 24);
 
     // Exit button (red like main menu)
-    iSetColor(150, 50, 50);
+    iSetColor(153, 51, 255);
     iFilledRectangle(centerX, startY - 2 * buttonSpacing, buttonWidth, buttonHeight);
     iSetColor(135, 206, 250); // Light sky blue border
     iRectangle(centerX, startY - 2 * buttonSpacing, buttonWidth, buttonHeight);
     // Inner highlight
     iSetColor(180, 80, 80);
     iRectangle(centerX + 5, startY - 2 * buttonSpacing + 5, buttonWidth - 10, buttonHeight - 10);
-    iSetColor(255, 255, 255); // White text for contrast - centered
+    iSetColor(0, 0, 0); // White text for contrast - centered
     drawCenteredText(centerX + 30, startY - 2 * buttonSpacing, buttonWidth, buttonHeight, "Exit to Levels", "assets/fonts/arial.ttf", 24);
 }
 
@@ -2891,15 +2893,17 @@ void iMouse(int button, int state, int mx, int my)
 }
 void iKeyboard(unsigned char key, int state)
 {
-    if (key == '!')
+    if (key == '>' && state == GLUT_DOWN)
     {
-        unlockedLevels = 10;
+        int previous_level;
+        previous_level = unlockedLevels;
         FILE *file_1 = fopen("saves/current_level.txt", "w");
         if (file_1 != NULL)
         {
-            fprintf(file_1, "%d\n", currentLevel);
+            fprintf(file_1, "%d\n", previous_level);
             fclose(file_1);
         }
+        unlockedLevels = 10;
         FILE *file = fopen("saves/level_progress.txt", "w");
         if (file != NULL)
         {
@@ -2907,15 +2911,16 @@ void iKeyboard(unsigned char key, int state)
             fclose(file);
         }
     }
-    if (key == '#')
+    if (key == '<' && state == GLUT_DOWN)
     {
+        int previous_level;
         FILE *file_1 = fopen("saves/current_level.txt", "r");
         if (file_1 != NULL)
         {
-            fscanf(file_1, "%d", &currentLevel);
+            fscanf(file_1, "%d", &previous_level);
             fclose(file_1);
         }
-        unlockedLevels = currentLevel;
+        unlockedLevels = previous_level;
         FILE *file = fopen("saves/level_progress.txt", "w");
         if (file != NULL)
         {
@@ -2988,7 +2993,7 @@ void iKeyboard(unsigned char key, int state)
         swapKeyPressed = false;
     }
     // Navigation keys
-    if (key == 'home')
+    if (key == '@')
     {
         // Return to main menu from any screen
         inGame = false;
