@@ -151,31 +151,31 @@ int levels[10][12][20] = {
         {3, 1, 1, 0, 4, 1, 1, 5, 2, 4, 3, 1, 5, 2, 4, 3, 1, 5, 0, 4}}, // Initially visible row 4
     // Level 8 - Hard: 5 colors, reverse V pattern
     {
-        {3, 1, 5, 2, 4, 3, 1, 5, 2, 4, 3, 1, 5, 0, 0, 3, 1, 0, 0, 4},  // Hidden row 1
+        {3, 1, 5, 0, 0, 3, 1, 5, 2, 4, 0, 1, 5, 0, 0, 3, 1, 0, 0, 4},  // Hidden row 1
         {4, 2, 1, 5, 3, 4, 2, 1, 5, 3, 4, 0, 0, 5, 3, 0, 2, 0, 5, 3},  // Hidden row 2
         {5, 3, 4, 1, 2, 5, 3, 4, 1, 2, 5, 3, 0, 1, 2, 0, 3, 4, 1, 2},  // Hidden row 3
         {2, 5, 3, 4, 1, 2, 5, 3, 4, 1, 2, 5, 3, 4, 0, 5, 5, 3, 4, 1},  // Hidden row 4
         {1, 4, 2, 3, 0, 1, 4, 2, 3, 5, 1, 0, 2, 5, 5, 1, 5, 2, 3, 5},  // Hidden row 5
         {3, 1, 5, 2, 0, 3, 1, 5, 2, 4, 3, 0, 0, 2, 4, 3, 1, 0, 2, 4},  // Hidden row 6
-        {4, 2, 1, 5, 3, 4, 2, 1, 5, 3, 4, 0, 0, 5, 3, 4, 2, 0, 0, 3},  // Hidden row 7
-        {5, 3, 4, 0, 2, 1, 1, 4, 1, 2, 5, 3, 4, 1, 2, 5, 3, 4, 5, 2},  // Hidden row 8
+        {4, 2, 1, 5, 3, 4, 2, 1, 5, 3, 4, 0, 0, 5, 0, 4, 2, 0, 0, 3},  // Hidden row 7
+        {5, 3, 4, 0, 2, 1, 1, 4, 1, 2, 5, 3, 4, 1, 0, 5, 3, 4, 5, 2},  // Hidden row 8
         {2, 4, 5, 0, 3, 1, 4, 5, 1, 3, 2, 4, 5, 1, 3, 2, 4, 5, 1, 5},  // Visible row 1
         {1, 5, 2, 4, 1, 1, 5, 2, 4, 2, 2, 2, 2, 4, 3, 1, 5, 0, 0, 3},  // Visible row 2
-        {3, 1, 4, 1, 0, 0, 1, 2, 2, 2, 3, 2, 4, 5, 2, 3, 1, 0, 5, 2},  // Visible row 3
-        {5, 2, 3, 1, 4, 0, 2, 2, 1, 4, 5, 2, 2, 1, 4, 5, 2, 3, 1, 4}}, // Initially visible row 4
+        {3, 1, 4, 1, 0, 0, 1, 2, 2, 2, 3, 2, 4, 0, 0, 3, 0, 3, 3, 2},  // Visible row 3
+        {5, 2, 3, 1, 4, 0, 2, 2, 1, 4, 5, 2, 2, 1, 0, 5, 0, 3, 1, 4}}, // Initially visible row 4
     // Level 9 - Hard: 5 colors, diamond outline pattern
     {
-        {1, 5, 3, 4, 1, 1, 5, 5, 4, 4, 5, 5, 4, 4, 4, 3, 5, 2, 2, 4},  // Hidden row 1
-        {3, 2, 5, 1, 4, 3, 2, 5, 1, 4, 3, 5, 5, 1, 4, 3, 2, 5, 1, 4},  // Hidden row 2
-        {4, 1, 0, 0, 3, 4, 1, 2, 5, 4, 4, 1, 5, 5, 3, 3, 1, 2, 4, 4},  // Hidden row 3
+        {1, 0, 0, 0, 1, 1, 5, 5, 4, 4, 5, 5, 4, 4, 4, 3, 5, 2, 2, 4},  // Hidden row 1
+        {3, 2, 5, 1, 4, 3, 2, 5, 1, 4, 3, 5, 5, 0, 0, 3, 2, 5, 1, 4},  // Hidden row 2
+        {4, 1, 0, 0, 3, 4, 1, 2, 5, 4, 4, 1, 5, 0, 0, 3, 1, 2, 4, 4},  // Hidden row 3
         {2, 4, 0, 0, 5, 2, 4, 1, 3, 5, 2, 4, 1, 3, 5, 2, 4, 0, 0, 5},  // Hidden row 4
-        {5, 3, 4, 2, 0, 5, 3, 4, 0, 0, 5, 3, 4, 2, 1, 5, 3, 0, 0, 1},  // Hidden row 5
-        {1, 5, 2, 4, 3, 1, 5, 2, 0, 0, 1, 5, 2, 4, 3, 1, 5, 2, 4, 3},  // Hidden row 6
-        {3, 1, 5, 2, 4, 3, 1, 5, 2, 4, 3, 0, 0, 2, 4, 3, 1, 5, 2, 4},  // Hidden row 7
-        {4, 2, 3, 1, 5, 4, 2, 3, 1, 5, 4, 0, 0, 1, 5, 4, 2, 3, 1, 5},  // Hidden row 8
+        {5, 3, 4, 2, 0, 5, 3, 4, 0, 0, 5, 3, 4, 2, 0, 0, 3, 0, 0, 1},  // Hidden row 5
+        {1, 5, 2, 4, 3, 1, 5, 2, 0, 0, 1, 5, 2, 4, 0, 1, 5, 2, 4, 3},  // Hidden row 6
+        {3, 1, 5, 0, 0, 0, 1, 5, 2, 4, 3, 0, 0, 2, 0, 3, 1, 0, 2, 4},  // Hidden row 7
+        {4, 2, 3, 1, 5, 4, 2, 3, 0, 5, 4, 0, 0, 1, 5, 4, 2, 3, 1, 5},  // Hidden row 8
         {2, 4, 0, 0, 3, 1, 1, 1, 5, 3, 2, 4, 1, 5, 3, 2, 4, 1, 5, 3},  // Visible row 1
-        {5, 3, 0, 0, 1, 1, 3, 1, 1, 1, 5, 3, 2, 4, 1, 0, 0, 2, 4, 1},  // Visible row 2
-        {1, 5, 4, 3, 2, 1, 5, 4, 1, 2, 1, 5, 4, 3, 2, 0, 0, 4, 3, 2},  // Visible row 3
+        {5, 3, 0, 0, 1, 0, 0, 1, 1, 0, 0, 3, 2, 4, 1, 0, 0, 2, 0, 1},  // Visible row 2
+        {1, 5, 4, 3, 2, 1, 5, 4, 1, 0, 0, 5, 4, 3, 2, 0, 0, 4, 3, 2},  // Visible row 3
         {3, 2, 1, 5, 4, 3, 2, 1, 1, 1, 3, 2, 1, 5, 4, 3, 2, 1, 5, 4}}, // Initially visible row 4
     // Level 10 - Very Hard: 5 colors, complex mixed pattern
     {
@@ -304,8 +304,6 @@ void loadLevelProgress();
 // Function to calculate maximum balls for a level
 int getMaxBallsForLevel(int levelNumber)
 {
-    // Formula: Level 1 = 30 balls, each level adds 5 more balls
-    // Level 1: 30, Level 2: 35, Level 3: 40, etc.
     return 25 + (levelNumber * 5);
 }
 
@@ -347,15 +345,13 @@ void startNewGame()
     fallingBubbleCount = 0;
     isAnimatingRowDrop = false;
     gridVerticalOffset = 0.0;
-    poppingBubbleCount = 0; // Reset pop animations
+    poppingBubbleCount = 0;
     ShowIncrement = false;
     ShowPopping = false;
     inGameOver = false;
     inLevelComplete = false;
-
     // Reset ball count for current level
     ballsRemaining = maxBallsForLevel;
-
     // Clear the entire grid first
     for (int r = 0; r < ROWS; r++)
     {
@@ -364,7 +360,6 @@ void startNewGame()
             grid[r][c] = 0;
         }
     }
-
     loadLevel(currentLevel);
     shootingBallColorNow = getRandomLevelColor();
     shootingBallColorNext = getRandomLevelColor();
@@ -388,7 +383,6 @@ void goToNextLevel()
         ShowPopping = false;
         inGameOver = false;
         inLevelComplete = false;
-
         // Clear the entire grid first
         for (int r = 0; r < ROWS; r++)
         {
@@ -397,7 +391,6 @@ void goToNextLevel()
                 grid[r][c] = 0;
             }
         }
-
         loadLevel(currentLevel);
         shootingBallColorNow = getRandomLevelColor();
         shootingBallColorNext = getRandomLevelColor();
@@ -409,17 +402,14 @@ void goToNextLevel()
         inLevelSelect = true;
     }
 }
-
 // Helper function to get text width (improved approximation)
 int getTextWidth(const char *text, int fontSize)
 {
     return strlen(text) * fontSize * 0.55; // More accurate character width for better centering
 }
-
 // Helper function to center text in a rectangle with improved accuracy
 void drawCenteredText(int rectX, int rectY, int rectWidth, int rectHeight, const char *text, const char *font, int fontSize)
 {
-    // Use safe iText instead of iShowText - ignore font and fontSize parameters
     // Calculate approximate center position
     int x = rectX + rectWidth / 2 - (strlen(text) * 6); // Approximate text width
     int y = rectY + rectHeight / 2;
@@ -429,14 +419,12 @@ void drawCenteredText(int rectX, int rectY, int rectWidth, int rectHeight, const
 // Forward declaration
 bool isPointInRect(int px, int py, int rx, int ry, int width, int height);
 void dropNewRow(); // Forward declaration for dropNewRow function
-
 // Helper function to get available colors from the current level
 int getRandomLevelColor()
 {
     // Collect unique colors from the current playing grid and remaining hidden rows
     bool colorsAvailable[6] = {false}; // indices 1-5 for colors 1-5
     int colorCount = 0;
-
     // Scan the current playing grid for available colors
     for (int i = 0; i < ROWS; i++)
     {
@@ -451,7 +439,6 @@ int getRandomLevelColor()
             }
         }
     }
-
     // For progressive system, also scan remaining hidden rows from predefined level data
     if (currentLevelDisplayOffset > 1) // Only when we can still drop rows
     {
@@ -469,7 +456,6 @@ int getRandomLevelColor()
             }
         }
     }
-
     // If no colors found, use default colors for the level
     if (colorCount == 0)
     {
@@ -489,7 +475,6 @@ int getRandomLevelColor()
             return rand() % 5 + 1;
         }
     }
-
     // Create array of available colors
     int availableColors[5];
     int index = 0;
@@ -500,7 +485,6 @@ int getRandomLevelColor()
             availableColors[index++] = i;
         }
     }
-
     // Return random color from available ones
     return availableColors[rand() % colorCount];
 }
@@ -512,7 +496,6 @@ bool checkLevelComplete()
     {
         return false; // Wait for animations to finish
     }
-
     // Check if all bubbles are cleared from the grid
     int bubbleCount = 0;
     for (int r = 0; r < ROWS; r++)
@@ -550,19 +533,13 @@ void loadLevel(int levelNumber)
 {
     // Reset high score save flag for new level
     highScoreSaved = false;
-
     if (levelNumber >= 1 && levelNumber <= 10)
     {
         currentLevel = levelNumber;
-
         // Load level data from hardcoded array into global variable
         loadLevelFromFile(levelNumber, currentLevelData);
-
-        // Initialize ball limitation system
         maxBallsForLevel = getMaxBallsForLevel(levelNumber);
         ballsRemaining = maxBallsForLevel;
-
-        // Apply progressive display system to all levels (like Level 1)
         // Initialize the grid with empty rows
         for (int i = 0; i < Rows; i++)
         {
@@ -571,11 +548,9 @@ void loadLevel(int levelNumber)
                 grid[i][j] = 0;
             }
         }
-
         // Use the same progressive system as Level 1 for all levels
         int initialVisibleRows = 4; // All levels start with 4 visible rows
-        int startOffset = 8;        // Start showing from row 8 for all levels (like Level 1)
-
+        int startOffset = 8;
         // Copy only the currently visible rows from the loaded level data
         for (int i = 0; i < initialVisibleRows; i++)
         {
@@ -584,14 +559,12 @@ void loadLevel(int levelNumber)
                 grid[i][j] = currentLevelData[startOffset + i][j]; // Copy from offset position
             }
         }
-
         // Reset progressive system variables for all levels
         currentHiddenRowsUsed = 0;
         currentLevelDisplayOffset = startOffset; // Universal offset for all levels
         movesCount = 0;
         isAnimatingRowDrop = false;
         gridVerticalOffset = 0.0;
-
         // Setup hidden rows for all levels - use the first rows from the loaded data
         for (int i = 0; i < maxHiddenRows && i < startOffset; i++)
         {
@@ -600,12 +573,8 @@ void loadLevel(int levelNumber)
                 hiddenRows[i][j] = currentLevelData[i][j]; // Copy from loaded level data
             }
         }
-
         inLevelSelect = false;
         inGame = true;
-        // Keep background music playing during gameplay for better experience
-
-        // Reset game state
         Score = 0;
         highScoreSaved = false; // Reset high score save flag for new game
         isBallMoving = false;
@@ -614,7 +583,6 @@ void loadLevel(int levelNumber)
         shootingBallColorNext = getRandomLevelColor();
     }
 }
-
 // Function to check if we need to drop a new row after a move
 void checkForRowDrop()
 {
@@ -628,7 +596,6 @@ void checkForRowDrop()
             break;
         }
     }
-
     if (currentLevelDisplayOffset > 1 && !moveCounted && !popAnimationsActive && !isAnimatingRowDrop) // Need at least 2 rows to drop
     {
         moveCounted = true; // Mark this move as counted
@@ -640,7 +607,6 @@ void checkForRowDrop()
         }
     }
 }
-
 // Helper function to check if there are any balls in the top row
 bool hasTopRowBalls()
 {
@@ -651,13 +617,11 @@ bool hasTopRowBalls()
     }
     return false;
 }
-
 // Helper function to check if there are hidden rows remaining
 bool hasHiddenRows()
 {
     return (currentLevelDisplayOffset > 1); // Need at least 2 rows to drop
 }
-
 // Update animation offset for smooth row dropping
 void updateRowDropAnimation()
 {
@@ -665,16 +629,12 @@ void updateRowDropAnimation()
     {
         // Move the grid down by velocity each frame
         gridVerticalOffset += ROW_DROP_VELOCITY;
-
         // Check if we've reached the target (2 rows worth of movement)
         if (gridVerticalOffset >= targetVerticalOffset)
         {
             // Animation complete - finalize the grid positions
             gridVerticalOffset = 0.0;
             isAnimatingRowDrop = false;
-
-            // Now officially update the grid data structure
-            // This happens after visual animation is complete
             finalizeRowDrop();
         }
     }
@@ -685,15 +645,12 @@ void startPopAnimation(int matchedBubbles[][2], int count)
 {
     poppingBubbleCount = count;
     int currentTime = iGetTimer();
-
     // Each bubble pops individually with increasing delay
     for (int i = 0; i < count; i++)
     {
         poppingBubbles[i].row = matchedBubbles[i][0];
         poppingBubbles[i].col = matchedBubbles[i][1];
         poppingBubbles[i].color = grid[matchedBubbles[i][0]][matchedBubbles[i][1]];
-
-        // Each bubble starts with increasing delay (one by one)
         poppingBubbles[i].startTime = currentTime + (i * POP_STAGGER_DELAY);
         poppingBubbles[i].isActive = true;
     }
@@ -709,7 +666,6 @@ void updatePopAnimations()
         if (poppingBubbles[i].isActive)
         {
             int elapsed = currentTime - poppingBubbles[i].startTime;
-
             // Check if this bubble's animation should start
             if (elapsed >= 0)
             {
@@ -739,10 +695,8 @@ void updatePopAnimations()
     if (allComplete && poppingBubbleCount > 0)
     {
         poppingBubbleCount = 0; // Reset the system
-
         // After all pop animations complete, check for floating bubbles and level completion
         detectCluster(); // This will handle floating bubbles
-
         // Check if level is completed after all bubbles are cleared
         if (checkLevelComplete())
         {
@@ -760,16 +714,12 @@ double getPopScale(int bubbleIndex)
 {
     if (!poppingBubbles[bubbleIndex].isActive)
         return 1.0;
-
     int currentTime = iGetTimer();
     int elapsed = currentTime - poppingBubbles[bubbleIndex].startTime;
-
     if (elapsed < 0)
         return 1.0; // Animation hasn't started yet
     if (elapsed >= POP_ANIMATION_DURATION)
         return 0.0; // Animation complete
-
-    // Create a more dramatic scale effect: quick grow then quick shrink
     double progress = (double)elapsed / POP_ANIMATION_DURATION;
 
     if (progress < 0.2)
@@ -784,7 +734,6 @@ double getPopScale(int bubbleIndex)
         return 1.6 * (1.0 - shrinkProgress * shrinkProgress); // Quadratic for faster shrink
     }
 }
-
 // Finalize the row drop by updating the grid data structure
 void finalizeRowDrop()
 {
@@ -797,8 +746,6 @@ void finalizeRowDrop()
             grid[r][c] = grid[r - 2][c];
         }
     }
-
-    // Add 2 new rows at the top from the predefined level data
     // Add first new row (will become row 1 - odd)
     currentLevelDisplayOffset--;
     int row1Cols = COLS - 1; // Row 1 is odd, so it has COLS-1 columns
@@ -806,7 +753,6 @@ void finalizeRowDrop()
     {
         grid[1][c] = currentLevelData[currentLevelDisplayOffset][c];
     }
-
     // Add second new row (will become row 0 - even)
     currentLevelDisplayOffset--;
     int row0Cols = COLS; // Row 0 is even, so it has COLS columns
@@ -814,7 +760,6 @@ void finalizeRowDrop()
     {
         grid[0][c] = currentLevelData[currentLevelDisplayOffset][c];
     }
-
     // After row drop, detect and handle floating bubbles
     detectCluster();
 }
@@ -830,15 +775,12 @@ void loadHighScores()
     }
 
     highScoreCount = 0;
-    while (highScoreCount < 10 && fscanf(file, "%s %d %d", highScores[highScoreCount].name,
-                                         &highScores[highScoreCount].score,
-                                         &highScores[highScoreCount].level) == 3)
+    while (highScoreCount < 10 && fscanf(file, "%s %d %d", highScores[highScoreCount].name, &highScores[highScoreCount].score, &highScores[highScoreCount].level) == 3)
     {
         highScoreCount++;
     }
     fclose(file);
 }
-
 void saveHighScores()
 {
     FILE *file = fopen("saves/highscores.txt", "w");
@@ -851,7 +793,6 @@ void saveHighScores()
     }
     fclose(file);
 }
-
 void addHighScore(char *name, int score, int level)
 {
     // Find position to insert new score
@@ -864,18 +805,15 @@ void addHighScore(char *name, int score, int level)
             break;
         }
     }
-
     // Shift scores down
     for (int i = (highScoreCount < 10 ? highScoreCount : 9); i > insertPos; i--)
     {
         highScores[i] = highScores[i - 1];
     }
-
     // Insert new score
     strcpy(highScores[insertPos].name, name);
     highScores[insertPos].score = score;
     highScores[insertPos].level = level;
-
     if (highScoreCount < 10)
         highScoreCount++;
     saveHighScores();
@@ -887,7 +825,6 @@ void drawHighScorePage()
     iShowImage(0, 0, "assets/images/bouncing ball/setttings.png");
     iSetColor(255, 215, 0); // Gold
     iText(GAME_WINDOW_WIDTH / 2 - 80, 650, "HIGH SCORES", GLUT_BITMAP_HELVETICA_18);
-
     // Headers
     iSetColor(200, 200, 200);
     iText(150, 580, "Rank", GLUT_BITMAP_HELVETICA_18);
@@ -930,35 +867,27 @@ void drawHighScorePage()
 void drawNameInputPage()
 {
     iClear();
-
     // Display settings background image
     iShowImage(0, 0, "assets/images/bouncing ball/setttings.png");
-
     iSetColor(255, 215, 0);
     iText(GAME_WINDOW_WIDTH / 2 - 70, 470, "Enter Your Name", GLUT_BITMAP_TIMES_ROMAN_24);
-
     // Name input box
     int boxX = GAME_WINDOW_WIDTH / 2 - 170, boxY = 380, boxW = 360, boxH = 50;
     iSetColor(50, 50, 50);
     iFilledRectangle(boxX, boxY, boxW, boxH);
     iSetColor(255, 255, 255);
     iRectangle(boxX, boxY, boxW, boxH);
-
     iSetColor(255, 255, 255);
     if (strlen(playerName) > 0)
     {
         iText(boxX + 10, boxY + 25, playerName, GLUT_BITMAP_HELVETICA_18);
     }
-
     iText(boxX + 10 + strlen(playerName) * 10, boxY + 25, "_", GLUT_BITMAP_HELVETICA_18);
-
     if (strlen(playerName) > 0)
     {
         int buttonX = GAME_WINDOW_WIDTH / 2 - 60, buttonY = 250, buttonW = 150, buttonH = 50;
-
         // Check if hovering over continue button
         bool isHoveringContinue = isPointInRect(mouseX, mouseY, buttonX, buttonY, buttonW, buttonH);
-
         if (isHoveringContinue)
         {
             iSetColor(100, 150, 200); // Lighter blue when hovering
@@ -967,11 +896,9 @@ void drawNameInputPage()
         {
             iSetColor(70, 130, 180); // Normal blue
         }
-
         iFilledRectangle(buttonX, buttonY, buttonW, buttonH);
         iSetColor(255, 255, 255);
         iRectangle(buttonX, buttonY, buttonW, buttonH);
-
         if (isHoveringContinue)
         {
             iSetColor(255, 255, 0); // Yellow text when hovering
@@ -982,10 +909,8 @@ void drawNameInputPage()
         }
         iText(buttonX + 30, buttonY + 20, "Continue", GLUT_BITMAP_HELVETICA_18);
     }
-
     // Back button - transparent with hover effect
     bool isHoveringBack = isPointInRect(mouseX, mouseY, 50, 50, 100, 40);
-
     if (isHoveringBack)
     {
         // Light colored rectangle around button when hovering
@@ -1003,15 +928,12 @@ void drawNameInputPage()
 void handleLevelComplete()
 {
     inLevelComplete = true;
-
     // Save high score only once per level completion
     if (strlen(playerName) > 0 && !highScoreSaved)
     {
         addHighScore(playerName, Score, currentLevel);
         highScoreSaved = true; // Mark as saved to prevent duplicates
     }
-
-    // Unlock next level
     unlockNextLevel();
 }
 
@@ -1033,7 +955,6 @@ void saveLevelProgress()
 #else
     mkdir("saves", 0777);
 #endif
-
     FILE *file = fopen("saves/level_progress.txt", "w");
     if (file != NULL)
     {
@@ -1064,41 +985,33 @@ void loadLevelProgress()
 void drawLevelSelect()
 {
     iClear();
-
     // Display background image
     iShowImage(0, 0, "assets/images/bouncing ball/setttings.png");
-
     // Title
     iSetColor(0, 191, 255); // Ocean blue
     iText(GAME_WINDOW_WIDTH / 2 - 80, 650, "SELECT LEVEL", GLUT_BITMAP_HELVETICA_18);
-
+    iText(GAME_WINDOW_WIDTH / 2 - 170, 280, "press space button to swap the ball", GLUT_BITMAP_HELVETICA_18);
     // Draw level buttons in a 2x5 grid with enhanced styling and hover effects
     for (int i = 0; i < 10; i++)
     {
         int row = i / 5;
         int col = i % 5;
-
         int baseX = 100 + col * 120;
         int baseY = 450 - row * 100;
-
         // Check if hovering for size increase effect
         bool isHovering = isPointInRect(mouseX, mouseY, baseX, baseY, 80, 60);
-
         // Calculate button dimensions with hover effect
         int buttonWidth = isHovering ? 88 : 80;  // 8 pixels wider when hovering
         int buttonHeight = isHovering ? 66 : 60; // 6 pixels taller when hovering
         int x = isHovering ? baseX - 4 : baseX;  // Center the larger button
         int y = isHovering ? baseY - 3 : baseY;  // Center the larger button
-
         // Enhanced button styling
         bool isLevelUnlocked = (i + 1) <= unlockedLevels;
-
         if (!isLevelUnlocked)
         {
             // Locked level - gray styling
             iSetColor(50, 50, 50); // Dark gray
             iFilledRectangle(x, y, buttonWidth, buttonHeight);
-
             // Darker inner area
             iSetColor(30, 30, 30);
             iFilledRectangle(x + 2, y + 2, buttonWidth - 4, buttonHeight - 4);
@@ -1108,7 +1021,6 @@ void drawLevelSelect()
             // Current level - bright ocean blue with glow effect
             iSetColor(0, 150, 255); // Bright ocean blue
             iFilledRectangle(x, y, buttonWidth, buttonHeight);
-
             // Outer glow effect (adjusted for size)
             iSetColor(100, 200, 255);
             iRectangle(x - 2, y - 2, buttonWidth + 4, buttonHeight + 4);
@@ -1120,14 +1032,12 @@ void drawLevelSelect()
             // Normal unlocked levels - navy theme with gradient effect
             iSetColor(30, 40, 80); // Dark navy
             iFilledRectangle(x, y, buttonWidth, buttonHeight);
-
             // Inner gradient effect (adjusted for size)
             iSetColor(40, 60, 100);
             iFilledRectangle(x + 2, y + 2, buttonWidth - 4, buttonHeight - 4);
             iSetColor(50, 70, 120);
             iFilledRectangle(x + 4, y + 4, buttonWidth - 8, buttonHeight - 8);
         }
-
         // Button border with ocean blue theme (gray for locked levels)
         if (!isLevelUnlocked)
         {
@@ -1138,7 +1048,6 @@ void drawLevelSelect()
             iSetColor(135, 206, 250); // Light sky blue border for unlocked levels
         }
         iRectangle(x, y, buttonWidth, buttonHeight);
-
         // Inner border for depth
         if (!isLevelUnlocked)
         {
@@ -1149,11 +1058,9 @@ void drawLevelSelect()
             iSetColor(100, 180, 230);
         }
         iRectangle(x + 1, y + 1, buttonWidth - 2, buttonHeight - 2);
-
         // Level number with enhanced styling and hover effects
         char levelText[10];
         sprintf(levelText, "%d", i + 1);
-
         // Check for hover effect on level buttons
         if (!isLevelUnlocked)
         {
@@ -1171,11 +1078,9 @@ void drawLevelSelect()
         {
             iSetColor(255, 255, 255); // White for other levels
         }
-
         // Center the text within the button
         iText(x + 22, y + 25, levelText, GLUT_BITMAP_HELVETICA_18);
     }
-
     // Simple Back to Home text (no box) with hover effect
     if (isPointInRect(mouseX, mouseY, 50, 110, 130, 25))
     {
@@ -1196,23 +1101,19 @@ bool isPointInRect(int px, int py, int rx, int ry, int width, int height)
 void drawHomepage()
 {
     iClear();
-
     // Display home background image
     iShowImage(0, 0, "assets/images/bouncing ball/home.png");
-
     // Menu buttons
     int buttonWidth = 200;
     int buttonHeight = 60;
     int buttonSpacing = 80;
     int startY = 450;
-
     // Enter Game button
     bool isHoveringEnter = isPointInRect(mouseX, mouseY, 300, startY, buttonWidth, buttonHeight);
     int enterWidth = isHoveringEnter ? buttonWidth + 10 : buttonWidth;
     int enterHeight = isHoveringEnter ? buttonHeight + 6 : buttonHeight;
     int enterX = isHoveringEnter ? 295 : 300;
     int enterY = isHoveringEnter ? startY - 3 : startY;
-
     iSetColor(50, 150, 50);
     iFilledRectangle(enterX, enterY, enterWidth, enterHeight);
     iSetColor(255, 255, 255);
@@ -1227,7 +1128,6 @@ void drawHomepage()
         iSetColor(255, 255, 255); // White text normally
     }
     drawCenteredText(enterX + 14, enterY, enterWidth, enterHeight, "Enter Game", "assets/fonts/arial.ttf", 24);
-
     // Settings button
     bool isHoveringSettings = isPointInRect(mouseX, mouseY, 300, startY - buttonSpacing, buttonWidth, buttonHeight);
     int settingsWidth = isHoveringSettings ? buttonWidth + 10 : buttonWidth;
@@ -1239,7 +1139,6 @@ void drawHomepage()
     iFilledRectangle(settingsX, settingsY, settingsWidth, settingsHeight);
     iSetColor(255, 255, 255);
     iRectangle(settingsX, settingsY, settingsWidth, settingsHeight);
-
     if (isHoveringSettings)
     {
         iSetColor(255, 255, 0); // Yellow text when hovering
@@ -1249,19 +1148,16 @@ void drawHomepage()
         iSetColor(255, 255, 255); // White text normally
     }
     drawCenteredText(settingsX + 12, settingsY, settingsWidth, settingsHeight, "Settings", "assets/fonts/arial.ttf", 24);
-
     // Tribute button
     bool isHoveringTribute = isPointInRect(mouseX, mouseY, 300, startY - 2 * buttonSpacing, buttonWidth, buttonHeight);
     int tributeWidth = isHoveringTribute ? buttonWidth + 10 : buttonWidth;
     int tributeHeight = isHoveringTribute ? buttonHeight + 6 : buttonHeight;
     int tributeX = isHoveringTribute ? 295 : 300;
     int tributeY = isHoveringTribute ? (startY - 2 * buttonSpacing - 3) : (startY - 2 * buttonSpacing);
-
     iSetColor(150, 50, 50);
     iFilledRectangle(tributeX, tributeY, tributeWidth, tributeHeight);
     iSetColor(255, 255, 255);
     iRectangle(tributeX, tributeY, tributeWidth, tributeHeight);
-
     if (isHoveringTribute)
     {
         iSetColor(255, 255, 0); // Yellow text when hovering
@@ -1271,19 +1167,16 @@ void drawHomepage()
         iSetColor(255, 255, 255); // White text normally
     }
     drawCenteredText(tributeX + 12, tributeY, tributeWidth, tributeHeight, "Tribute", "assets/fonts/arial.ttf", 24);
-
     // High Score button
     bool isHoveringHighScore = isPointInRect(mouseX, mouseY, 300, startY - 3 * buttonSpacing, buttonWidth, buttonHeight);
     int highScoreWidth = isHoveringHighScore ? buttonWidth + 10 : buttonWidth;
     int highScoreHeight = isHoveringHighScore ? buttonHeight + 6 : buttonHeight;
     int highScoreX = isHoveringHighScore ? 295 : 300;
     int highScoreY = isHoveringHighScore ? (startY - 3 * buttonSpacing - 3) : (startY - 3 * buttonSpacing);
-
     iSetColor(100, 50, 150); // Purple color for high score
     iFilledRectangle(highScoreX, highScoreY, highScoreWidth, highScoreHeight);
     iSetColor(255, 255, 255);
     iRectangle(highScoreX, highScoreY, highScoreWidth, highScoreHeight);
-
     if (isHoveringHighScore)
     {
         iSetColor(255, 255, 0); // Yellow text when hovering
@@ -1293,24 +1186,20 @@ void drawHomepage()
         iSetColor(255, 255, 255); // White text normally
     }
     drawCenteredText(highScoreX + 15, highScoreY, highScoreWidth, highScoreHeight, "High Score", "assets/fonts/arial.ttf", 24);
-
     // Exit button
     bool isHoveringExit = isPointInRect(mouseX, mouseY, 300, startY - 4 * buttonSpacing, buttonWidth, buttonHeight);
     int exitWidth = isHoveringExit ? buttonWidth + 10 : buttonWidth;
     int exitHeight = isHoveringExit ? buttonHeight + 6 : buttonHeight;
     int exitX = isHoveringExit ? 295 : 300;
     int exitY = isHoveringExit ? (startY - 4 * buttonSpacing - 3) : (startY - 4 * buttonSpacing);
-
     iSetColor(150, 50, 50); // Red color for exit
     iFilledRectangle(exitX, exitY, exitWidth, exitHeight);
     iSetColor(255, 255, 255);
     iRectangle(exitX, exitY, exitWidth, exitHeight);
-
     if (isHoveringExit)
     {
         iSetColor(255, 255, 0); // Yellow text when hovering
     }
-
     else
     {
         iSetColor(255, 255, 255); // White text normally
@@ -1322,12 +1211,10 @@ void drawHomepage()
     int helpHeight = isHoveringhelp ? buttonHeight + 6 : buttonHeight;
     int helpX = isHoveringhelp ? 295 : 300;
     int helpY = isHoveringhelp ? (startY - 5 * buttonSpacing - 3) : (startY - 5 * buttonSpacing);
-
     iSetColor(96, 96, 96); // Red color for Instruction button rect
     iFilledRectangle(helpX, helpY, helpWidth, helpHeight);
     iSetColor(255, 255, 255);
     iRectangle(helpX, helpY, helpWidth, helpHeight);
-
     if (isHoveringhelp)
     {
         iSetColor(255, 255, 0); // Yellow text when hovering
@@ -1342,31 +1229,25 @@ void drawHomepage()
 void drawInstruction()
 {
     iClear();
-
     // Display instruction image (make sure this image contains the instructions visually)
     iShowImage(0, 0, "assets/images/bouncing ball/instructions.png");
-
     // Back button in bottom left corner with hover effect
     bool isHoveringBack = isPointInRect(mouseX, mouseY, 50, 50, 100, 40);
-
     // Light colored rectangle when hovering
     if (isHoveringBack)
     {
         iSetColor(255, 255, 255); // White background when hovering
         iFilledRectangle(45, 45, 110, 50);
     }
-
     // Button background
     int backWidth = isHoveringBack ? 110 : 100;
     int backHeight = isHoveringBack ? 50 : 40;
     int backX = isHoveringBack ? 45 : 50;
     int backY = isHoveringBack ? 45 : 50;
-
     iSetColor(70, 70, 70);
     iFilledRectangle(backX, backY, backWidth, backHeight);
     iSetColor(255, 255, 255);
     iRectangle(backX, backY, backWidth, backHeight);
-
     // Button text
     if (isHoveringBack)
     {
@@ -1382,30 +1263,24 @@ void drawInstruction()
 void drawSettings()
 {
     iClear();
-
     // Display settings background image
     iShowImage(0, 0, "assets/images/bouncing ball/setttings.png");
-
     // Title
     iSetColor(0, 191, 255); // Ocean blue
     drawCenteredText(0, 650, GAME_WINDOW_WIDTH, 48, "SETTINGS", "assets/fonts/arial.ttf", 48);
-
     // Sound Settings
     iSetColor(135, 206, 250); // Light sky blue
     iText(200, 550, "Sound Settings", GLUT_BITMAP_HELVETICA_18);
-
     // Sound Enable/Disable with hover size effect
     bool isSoundHovering = isPointInRect(mouseX, mouseY, 200, 500, 150, 40);
     int soundWidth = isSoundHovering ? 158 : 150;
     int soundHeight = isSoundHovering ? 44 : 40;
     int soundX = isSoundHovering ? 196 : 200;
     int soundY = isSoundHovering ? 498 : 500;
-
     iSetColor(soundEnabled ? 50 : 150, soundEnabled ? 150 : 50, 50);
     iFilledRectangle(soundX, soundY, soundWidth, soundHeight);
     iSetColor(255, 255, 255);
     iRectangle(soundX, soundY, soundWidth, soundHeight);
-
     if (isSoundHovering)
     {
         iSetColor(255, 255, 0); // Yellow text when hovering
@@ -1415,7 +1290,6 @@ void drawSettings()
         iSetColor(255, 255, 255); // White text normally
     }
     drawCenteredText(soundX, soundY, soundWidth, soundHeight, soundEnabled ? "Sound: ON" : "Sound: OFF", "assets/fonts/arial.ttf", 20);
-
     // Sound Volume
     iSetColor(255, 255, 255);
     iText(200, 470, "Sound Volume:", GLUT_BITMAP_HELVETICA_18);
@@ -1425,27 +1299,22 @@ void drawSettings()
     iFilledRectangle(380, 465, (soundVolume * 200) / 100, 20);
     iSetColor(255, 255, 255);
     iRectangle(380, 465, 200, 20);
-
     char volumeText[10];
     sprintf(volumeText, "%d%%", soundVolume);
     iText(590, 470, volumeText, GLUT_BITMAP_HELVETICA_12);
-
     // Music Settings
     iSetColor(255, 255, 255);
     iText(200, 400, "Music Settings", GLUT_BITMAP_HELVETICA_18);
-
     // Music Enable/Disable with hover size effect
     bool isMusicHovering = isPointInRect(mouseX, mouseY, 200, 350, 150, 40);
     int musicWidth = isMusicHovering ? 158 : 150;
     int musicHeight = isMusicHovering ? 44 : 40;
     int musicX = isMusicHovering ? 196 : 200;
     int musicY = isMusicHovering ? 348 : 350;
-
     iSetColor(musicEnabled ? 50 : 150, musicEnabled ? 150 : 50, 50);
     iFilledRectangle(musicX, musicY, musicWidth, musicHeight);
     iSetColor(255, 255, 255);
     iRectangle(musicX, musicY, musicWidth, musicHeight);
-
     if (isMusicHovering)
     {
         iSetColor(255, 255, 0); // Yellow text when hovering
@@ -1455,7 +1324,6 @@ void drawSettings()
         iSetColor(255, 255, 255); // White text normally
     }
     drawCenteredText(musicX, musicY, musicWidth, musicHeight, musicEnabled ? "Music: ON" : "Music: OFF", "assets/fonts/arial.ttf", 20);
-
     // Music Volume
     iSetColor(255, 255, 255);
     iText(200, 320, "Music Volume:", GLUT_BITMAP_HELVETICA_18);
@@ -1465,22 +1333,18 @@ void drawSettings()
     iFilledRectangle(380, 315, (musicVolume * 200) / 100, 20);
     iSetColor(255, 255, 255);
     iRectangle(380, 315, 200, 20);
-
     sprintf(volumeText, "%d%%", musicVolume);
     iText(590, 320, volumeText, GLUT_BITMAP_HELVETICA_12);
-
     // Back button with hover size effect
     bool isBackHovering = isPointInRect(mouseX, mouseY, 50, 50, 100, 40);
     int backWidth = isBackHovering ? 108 : 100;
     int backHeight = isBackHovering ? 44 : 40;
     int backX = isBackHovering ? 46 : 50;
     int backY = isBackHovering ? 48 : 50;
-
     iSetColor(100, 100, 100);
     iFilledRectangle(backX, backY, backWidth, backHeight);
     iSetColor(255, 255, 255);
     iRectangle(backX, backY, backWidth, backHeight);
-
     if (isBackHovering)
     {
         iSetColor(255, 255, 0); // Yellow text when hovering
@@ -1495,31 +1359,24 @@ void drawSettings()
 void drawTribute()
 {
     iClear();
-
     // Display tribute image
     iShowImage(0, 0, "assets/images/bouncing ball/tribute.png");
-
-    // Back button in bottom left corner with hover effect
     bool isHoveringBack = isPointInRect(mouseX, mouseY, 50, 50, 100, 40);
-
     // Light colored rectangle when hovering
     if (isHoveringBack)
     {
         iSetColor(255, 255, 255); // White background when hovering
         iFilledRectangle(45, 45, 110, 50);
     }
-
     // Button background
     int backWidth = isHoveringBack ? 110 : 100;
     int backHeight = isHoveringBack ? 50 : 40;
     int backX = isHoveringBack ? 45 : 50;
     int backY = isHoveringBack ? 45 : 50;
-
     iSetColor(70, 70, 70);
     iFilledRectangle(backX, backY, backWidth, backHeight);
     iSetColor(255, 255, 255);
     iRectangle(backX, backY, backWidth, backHeight);
-
     // Button text
     if (isHoveringBack)
     {
@@ -1535,31 +1392,25 @@ void drawTribute()
 void drawPauseMenu()
 {
     iClear();
-
     // Display background image
     iShowImage(0, 0, "assets/images/bouncing ball/setttings.png");
-
     // Menu background with navy theme
     iSetColor(20, 30, 60);
     iFilledRectangle(200, 200, 400, 400);
     iSetColor(100, 150, 200);
     iRectangle(200, 200, 400, 400);
-
     // Inner border for elegance
     iSetColor(150, 180, 220);
     iRectangle(210, 210, 380, 380);
-
     // Title with navy theme - Ocean blue color (perfectly centered)
     iSetColor(0, 191, 255); // Deep sky blue
     drawCenteredText(200, 530, 400, 50, "GAME PAUSED", "assets/fonts/arial.ttf", 36);
-
     // Menu buttons (3 buttons now: Resume, Sound, Exit) - all centered
     int buttonWidth = 250;
     int buttonHeight = 60;
     int buttonSpacing = 80;
     int startY = 440;
     int centerX = 275; // This centers the buttons horizontally
-
     // Resume button (green like main menu)
     iSetColor(50, 150, 50);
     iFilledRectangle(centerX, startY, buttonWidth, buttonHeight);
@@ -1570,7 +1421,6 @@ void drawPauseMenu()
     iRectangle(centerX + 5, startY + 5, buttonWidth - 10, buttonHeight - 10);
     iSetColor(255, 255, 255); // White text for contrast - centered
     drawCenteredText(centerX, startY, buttonWidth, buttonHeight, "Resume", "assets/fonts/arial.ttf", 28);
-
     // Sound button (dynamic color based on state)
     if (soundEnabled)
     {
@@ -1612,7 +1462,6 @@ void drawPauseMenu()
 void drawGameOver()
 {
     iClear();
-
     // Navy gradient background with stars - extended to cover full window
     for (int i = 0; i < GAME_WINDOW_HEIGHT + 100; i += 4)
     {
@@ -1630,7 +1479,6 @@ void drawGameOver()
         if (i + 3 < GAME_WINDOW_HEIGHT + 100)
             iLine(0, i + 3, GAME_WINDOW_WIDTH, i + 3);
     }
-
     // Beautiful stars
     for (int i = 0; i < 15; i++)
     {
@@ -1654,21 +1502,17 @@ void drawGameOver()
             iFilledCircle(x, y, 1);
         }
     }
-
     // Game Over background
     iSetColor(40, 20, 20); // Dark red background
     iFilledRectangle(150, 200, 500, 400);
     iSetColor(200, 100, 100); // Light red border
     iRectangle(150, 200, 500, 400);
-
     // Inner border for elegance
     iSetColor(220, 150, 150);
     iRectangle(160, 210, 480, 380);
-
     // Title - red color for game over
     iSetColor(255, 100, 100); // Light red
     drawCenteredText(160, 530, 500, 50, "LEVEL FAILED", "assets/fonts/arial.ttf", 42);
-
     // Subtitle - check if failed due to balls or bottom limit
     iSetColor(255, 200, 200);
     if (ballsRemaining <= 0)
@@ -1678,24 +1522,21 @@ void drawGameOver()
         drawCenteredText(250, 480, 500, 30, ballMessage, "assets/fonts/arial.ttf", 18); // changed 10:12 AM 150 -- > 250
     }
     else
-    { //
+    {
         drawCenteredText(220, 480, 500, 30, "Balls reached the bottom limit!", "assets/fonts/arial.ttf", 20);
     }
-
     // Menu buttons - centered
     int buttonWidth = 200;
     int buttonHeight = 50;
     int buttonSpacing = 70;
     int startY = 420;
     int centerX = 300; // This centers the buttons horizontally
-
     // New Game button (green)
     bool isNewGameHovering = isPointInRect(mouseX, mouseY, centerX, startY, buttonWidth, buttonHeight);
     int newGameWidth = isNewGameHovering ? buttonWidth + 8 : buttonWidth;
     int newGameHeight = isNewGameHovering ? buttonHeight + 4 : buttonHeight;
     int newGameX = isNewGameHovering ? centerX - 4 : centerX;
     int newGameY = isNewGameHovering ? startY - 2 : startY;
-
     iSetColor(50, 150, 50);
     iFilledRectangle(newGameX, newGameY, newGameWidth, newGameHeight);
     iSetColor(135, 206, 250);
@@ -1717,12 +1558,10 @@ void drawGameOver()
     int backHeight = isBackHovering ? buttonHeight + 4 : buttonHeight;
     int backX = isBackHovering ? centerX - 4 : centerX;
     int backY = isBackHovering ? (startY - buttonSpacing - 2) : (startY - buttonSpacing);
-
     iSetColor(50, 50, 150);
     iFilledRectangle(backX, backY, backWidth, backHeight);
     iSetColor(135, 206, 250);
     iRectangle(backX, backY, backWidth, backHeight);
-
     if (isBackHovering)
     {
         iSetColor(255, 255, 0); // Yellow text when hovering
@@ -1737,16 +1576,13 @@ void drawGameOver()
 void drawLevelComplete()
 {
     iClear();
-
     // Display background image
     iShowImage(0, 0, "assets/images/bouncing ball/setttings.png");
-
     // Level Complete background
     iSetColor(20, 80, 20); // Dark green background
     iFilledRectangle(150, 200, 500, 400);
     iSetColor(100, 200, 100); // Light green border
     iRectangle(150, 200, 500, 400);
-
     // Inner border
     iSetColor(150, 220, 150);
     iRectangle(160, 210, 480, 380);
@@ -1754,27 +1590,23 @@ void drawLevelComplete()
     // Title - green color for success
     iSetColor(100, 255, 100);
     drawCenteredText(150 + 10, 530, 500, 50, "LEVEL COMPLETE!", "assets/fonts/arial.ttf", 42);
-
     // Subtitle
     iSetColor(200, 255, 200);
     char levelText[50];
     sprintf(levelText, "Level %d completed successfully!", currentLevel);
     drawCenteredText(150 + 54, 480, 500, 30, levelText, "assets/fonts/arial.ttf", 20);
-
     // Menu buttons - centered
     int buttonWidth = 200;
     int buttonHeight = 50;
     int buttonSpacing = 70;
     int startY = 420;
     int centerX = 300;
-
     // Next Level button (gold)
     bool isNextLevelHovering = isPointInRect(mouseX, mouseY, centerX, startY, buttonWidth, buttonHeight);
     int nextLevelWidth = isNextLevelHovering ? buttonWidth + 8 : buttonWidth;
     int nextLevelHeight = isNextLevelHovering ? buttonHeight + 4 : buttonHeight;
     int nextLevelX = isNextLevelHovering ? centerX - 4 : centerX;
     int nextLevelY = isNextLevelHovering ? startY - 2 : startY;
-
     if (currentLevel < 20)
     {
         iSetColor(180, 140, 0); // Gold background
@@ -1792,19 +1624,16 @@ void drawLevelComplete()
         }
         drawCenteredText(nextLevelX + 15, nextLevelY, nextLevelWidth, nextLevelHeight, "Next Level", "assets/fonts/arial.ttf", 24);
     }
-
     // Back button (blue)
     bool isBackHovering = isPointInRect(mouseX, mouseY, centerX, startY - buttonSpacing, buttonWidth, buttonHeight);
     int backWidth = isBackHovering ? buttonWidth + 8 : buttonWidth;
     int backHeight = isBackHovering ? buttonHeight + 4 : buttonHeight;
     int backX = isBackHovering ? centerX - 4 : centerX;
     int backY = isBackHovering ? (startY - buttonSpacing - 2) : (startY - buttonSpacing);
-
     iSetColor(50, 50, 150);
     iFilledRectangle(backX, backY, backWidth, backHeight);
     iSetColor(135, 206, 250);
     iRectangle(backX, backY, backWidth, backHeight);
-
     if (isBackHovering)
     {
         iSetColor(255, 255, 0);
@@ -1815,7 +1644,6 @@ void drawLevelComplete()
     }
     drawCenteredText(backX + 24, backY, backWidth, backHeight, "Back to Levels", "assets/fonts/arial.ttf", 24);
 }
-
 void setColorByNumber(int color)
 {
     switch (color)
@@ -1840,12 +1668,10 @@ void setColorByNumber(int color)
         break; // Black
     }
 }
-
 void DrawShootedBall(double x, double y, int color)
 {
     // Step 1: Main base color
     int r = 0, g = 0, b = 0;
-
     switch (color)
     {
     case 1:
@@ -1882,24 +1708,18 @@ void DrawShootedBall(double x, double y, int color)
 
     if (r != 0 || g != 0 || b != 0)
     {
-
         iSetColor(r, g, b);
-
         iFilledCircle(x, y, BUBBLE_RADIUS);
-
         // Step 2: Simulated radial shading (darker inner rings)
         for (int rad = BUBBLE_RADIUS - 6; rad > BUBBLE_RADIUS / 2; rad -= 2)
         {
             int factor = (BUBBLE_RADIUS - rad) * 10; // shadow intensity
-
             int dr = max(0, r - factor);
             int dg = max(0, g - factor);
             int db = max(0, b - factor);
-
             iSetColor(dr, dg, db);
             iFilledCircle(x, y, rad);
         }
-
         // Step 3: Highlight glare (ellipse + dot)
         iSetTransparentColor(240, 250, 255, 0.63); // Soft white ellipse
         iFilledEllipse(x - BUBBLE_RADIUS / 3, y + BUBBLE_RADIUS / 3, BUBBLE_RADIUS / 4, BUBBLE_RADIUS / 5);
@@ -1908,13 +1728,11 @@ void DrawShootedBall(double x, double y, int color)
         iFilledCircle(x - BUBBLE_RADIUS / 5, y + BUBBLE_RADIUS / 2, BUBBLE_RADIUS / 8);
     }
 }
-
 void drawStyledBall(double x, double y, int color)
 {
     iScale(x, y, 1.0, 1.0);
     // Step 1: Main base color
     int r = 0, g = 0, b = 0;
-
     switch (color)
     {
     case 1:
@@ -1948,14 +1766,10 @@ void drawStyledBall(double x, double y, int color)
         b = 0;
         break; // black
     }
-
     if (r != 0 || g != 0 || b != 0)
     {
-
         iSetColor(r, g, b);
-
         iFilledCircle(x, y, BUBBLE_RADIUS);
-
         // Step 2: Simulated radial shading (darker inner rings)
         for (int rad = BUBBLE_RADIUS - 2; rad > BUBBLE_RADIUS / 2; rad -= 2)
         {
@@ -1964,26 +1778,21 @@ void drawStyledBall(double x, double y, int color)
             int dr = max(0, r - factor);
             int dg = max(0, g - factor);
             int db = max(0, b - factor);
-
             iSetColor(dr, dg, db);
             iFilledCircle(x, y, rad);
         }
-
         // Step 3: Highlight glare (ellipse + dot)
         iSetTransparentColor(240, 250, 255, 0.63); // Soft white ellipse
         iFilledEllipse(x - BUBBLE_RADIUS / 3, y + BUBBLE_RADIUS / 3, BUBBLE_RADIUS / 4, BUBBLE_RADIUS / 5);
-
         iSetTransparentColor(255, 255, 255, 0.79); // Solid white dot
         iFilledCircle(x - BUBBLE_RADIUS / 5, y + BUBBLE_RADIUS / 2, BUBBLE_RADIUS / 8);
     }
     iUnScale();
 }
-
 void drawStyledBallWithScale(double x, double y, int color, double scale)
 {
     // Step 1: Main base color
     int r = 0, g = 0, b = 0;
-
     switch (color)
     {
     case 1:
@@ -2017,7 +1826,6 @@ void drawStyledBallWithScale(double x, double y, int color, double scale)
         b = 0;
         break; // black
     }
-
     if (r != 0 || g != 0 || b != 0)
     {
         // Apply scale to bubble radius
@@ -2030,78 +1838,61 @@ void drawStyledBallWithScale(double x, double y, int color, double scale)
         for (int rad = scaledRadius - 2; rad > scaledRadius / 2; rad -= 2)
         {
             int factor = (scaledRadius - rad) * 10; // shadow intensity
-
             int dr = max(0, r - factor);
             int dg = max(0, g - factor);
             int db = max(0, b - factor);
-
             iSetColor(dr, dg, db);
             iFilledCircle(x, y, rad);
         }
-
         // Step 3: Highlight glare (ellipse + dot) - also scaled
         iSetTransparentColor(240, 250, 255, 0.63); // Soft white ellipse
         iFilledEllipse(x - scaledRadius / 3, y + scaledRadius / 3,
                        (int)(scaledRadius / 4 * scale), (int)(scaledRadius / 5 * scale));
-
         iSetTransparentColor(255, 255, 255, 0.79); // Solid white dot
         iFilledCircle(x - scaledRadius / 5, y + scaledRadius / 2, (int)(scaledRadius / 8 * scale));
     }
 }
-
 void getGridBallCenter(int r, int c, double *x, double *y)
 {
     double xShift = (r % 2 == 0) ? 0 : BUBBLE_RADIUS;
     *x = c * 2 * BUBBLE_RADIUS + BUBBLE_RADIUS + xShift;
     *y = GAME_WINDOW_HEIGHT - r * rowHeight - BUBBLE_RADIUS;
-
     // Apply velocity-based animation offset during row drop
     if (isAnimatingRowDrop)
     {
-        // ALL balls move down together with the grid offset
-        // This creates a unified sliding effect for the entire grid
         *y -= gridVerticalOffset;
     }
 }
-
 void getGridRowColumn(double x, double y, int *r, int *c)
 {
     *r = (int)((GAME_WINDOW_HEIGHT - y) / rowHeight);
     double xShift = (*r % 2 == 0) ? 0 : BUBBLE_RADIUS;
     *c = (int)((x - xShift) / (2 * BUBBLE_RADIUS));
 }
-
 int checkCollision(double x1, double y1, double x2, double y2)
 {
-
     double dist_sq = (x1 - x2) * (x1 - x2) + (y1 - y2) * (y1 - y2);
     return dist_sq <= (2 * BUBBLE_RADIUS - 2) * (2 * BUBBLE_RADIUS - 2);
 }
-
 void placeBallOnGrid(double x, double y, int color)
 {
     int r, c;
     getGridRowColumn(x, y, &r, &c);
-
     if (r < 0)
         r = 0;
     if (r >= ROWS)
         r = ROWS - 1; // Don't expand beyond ROWS limit
-
     int maxCols = (r % 2 == 0) ? COLS : (COLS - 1);
-
     if (c < 0)
         c = 0;
     if (c >= maxCols)
         c = maxCols - 1;
-
     // Extra bounds check to prevent array overflow
     if (r >= 0 && r < ROWS && c >= 0 && c < COLS)
     {
         if (grid[r][c] == 0)
         {
             grid[r][c] = color;
-
             // Check for game over after placing the ball
             if (checkGameOver())
             {
@@ -2110,12 +1901,9 @@ void placeBallOnGrid(double x, double y, int color)
         }
     }
 }
-
 int Marked[ROWS][COLS] = {0};
 int matched[ROWS * COLS][2] = {0};
-
 int BallMatchCount = 0;
-
 void resetMarked()
 {
     for (int i = 0; i < ROWS; i++)
@@ -2126,56 +1914,44 @@ void resetMarked()
         }
     }
 }
-
 // 6 directions --> row / column incrementing or decrementing
 // Hexagonal grid neighbors: Even rows (not offset), Odd rows (offset right by 0.5)
 int AddRowEven[6] = {-1, -1, 0, 0, 1, 1};
 int AddColumnEven[6] = {-1, 0, -1, 1, -1, 0};
-
 int AddRowOdd[6] = {-1, -1, 0, 0, 1, 1};
 int AddColumnOdd[6] = {0, 1, -1, 1, 0, 1};
-
 void search6directionsFrom(int r, int c, int color)
 {
     // 3 base cases for recursion to end
-
     // reaching the ceiling or the bottom
     if (r < 0 || r >= ROWS)
         return;
-
     // reaching the left or the right wall - fix for hexagonal grid
     int maxCols = (r % 2 == 0) ? COLS : (COLS - 1);
     if (c < 0 || c >= maxCols)
         return;
-
     // Check if already marked
     if (Marked[r][c])
         return;
-
     // Check if empty cell
     if (grid[r][c] == 0)
         return;
-
     // Check if color doesn't match
     if (grid[r][c] != color)
         return;
-
     // Mark this cell and add to matches
     Marked[r][c] = 1;
     matched[BallMatchCount][0] = r;
     matched[BallMatchCount][1] = c;
     BallMatchCount++;
-
     // Get the appropriate neighbor offsets for this row
     int *AddToRow = (r % 2 == 0) ? AddRowEven : AddRowOdd;
     int *AddToColumn = (r % 2 == 0) ? AddColumnEven : AddColumnOdd;
-
     // Check all 6 neighbors
     for (int i = 0; i < 6; i++)
     {
         int newR = r + AddToRow[i];
         int newC = c + AddToColumn[i];
-
         // Only recursively search if the new position is valid
         if (newR >= 0 && newR < ROWS)
         {
@@ -2193,89 +1969,48 @@ void PopBubblesInside(int r, int c)
     // Bounds check first
     if (r < 0 || r >= ROWS || c < 0 || c >= COLS)
         return;
-
     resetMarked();
-
     BallMatchCount = 0;
     int ShootedBallColor = grid[r][c];
-
     // Debug: Check if the ball was placed correctly
     if (ShootedBallColor == 0)
     {
         return; // No ball at this position
     }
-
     search6directionsFrom(r, c, ShootedBallColor);
-
-    // Debug output for first row testing
-    // if (r == 0)
-    // {
-    //     printf("DEBUG PopBubbles: First row - R:%d C:%d Color:%d MatchCount:%d\n",
-    //            r, c, ShootedBallColor, BallMatchCount);
-
-    //     printf("Grid state around position:\n");
-    //     for (int debugR = 0; debugR < min(3, ROWS); debugR++)
-    //     {
-    //         int maxCols = (debugR % 2 == 0) ? COLS : (COLS - 1);
-    //         printf("Row %d: ", debugR);
-    //         for (int debugC = 0; debugC < maxCols; debugC++)
-    //         {
-    //             printf("%d ", grid[debugR][debugC]);
-    //         }
-    //         printf("\n");
-    //     }
-
-    //     printf("Matched balls:\n");
-    //     for (int i = 0; i < BallMatchCount; i++)
-    //     {
-    //         printf("  Match %d: R:%d C:%d\n", i, matched[i][0], matched[i][1]);
-    //     }
-    // }
-
     if (BallMatchCount >= 3)
     {
-
         ScoreIncrement = (BallMatchCount * 10);
         Score += ScoreIncrement;
         ScoreIncrementingInstant = iGetTimer();
         ShowIncrement = 1;
-
         // Start the pop animation instead of immediately removing bubbles
         startPopAnimation(matched, BallMatchCount);
-
         // Play pop sound when bubbles are popped (once per group)
         if (soundEnabled && BallMatchCount > 0)
         {
             iPlaySound("assets/sounds/pop.mp3", false, soundVolume);
         }
-
         // Level completion will be checked after animations complete
     }
 }
-
 void ShowScore()
 {
     // Ultra-simple top bar for maximum performance
     iSetColor(15, 25, 45);
     iFilledRectangle(0, GAME_WINDOW_HEIGHT, GAME_WINDOW_WIDTH, 50);
-
     // Score text (no background panels)
     iSetColor(255, 255, 255);
     iText(15, GAME_WINDOW_HEIGHT + 14, "SCORE : ", GLUT_BITMAP_HELVETICA_18);
-
     char scoreText[30];
     sprintf(scoreText, "%d", Score);
-
     iSetColor(255, 255, 100);
     iText(150, GAME_WINDOW_HEIGHT + 14, scoreText, GLUT_BITMAP_HELVETICA_18);
-
     // Ball count display
     iSetColor(255, 255, 255);
     iText(300, GAME_WINDOW_HEIGHT + 14, "BALLS : ", GLUT_BITMAP_HELVETICA_18);
-
     char ballText[30];
     sprintf(ballText, "%d", ballsRemaining);
-
     // Change color based on remaining balls
     if (ballsRemaining <= 5)
         iSetColor(255, 100, 100); // Red when low
@@ -2283,19 +2018,15 @@ void ShowScore()
         iSetColor(255, 255, 100); // Yellow when medium
     else
         iSetColor(100, 255, 100); // Green when plenty
-
     iText(420, GAME_WINDOW_HEIGHT + 14, ballText, GLUT_BITMAP_HELVETICA_18);
 } // <Cluster Detection and Fallings>
 int visited[ROWS][COLS] = {0};
-
 void addToFloatingBubblesArray(int r, int c, int color)
 {
     if (fallingBubbleCount >= 100)
         return;
-
     double x, y;
     getGridBallCenter(r, c, &x, &y);
-
     fallingBubbles[fallingBubbleCount].x = x;
     fallingBubbles[fallingBubbleCount].y = y;
     fallingBubbles[fallingBubbleCount].vy = 0;
@@ -2303,7 +2034,6 @@ void addToFloatingBubblesArray(int r, int c, int color)
     fallingBubbles[fallingBubbleCount].isFalling = 1;
     fallingBubbleCount++;
 }
-
 void BFS_from_top_row(int row, int col)
 {
     if (row < 0 || row >= ROWS)
@@ -2333,11 +2063,9 @@ void visitConnectedGraphFromTop()
             BFS_from_top_row(0, i);
     }
 }
-
 void detectCluster()
 {
     visitConnectedGraphFromTop();
-
     for (int i = 0; i < ROWS; i++)
     {
         int colsInRow = (i % 2 == 0) ? COLS : (COLS - 1);
@@ -2351,7 +2079,6 @@ void detectCluster()
             }
         }
     }
-
     // Check if level is completed after removing floating bubbles
     if (checkLevelComplete())
     {
@@ -2359,7 +2086,6 @@ void detectCluster()
     }
 }
 // </Cluster Detection and Falling>
-
 void ballMovement()
 {
     for (int i = 0; i < fallingBubbleCount; i++)
@@ -2368,18 +2094,14 @@ void ballMovement()
         {
             fallingBubbles[i].y -= fallingBubbles[i].vy;
             fallingBubbles[i].vy += 0.8; // Increased gravity for faster falling
-
             if (fallingBubbles[i].y >= 800)
                 fallingBubbles[i].isFalling = 0;
         }
     }
-
     if (!isBallMoving)
         return;
-
     ball_x += vx;
     ball_y += vy;
-
     if (ball_x <= BUBBLE_RADIUS)
     {
         ball_x = BUBBLE_RADIUS;
@@ -2390,12 +2112,10 @@ void ballMovement()
         ball_x = GAME_WINDOW_WIDTH - BUBBLE_RADIUS;
         vx = -vx;
     }
-
     // Smart top wall collision logic
     if (ball_y >= GAME_WINDOW_HEIGHT - BUBBLE_RADIUS)
     {
         ball_y = GAME_WINDOW_HEIGHT - BUBBLE_RADIUS;
-
         // Check if all hidden rows are used (all rows visible)
         if (currentLevelDisplayOffset <= 1) // All rows visible when <= 1 (need 2 to drop)
         {
@@ -2405,7 +2125,6 @@ void ballMovement()
             placeBallOnGrid(ball_x, ball_y, shootingBallColorNow);
             shootingBallColorNow = shootingBallColorNext;
             shootingBallColorNext = getRandomLevelColor();
-
             // Debug: Ensure valid colors
             if (shootingBallColorNow == 0)
                 shootingBallColorNow = 1;
@@ -2426,19 +2145,15 @@ void ballMovement()
         {
             // Hidden rows still available - ball bounces back down
             vy = -vy; // Reverse Y velocity to bounce down
-
             // Update ball colors for the next shot since this ball is still moving
             shootingBallColorNext = getRandomLevelColor();
-
             // Debug: Ensure valid colors
             if (shootingBallColorNext == 0)
                 shootingBallColorNext = 2;
-
             // Don't call checkForRowDrop() here - wait until ball actually stops moving
         }
         return;
     }
-
     // Check if ball falls below the bottom of the screen
     if (ball_y <= -BUBBLE_RADIUS)
     {
@@ -2447,17 +2162,14 @@ void ballMovement()
         ballBounceCount = 0;
         shootingBallColorNow = shootingBallColorNext;
         shootingBallColorNext = getRandomLevelColor();
-
         // Debug: Ensure valid colors
         if (shootingBallColorNow == 0)
             shootingBallColorNow = 1;
         if (shootingBallColorNext == 0)
             shootingBallColorNext = 2;
-
         checkForRowDrop();
         return;
     }
-
     for (int r = ROWS - 1; r >= 0; r--)
     {
         int colsInRow = (r % 2 == 0) ? COLS : (COLS - 1);
@@ -2474,13 +2186,11 @@ void ballMovement()
                     placeBallOnGrid(ball_x, ball_y, shootingBallColorNow);
                     shootingBallColorNow = shootingBallColorNext;
                     shootingBallColorNext = getRandomLevelColor();
-
                     // Debug: Ensure valid colors
                     if (shootingBallColorNow == 0)
                         shootingBallColorNow = 1;
                     if (shootingBallColorNext == 0)
                         shootingBallColorNext = 2;
-
                     int row, col;
                     getGridRowColumn(ball_x, ball_y, &row, &col);
                     PopBubblesInside(row, col);
@@ -2509,22 +2219,16 @@ void ballMovement()
         }
     }
 }
-
 // Function to drop a new row from hidden rows
 void dropNewRow()
 {
     if (currentLevelDisplayOffset <= 1) // Need at least 2 rows left to drop
         return;
-
     // Start the velocity-based row drop animation
     isAnimatingRowDrop = true;
     gridVerticalOffset = 0.0;
     targetVerticalOffset = 2 * rowHeight; // Target is 2 rows worth of movement
-
-    // Don't modify the grid data yet - that happens in finalizeRowDrop()
-    // The visual animation starts immediately while data stays unchanged
 }
-
 void drawGrid()
 {
     for (int r = 0; r < ROWS; r++)
@@ -2536,7 +2240,6 @@ void drawGrid()
             {
                 double x, y;
                 getGridBallCenter(r, c, &x, &y);
-
                 // Add subtle glow effect for new rows during row drop animation
                 if (isAnimatingRowDrop && (r == 0 || r == 1))
                 {
@@ -2548,11 +2251,9 @@ void drawGrid()
                         iFilledCircle(x, y, BUBBLE_RADIUS + 4);
                     }
                 }
-
                 // Check if this bubble is currently popping
                 bool isPopping = false;
                 double popScale = 1.0;
-
                 for (int i = 0; i < poppingBubbleCount; i++)
                 {
                     if (poppingBubbles[i].isActive &&
@@ -2564,7 +2265,6 @@ void drawGrid()
                         break;
                     }
                 }
-
                 // Only draw if not popping or still has some scale
                 if (!isPopping || popScale > 0.1)
                 {
@@ -2582,12 +2282,10 @@ void drawGrid()
         }
     }
 }
-
 void DrawOutline()
 {
     iRectangle(0, 0, GAME_WINDOW_WIDTH, GAME_WINDOW_HEIGHT);
 }
-
 void ShowIncrementAnimation(int PoppedBubbleColor)
 {
     switch (PoppedBubbleColor)
@@ -2628,7 +2326,6 @@ void ShowIncrementAnimation(int PoppedBubbleColor)
 void iDraw()
 {
     iClear();
-
     if (inHomepage)
     {
         drawHomepage();
@@ -2675,7 +2372,6 @@ void iDraw()
         // Update animations
         updateRowDropAnimation();
         updatePopAnimations(); // Update the pop animations
-
         // GAMING
         {
             // Optimized navy gradient background (reduced iterations but maintained look)
@@ -2723,13 +2419,10 @@ void iDraw()
                     iFilledCircle(x, y, 1);
                 }
             }
-
             ShowIncrementAnimation(PoppedBubbleColor);
-
             ShowScore();
             drawGrid();
             DrawOutline();
-
             // drawing/showing all (stored) falling clustered bubbles
             for (int i = 0; i < fallingBubbleCount; i++)
             {
@@ -2739,11 +2432,9 @@ void iDraw()
                 }
             }
             // drawing/showing all (stored) falling clustered bubbles
-
             iEllipse(shooter_x, 40, (shooter_x - 305), (shooter_y - 20));
             // shooter base
             iSetColor(0, 0, 0);
-
             if (!isBallMoving)
             {
                 DrawShootedBall(shooter_x, shooter_y + BUBBLE_RADIUS, shootingBallColorNow);
@@ -2754,40 +2445,29 @@ void iDraw()
                 DrawShootedBall(ball_x, ball_y, shootingBallColorNow);
                 // Removed center circles for cleaner look
             }
-
             double ang = atan2(mouseY - (shooter_y + BUBBLE_RADIUS), mouseX - shooter_x);
             double canonLength = 80;
-
             double startX = shooter_x;
             double startY = shooter_y + BUBBLE_RADIUS;
-
             double endX = startX + canonLength * cos(ang);
             double endY = startY + canonLength * sin(ang);
-
             if (endY < 110)
                 endY = 110;
-
-            // Removed gray cannon line for cleaner appearance
-
             // Draw dotted trajectory line to show expected collision with proper physics
             if (mouseY - (shooter_y + BUBBLE_RADIUS) >= 40 && !isBallMoving)
             {
                 // Calculate initial velocity components
                 double trajVx = cos(ang) * 20; // Use same velocity as actual ball
                 double trajVy = sin(ang) * 20;
-
                 // Start from surface of shooting ball, not center
                 double trajX = startX + cos(ang) * BUBBLE_RADIUS;
                 double trajY = startY + sin(ang) * BUBBLE_RADIUS;
-
                 bool trajectoryComplete = false;
-
                 // Trajectory with proper physics - up to 300 steps for multiple bounces
                 for (int totalSteps = 0; totalSteps < 300 && !trajectoryComplete; totalSteps++)
                 {
                     trajX += trajVx;
                     trajY += trajVy;
-
                     // Check left wall collision
                     if (trajX <= BUBBLE_RADIUS)
                     {
@@ -2800,7 +2480,6 @@ void iDraw()
                         trajX = GAME_WINDOW_WIDTH - BUBBLE_RADIUS;
                         trajVx = -trajVx; // Reverse X velocity
                     }
-
                     // Smart top boundary logic - ball always bounces off top wall
                     if (trajY >= GAME_WINDOW_HEIGHT - 5) // When trajectory reaches near the top
                     {
@@ -2815,7 +2494,6 @@ void iDraw()
                         trajectoryComplete = true;
                         break;
                     }
-
                     // Bubble collision check every few steps for performance
                     if (totalSteps % 3 == 0)
                     {
@@ -2829,7 +2507,6 @@ void iDraw()
                                 {
                                     double bubbleX, bubbleY;
                                     getGridBallCenter(r, c, &bubbleX, &bubbleY);
-
                                     double dist = sqrt((trajX - bubbleX) * (trajX - bubbleX) +
                                                        (trajY - bubbleY) * (trajY - bubbleY));
 
@@ -2841,11 +2518,9 @@ void iDraw()
                                 }
                             }
                         }
-
                         if (hit)
                             break;
                     }
-
                     // Draw stylized red dotted line - allow drawing to the very top
                     if (trajX >= 0 && trajX <= GAME_WINDOW_WIDTH &&
                         trajY >= 0 && trajY <= GAME_WINDOW_HEIGHT)
@@ -2856,14 +2531,11 @@ void iDraw()
                             // Red color with slight brightness variation for effect
                             int brightness = 200 + (totalSteps % 3) * 20;
                             iSetColor(brightness, 50, 50);
-
                             // Main dot
                             iFilledCircle(trajX, trajY, 3);
-
                             // Add subtle glow effect with lighter inner dot
                             iSetColor(255, 100, 100);
                             iFilledCircle(trajX, trajY, 2);
-
                             // Add tiny white highlight for 3D effect
                             iSetColor(255, 200, 200);
                             iFilledCircle(trajX - 0.5, trajY + 0.5, 1);
@@ -2877,7 +2549,6 @@ void iDraw()
             char levelText[30];
             sprintf(levelText, "Level: %d", currentLevel);
             iText(500, GAME_WINDOW_HEIGHT + 14, levelText, GLUT_BITMAP_HELVETICA_18);
-
             iSetColor(60, 60, 70);
             iFilledRectangle(650, GAME_WINDOW_HEIGHT + 10, 120, 30);
             iSetColor(255, 255, 255);
@@ -2901,7 +2572,6 @@ void iMouse(int button, int state, int mx, int my)
         {
             iPlaySound("assets/sounds/click.mp3", false, soundVolume);
         }
-
         if (inGameOver)
         {
             // New Game button
@@ -2918,7 +2588,6 @@ void iMouse(int button, int state, int mx, int my)
                 inGameOver = false;
                 inLevelSelect = true;
                 inGame = false;
-
                 // Restart background music when returning to level selection if not already playing
                 if (backgroundMusicChannel == -1 && musicEnabled)
                 {
@@ -2941,7 +2610,6 @@ void iMouse(int button, int state, int mx, int my)
                 inLevelComplete = false;
                 inLevelSelect = true;
                 inGame = false;
-
                 // Restart background music when returning to level selection if not already playing
                 if (backgroundMusicChannel == -1 && musicEnabled)
                 {
@@ -3009,7 +2677,6 @@ void iMouse(int button, int state, int mx, int my)
             else if (isPointInRect(mx, my, 200, 350, 150, 40))
             {
                 musicEnabled = !musicEnabled;
-
                 // Control background music based on setting
                 if (musicEnabled)
                 {
@@ -3043,7 +2710,6 @@ void iMouse(int button, int state, int mx, int my)
                     musicVolume = 0;
                 if (musicVolume > 100)
                     musicVolume = 100;
-
                 // Update background music volume immediately if music is enabled
                 if (musicEnabled)
                 {
@@ -3094,10 +2760,8 @@ void iMouse(int button, int state, int mx, int my)
                 {
                     int row = i / 5;
                     int col = i % 5;
-
                     int x = 100 + col * 120;
                     int y = 450 - row * 100;
-
                     if (isPointInRect(mx, my, x, y, 80, 60))
                     {
                         // Only allow clicking on unlocked levels
@@ -3131,7 +2795,6 @@ void iMouse(int button, int state, int mx, int my)
             {
                 inNameInput = false;
                 inLevelSelect = true;
-
                 // Start background music when entering level selection if not already playing
                 if (backgroundMusicChannel == -1 && musicEnabled)
                 {
@@ -3143,7 +2806,6 @@ void iMouse(int button, int state, int mx, int my)
             {
                 inNameInput = false;
                 inHomepage = true;
-
                 // Start background music when going back to homepage
                 if (musicEnabled)
                 {
@@ -3161,7 +2823,6 @@ void iMouse(int button, int state, int mx, int my)
                 int buttonSpacing = 80;
                 int startY = 440;
                 int centerX = 275;
-
                 // Resume button
                 if (isPointInRect(mx, my, centerX, startY, buttonWidth, buttonHeight))
                 {
@@ -3204,7 +2865,6 @@ void iMouse(int button, int state, int mx, int my)
                         inGame = false;
                         return;
                     }
-
                     angle = atan2(my - (shooter_y + BUBBLE_RADIUS), mx - shooter_x);
                     if (my - (shooter_y + BUBBLE_RADIUS) >= 40)
                     {
@@ -3215,7 +2875,6 @@ void iMouse(int button, int state, int mx, int my)
                         ballBounceCount = 0; // Reset bounce counter for new ball
                         moveCounted = false; // Reset move counter flag for new ball
                         isBallMoving = true;
-
                         // Decrease ball count when shot
                         ballsRemaining--;
                     }
@@ -3229,7 +2888,6 @@ void iMouse(int button, int state, int mx, int my)
         isDraggingVolume = false;
     }
 }
-
 void iKeyboard(unsigned char key, int state)
 {
     if (inNameInput && state == GLUT_DOWN)
@@ -3254,7 +2912,6 @@ void iKeyboard(unsigned char key, int state)
             strcpy(playerName, "Player"); // Default name
             inNameInput = false;
             inLevelSelect = true;
-
             // Start background music when entering level selection
             iStopAllSounds();
             if (musicEnabled)
@@ -3281,8 +2938,7 @@ void iKeyboard(unsigned char key, int state)
 
     if (key == 'q')
         exit(0);
-
-    // Single-press ball swapping (Space key or 's' key)
+    // Single-press ball swapping (Space key)
     if ((key == ' ') && inGame && !isBallMoving && state == GLUT_DOWN)
     {
         if (!swapKeyPressed)
@@ -3293,13 +2949,11 @@ void iKeyboard(unsigned char key, int state)
             swapKeyPressed = true;
         }
     }
-
     // Reset swap key state when key is released
     if ((key == ' ') && state == GLUT_UP)
     {
         swapKeyPressed = false;
     }
-
     // Navigation keys
     if (key == 'home')
     {
@@ -3308,7 +2962,7 @@ void iKeyboard(unsigned char key, int state)
         inLevelSelect = false;
         inSettings = false;
         inTribute = false;
-        inInstruction = false; // gg
+        inInstruction = false;
         inGameOver = false;
         inLevelComplete = false;
         inHomepage = true;
@@ -3320,7 +2974,6 @@ void iKeyboard(unsigned char key, int state)
             iPlaySound("assets/sounds/bg.wav", true, musicVolume);
         }
     }
-
     if (key == 27) // ESC key
     {
         // Go back one level in menu hierarchy
@@ -3367,23 +3020,9 @@ void iKeyboard(unsigned char key, int state)
             }
         }
     }
-
-    // Quick level selection with number keys (only in level select screen)
-    if (inLevelSelect && key >= '1' && key <= '9')
-    {
-        int level = key - '0';
-        if (level <= 10)
-            loadLevel(level);
-    }
-
-    if (inLevelSelect && key == '0')
-    {
-        loadLevel(10);
-    }
+    
 }
-
 void iSpecialKeyboard(unsigned char key, int state) {}
-
 void iMouseDrag(int mx, int my)
 {
     if (inSettings && isDraggingVolume)
@@ -3436,13 +3075,10 @@ int main(int argc, char *argv[])
         inSettings = false;
         inTribute = false;
         inInstruction = false;
-
         // Initialize high score system
         loadHighScores();
-
         // Initialize level progress system
         loadLevelProgress();
-
         shootingBallColorNow = getRandomLevelColor();
         shootingBallColorNext = getRandomLevelColor();
         iSetTimer(10, ballMovement);
