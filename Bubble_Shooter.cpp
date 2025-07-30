@@ -2311,7 +2311,6 @@ void addToFloatingBubblesArray(int r, int c, int color)
 
 void BFS_from_top_row(int row, int col)
 {
-
     if (row < 0 || row >= ROWS)
         return;
     int maxCols = (row % 2 == 0) ? COLS : (COLS - 1);
@@ -2333,7 +2332,6 @@ void BFS_from_top_row(int row, int col)
 void visitConnectedGraphFromTop()
 {
     memset(visited, 0, sizeof(visited));
-
     for (int i = 0; i < COLS; i++)
     {
         if (grid[0][i] && !visited[0][i])
@@ -2343,7 +2341,6 @@ void visitConnectedGraphFromTop()
 
 void detectCluster()
 {
-
     visitConnectedGraphFromTop();
 
     for (int i = 0; i < ROWS; i++)
