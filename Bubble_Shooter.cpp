@@ -1609,7 +1609,7 @@ void drawPauseMenu()
     iSetColor(255, 255, 255); // White text for contrast - centered
     drawCenteredText(centerX+30, startY - 2 * buttonSpacing, buttonWidth, buttonHeight, "Exit to Levels", "assets/fonts/arial.ttf", 24);
 }
-
+//hi
 void drawGameOver()
 {
     iClear();
