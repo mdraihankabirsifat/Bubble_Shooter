@@ -232,11 +232,6 @@ typedef struct
 } FallingBubble;
 FallingBubble fallingBubbles[100];
 
-Image bg;
-void LoadBackGround()
-{
-}
-
 int iGetTimer()
 {
     return (int)(clock() * 1000 / CLOCKS_PER_SEC);
@@ -1680,7 +1675,7 @@ void drawGameOver()
     {
         char ballMessage[100];
         sprintf(ballMessage, "Out of balls! You had %d balls for this level.", maxBallsForLevel);
-        drawCenteredText(150, 480, 500, 30, ballMessage, "assets/fonts/arial.ttf", 18);
+        drawCenteredText(250, 480, 500, 30, ballMessage, "assets/fonts/arial.ttf", 18); // changed 10:12 AM 150 -- > 250
     }
     else
     {
