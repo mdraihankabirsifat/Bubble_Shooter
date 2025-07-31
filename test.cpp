@@ -213,7 +213,7 @@ bool soundEnabled = true;
 int bombCount = 0;
 int lastBombScore = 0;           // Track score for bomb rewards
 bool bombSelected = false;       // Track if bomb is currently selected
-const int POINTS_PER_BOMB = 700; // Points needed for each bomb
+const int POINTS_PER_BOMB = 600; // Points needed for each bomb
 
 // High Score System
 typedef struct
@@ -1002,6 +1002,7 @@ void drawLevelSelect()
     iSetColor(0, 191, 255); // Ocean blue
     iText(GAME_WINDOW_WIDTH / 2 - 80, 650, "SELECT LEVEL", GLUT_BITMAP_HELVETICA_18);
     iText(GAME_WINDOW_WIDTH / 2 - 180, 250, "press space button to swap the bubble", GLUT_BITMAP_HELVETICA_18);
+    iText(GAME_WINDOW_WIDTH / 2 - 178, 210, "click on the bomb to smash and enjoy", GLUT_BITMAP_HELVETICA_18);
     iSetColor(255, 255, 255);
     iText(GAME_WINDOW_WIDTH / 2 - 180, 50, "press '>' to unlock all levels & press '<' to set previous", GLUT_BITMAP_HELVETICA_12);
     // Draw level buttons in a 2x5 grid with enhanced styling and hover effects
