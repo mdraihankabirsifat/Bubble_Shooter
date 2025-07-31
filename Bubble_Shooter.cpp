@@ -1464,47 +1464,49 @@ void drawPauseMenu()
 
 void drawGameOver()
 {
-    iClear();
-    // Navy gradient background with stars - extended to cover full window
-    for (int i = 0; i < GAME_WINDOW_HEIGHT + 100; i += 4)
-    {
-        // Deep navy gradient: dark navy blue to midnight blue
-        int blueComponent = 15 + (i * 35) / (GAME_WINDOW_HEIGHT + 100); // 15 to 50 (navy blue)
-        int greenComponent = 5 + (i * 15) / (GAME_WINDOW_HEIGHT + 100); // 5 to 20 (slight green tint)
-        int redComponent = 2 + (i * 8) / (GAME_WINDOW_HEIGHT + 100);    // 2 to 10 (minimal red)
-        iSetColor(redComponent, greenComponent, blueComponent);
-        // Draw 4 lines at once to fill gaps
-        iLine(0, i, GAME_WINDOW_WIDTH, i);
-        if (i + 1 < GAME_WINDOW_HEIGHT + 100)
-            iLine(0, i + 1, GAME_WINDOW_WIDTH, i + 1);
-        if (i + 2 < GAME_WINDOW_HEIGHT + 100)
-            iLine(0, i + 2, GAME_WINDOW_WIDTH, i + 2);
-        if (i + 3 < GAME_WINDOW_HEIGHT + 100)
-            iLine(0, i + 3, GAME_WINDOW_WIDTH, i + 3);
-    }
-    // Beautiful stars
-    for (int i = 0; i < 15; i++)
-    {
-        int x = (i * 127 + 31) % GAME_WINDOW_WIDTH;
-        int y = (i * 89 + 53) % (GAME_WINDOW_HEIGHT + 100);
+    // iClear();
+    // // Navy gradient background with stars - extended to cover full window
+    // for (int i = 0; i < GAME_WINDOW_HEIGHT + 100; i += 4)
+    // {
+    //     // Deep navy gradient: dark navy blue to midnight blue
+    //     int blueComponent = 15 + (i * 35) / (GAME_WINDOW_HEIGHT + 100); // 15 to 50 (navy blue)
+    //     int greenComponent = 5 + (i * 15) / (GAME_WINDOW_HEIGHT + 100); // 5 to 20 (slight green tint)
+    //     int redComponent = 2 + (i * 8) / (GAME_WINDOW_HEIGHT + 100);    // 2 to 10 (minimal red)
+    //     iSetColor(redComponent, greenComponent, blueComponent);
+    //     // Draw 4 lines at once to fill gaps
+    //     iLine(0, i, GAME_WINDOW_WIDTH, i);
+    //     if (i + 1 < GAME_WINDOW_HEIGHT + 100)
+    //         iLine(0, i + 1, GAME_WINDOW_WIDTH, i + 1);
+    //     if (i + 2 < GAME_WINDOW_HEIGHT + 100)
+    //         iLine(0, i + 2, GAME_WINDOW_WIDTH, i + 2);
+    //     if (i + 3 < GAME_WINDOW_HEIGHT + 100)
+    //         iLine(0, i + 3, GAME_WINDOW_WIDTH, i + 3);
+    // }
+    // // Beautiful stars
+    // for (int i = 0; i < 15; i++)
+    // {
+    //     int x = (i * 127 + 31) % GAME_WINDOW_WIDTH;
+    //     int y = (i * 89 + 53) % (GAME_WINDOW_HEIGHT + 100);
 
-        int starBrightness = i % 3;
-        if (starBrightness == 0)
-        {
-            iSetColor(160, 170, 200);
-            iFilledCircle(x, y, 1);
-        }
-        else if (starBrightness == 1)
-        {
-            iSetColor(120, 130, 160);
-            iFilledCircle(x, y, 1);
-        }
-        else
-        {
-            iSetColor(80, 90, 120);
-            iFilledCircle(x, y, 1);
-        }
-    }
+    //     int starBrightness = i % 3;
+    //     if (starBrightness == 0)
+    //     {
+    //         iSetColor(160, 170, 200);
+    //         iFilledCircle(x, y, 1);
+    //     }
+    //     else if (starBrightness == 1)
+    //     {
+    //         iSetColor(120, 130, 160);
+    //         iFilledCircle(x, y, 1);
+    //     }
+    //     else
+    //     {
+    //         iSetColor(80, 90, 120);
+    //         iFilledCircle(x, y, 1);
+    //     }
+    // }
+    iClear();
+    iShowImage(0, 0, "assets/images/bouncing ball/setttings.png");
     // Game Over background
     iSetColor(40, 20, 20); // Dark red background
     iFilledRectangle(150, 200, 500, 400);
@@ -1540,18 +1542,18 @@ void drawGameOver()
     int newGameHeight = isNewGameHovering ? buttonHeight + 4 : buttonHeight;
     int newGameX = isNewGameHovering ? centerX - 4 : centerX;
     int newGameY = isNewGameHovering ? startY - 2 : startY;
-    iSetColor(50, 150, 50);
+    iSetColor(0, 0, 153);
     iFilledRectangle(newGameX, newGameY, newGameWidth, newGameHeight);
-    iSetColor(135, 206, 250);
+    iSetColor(0, 255, 255);
     iRectangle(newGameX, newGameY, newGameWidth, newGameHeight);
 
     if (isNewGameHovering)
     {
-        iSetColor(255, 255, 0); // Yellow text when hovering
+        iSetColor(204, 102, 0); // Yellow text when hovering
     }
     else
     {
-        iSetColor(255, 255, 255); // White text normally
+        iSetColor(0, 0, 0); // White text normally
     }
     drawCenteredText(newGameX, newGameY, newGameWidth, newGameHeight, "New Game", "assets/fonts/arial.ttf", 24);
 
@@ -1561,17 +1563,17 @@ void drawGameOver()
     int backHeight = isBackHovering ? buttonHeight + 4 : buttonHeight;
     int backX = isBackHovering ? centerX - 4 : centerX;
     int backY = isBackHovering ? (startY - buttonSpacing - 2) : (startY - buttonSpacing);
-    iSetColor(50, 50, 150);
+    iSetColor(0, 0, 204);
     iFilledRectangle(backX, backY, backWidth, backHeight);
-    iSetColor(135, 206, 250);
+    iSetColor(0, 255, 255);
     iRectangle(backX, backY, backWidth, backHeight);
     if (isBackHovering)
     {
-        iSetColor(255, 255, 0); // Yellow text when hovering
+        iSetColor(204, 102, 0); // Yellow text when hovering
     }
     else
     {
-        iSetColor(255, 255, 255); // White text normally
+        iSetColor(0, 0, 0); // White text normally
     }
     drawCenteredText(backX, backY, backWidth, backHeight, "Back", "assets/fonts/arial.ttf", 24);
 }
@@ -2589,8 +2591,8 @@ void iMouse(int button, int state, int mx, int my)
             else if (isPointInRect(mx, my, 300, 350, 200, 50))
             {
                 inGameOver = false;
-                inLevelSelect = true;
                 inGame = false;
+                inLevelSelect = true;
                 // Restart background music when returning to level selection if not already playing
                 if (backgroundMusicChannel == -1 && musicEnabled)
                 {
@@ -2601,7 +2603,7 @@ void iMouse(int button, int state, int mx, int my)
         else if (inLevelComplete)
         {
             // Next Level button
-            if (isPointInRect(mx, my, 300, 420, 200, 50) && currentLevel < 20)
+            if (isPointInRect(mx, my, 300, 420, 200, 50) && currentLevel < 11)
             {
                 inLevelComplete = false;
                 inGame = true;
