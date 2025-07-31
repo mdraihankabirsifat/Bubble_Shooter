@@ -11,6 +11,12 @@ UI have been added to enhance the overall experience.
 
 ---
 
+## 🕹️ How to Play
+
+1. **Download** and **extract** the `release.zip` file.
+2. Run the executable: `game.exe`.
+3. Enjoy the game!
+
 ## 🎥 Project Video Demonstration
 
 Watch the full gameplay and feature demonstration here:  
