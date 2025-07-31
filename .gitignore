@@ -3,7 +3,6 @@
 .vscode
 *.bin
 bin/*.exe
-release
 *.o
 demo
 MINGW
