@@ -3032,15 +3032,16 @@ void iMouse(int button, int state, int mx, int my)
                         ballBounceCount = 0; // Reset bounce counter for new ball
                         moveCounted = false; // Reset move counter flag for new ball
                         isBallMoving = true;
-
+                        int bomb = 0;
                         if (bombSelected)
                         {
                             bombCount--;
+                            bomb = 1;
                             bombSelected = false;
                         }
-
                         // Decrease ball count when shot
-                        ballsRemaining--;
+                        if (!bomb)
+                            ballsRemaining--;
                     }
                 }
             } // Close the else block for normal game logic
