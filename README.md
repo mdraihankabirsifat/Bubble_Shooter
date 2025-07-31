@@ -21,34 +21,34 @@ Watch the full gameplay and feature demonstration here:
 ## 🖼️ Screenshots
 
 ### Home Menu  
-<img src="assets/images/Game/home.png" alt="menu" width="900"/>
+<img src="assets/images/Game/home.PNG" alt="menu" width="900"/>
 
 ### Settings  
 <img src="assets/images/Game/settings.png" alt="settings" width="900"/>
 
 ### Tribute  
-<img src="assets/images/Game/tribute.png" alt="tribute" width="900"/>
+<img src="assets/images/Game/tribute.PNG" alt="tribute" width="900"/>
 
 ### High Score  
-<img src="assets/images/Game/high_score.png" alt="high score" width="900"/>
+<img src="assets/images/Game/high_score.PNG" alt="high score" width="900"/>
 
 ### Instructions  
-<img src="assets/images/Game/instructions.png" alt="instructions" width="900"/>
+<img src="assets/images/Game/instructions.PNG" alt="instructions" width="900"/>
 
 ### Prompt For Name  
-<img src="assets/images/Game/promt.png" alt="enter name" width="900"/>
+<img src="assets/images/Game/promt.PNG" alt="enter name" width="900"/>
 
 ### Game Play Screen  
 <img src="assets/images/Game/game_play.png" alt="play" width="900"/>
 
 ### Game Pause Screen  
-<img src="assets/images/Game/pause.png" alt="pause" width="900"/>
+<img src="assets/images/Game/pause.PNG" alt="pause" width="900"/>
 
 ### Level Completion Screen  
-<img src="assets/images/Game/level_complete.png" alt="completion" width="900"/>
+<img src="assets/images/Game/level_complete.PNG" alt="completion" width="900"/>
 
 ### Game Over  
-<img src="assets/images/Game/bottom.png" alt="over" width="900"/>
+<img src="assets/images/Game/bottom.PNG" alt="over" width="900"/>
 
 ---
 
