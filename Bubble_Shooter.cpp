@@ -205,9 +205,15 @@ bool inLevelComplete = false;
 bool inHighScore = false;
 bool inNameInput = false;
 bool highScoreSaved = false; // Flag to prevent duplicate high score saves
-int soundVolume = 50;
+int soundVolume = 70;
 int musicVolume = 50;
 bool soundEnabled = true;
+
+// Bomb system
+int bombCount = 0;
+int lastBombScore = 0;           // Track score for bomb rewards
+bool bombSelected = false;       // Track if bomb is currently selected
+const int POINTS_PER_BOMB = 600; // Points needed for each bomb
 
 // High Score System
 typedef struct
@@ -300,6 +306,8 @@ void handleLevelComplete();
 void unlockNextLevel();
 void saveLevelProgress();
 void loadLevelProgress();
+void drawBombIcon(double x, double y, bool isSelected);
+void explodeBomb(int centerRow, int centerCol);
 
 // Function to calculate maximum balls for a level
 int getMaxBallsForLevel(int levelNumber)
@@ -339,6 +347,7 @@ void startNewGame()
 {
     Score = 0;
     movesCount = 0;
+    bombCount = 0;
     currentHiddenRowsUsed = 0;
     isBallMoving = false;
     ballBounceCount = 0;
@@ -576,6 +585,7 @@ void loadLevel(int levelNumber)
         inLevelSelect = false;
         inGame = true;
         Score = 0;
+        bombCount = 0;          // Reset bomb counter at the start of each level
         highScoreSaved = false; // Reset high score save flag for new game
         isBallMoving = false;
         fallingBubbleCount = 0;
@@ -734,6 +744,7 @@ double getPopScale(int bubbleIndex)
         return 1.6 * (1.0 - shrinkProgress * shrinkProgress); // Quadratic for faster shrink
     }
 }
+
 // Finalize the row drop by updating the grid data structure
 void finalizeRowDrop()
 {
@@ -991,6 +1002,7 @@ void drawLevelSelect()
     iSetColor(0, 191, 255); // Ocean blue
     iText(GAME_WINDOW_WIDTH / 2 - 80, 650, "SELECT LEVEL", GLUT_BITMAP_HELVETICA_18);
     iText(GAME_WINDOW_WIDTH / 2 - 180, 250, "press space button to swap the bubble", GLUT_BITMAP_HELVETICA_18);
+    iText(GAME_WINDOW_WIDTH / 2 - 178, 210, "click on the bomb to smash and enjoy", GLUT_BITMAP_HELVETICA_18);
     iSetColor(255, 255, 255);
     iText(GAME_WINDOW_WIDTH / 2 - 180, 50, "press '>' to unlock all levels & press '<' to set previous", GLUT_BITMAP_HELVETICA_12);
     // Draw level buttons in a 2x5 grid with enhanced styling and hover effects
@@ -1589,7 +1601,7 @@ void drawLevelComplete()
     iSetColor(51, 153, 255); // Light green border
     iRectangle(150, 200, 500, 400);
     // Inner border
-    iSetColor(51,153, 255);
+    iSetColor(51, 153, 255);
     iRectangle(160, 210, 480, 380);
 
     // Title - green color for success
@@ -1635,7 +1647,7 @@ void drawLevelComplete()
     int backHeight = isBackHovering ? buttonHeight + 4 : buttonHeight;
     int backX = isBackHovering ? centerX - 4 : centerX;
     int backY = isBackHovering ? (startY - buttonSpacing - 2) : (startY - buttonSpacing);
-    iSetColor(102,0, 204);
+    iSetColor(102, 0, 204);
     iFilledRectangle(backX, backY, backWidth, backHeight);
     iSetColor(178, 102, 255);
     iRectangle(backX, backY, backWidth, backHeight);
@@ -1673,8 +1685,42 @@ void setColorByNumber(int color)
         break; // Black
     }
 }
+
+void drawBombIcon(double x, double y, bool isSelected)
+{
+    // Draw the bomb base (black circle)
+    iSetColor(30, 30, 30);
+    iFilledCircle(x, y, BUBBLE_RADIUS);
+
+    // Draw bomb fuse
+    iSetColor(150, 75, 0);
+    iFilledRectangle(x - 2, y + BUBBLE_RADIUS - 2, 4, 10);
+
+    // Draw fuse spark
+    if (isSelected)
+    {
+        // Animated spark when selected
+        iSetColor(255, 200, 0);
+    }
+    else
+    {
+        // Static spark otherwise
+        iSetColor(255, 120, 0);
+    }
+    iFilledCircle(x, y + BUBBLE_RADIUS + 10, 4);
+
+    // Highlight reflection
+    iSetTransparentColor(255, 255, 255, 0.3);
+    iFilledEllipse(x - 5, y + 5, 8, 4);
+}
+
 void DrawShootedBall(double x, double y, int color)
 {
+    if (color == -1)
+    {
+        drawBombIcon(x, y, true);
+        return;
+    }
     // Step 1: Main base color
     int r = 0, g = 0, b = 0;
     switch (color)
@@ -1794,6 +1840,7 @@ void drawStyledBall(double x, double y, int color)
     }
     iUnScale();
 }
+
 void drawStyledBallWithScale(double x, double y, int color, double scale)
 {
     // Step 1: Main base color
@@ -1857,6 +1904,7 @@ void drawStyledBallWithScale(double x, double y, int color, double scale)
         iFilledCircle(x - scaledRadius / 5, y + scaledRadius / 2, (int)(scaledRadius / 8 * scale));
     }
 }
+
 void getGridBallCenter(int r, int c, double *x, double *y)
 {
     double xShift = (r % 2 == 0) ? 0 : BUBBLE_RADIUS;
@@ -1895,9 +1943,14 @@ void placeBallOnGrid(double x, double y, int color)
     // Extra bounds check to prevent array overflow
     if (r >= 0 && r < ROWS && c >= 0 && c < COLS)
     {
-        if (grid[r][c] == 0)
+        if (color == -1)
+        { // Bomb
+            explodeBomb(r, c);
+        }
+        else if (grid[r][c] == 0)
         {
             grid[r][c] = color;
+
             // Check for game over after placing the ball
             if (checkGameOver())
             {
@@ -1986,11 +2039,26 @@ void PopBubblesInside(int r, int c)
     if (BallMatchCount >= 3)
     {
         ScoreIncrement = (BallMatchCount * 10);
+        int oldScore = Score;
         Score += ScoreIncrement;
         ScoreIncrementingInstant = iGetTimer();
         ShowIncrement = 1;
+
         // Start the pop animation instead of immediately removing bubbles
         startPopAnimation(matched, BallMatchCount);
+
+        // Check if we crossed a bomb threshold (every 200 points)
+        int oldBombThreshold = oldScore / POINTS_PER_BOMB;
+        int newBombThreshold = Score / POINTS_PER_BOMB;
+        if (newBombThreshold > oldBombThreshold)
+        {
+            bombCount++; // Award a new bomb
+            if (soundEnabled)
+            {
+                iPlaySound("assets/sounds/bomb2.wav", false, soundVolume); // Special sound for getting a bomb
+            }
+        }
+
         // Play pop sound when bubbles are popped (once per group)
         if (soundEnabled && BallMatchCount > 0)
         {
@@ -2068,6 +2136,53 @@ void visitConnectedGraphFromTop()
             BFS_from_top_row(0, i);
     }
 }
+
+void explodeBomb(int centerRow, int centerCol)
+{
+    // Play explosion sound effect if sound is enabled
+    if (soundEnabled)
+    {
+        iPlaySound("assets/sounds/bomb.wav", false, soundVolume);
+    }
+
+    // Define a 3x3 area to explode
+    for (int dr = -2; dr <= 2; dr++)
+    {
+        for (int dc = -2; dc <= 2; dc++)
+        {
+            int newRow = centerRow + dr;
+            int newCol = centerCol + dc;
+
+            // Check if the position is within grid bounds
+            if (newRow >= 0 && newRow < ROWS)
+            {
+                int maxCols = (newRow % 2 == 0) ? COLS : (COLS - 1);
+                if (newCol >= 0 && newCol < maxCols)
+                {
+                    // Start pop animation for bubble if it exists
+                    if (grid[newRow][newCol] != 0)
+                    {
+                        // Add this bubble to popping bubbles array
+                        if (poppingBubbleCount < 50)
+                        { // Make sure we don't exceed array bounds
+                            poppingBubbles[poppingBubbleCount].row = newRow;
+                            poppingBubbles[poppingBubbleCount].col = newCol;
+                            poppingBubbles[poppingBubbleCount].color = grid[newRow][newCol];
+                            poppingBubbles[poppingBubbleCount].startTime = iGetTimer() + (poppingBubbleCount * POP_STAGGER_DELAY);
+                            poppingBubbles[poppingBubbleCount].isActive = true;
+                            poppingBubbleCount++;
+                        }
+                        grid[newRow][newCol] = 0;
+                    }
+                }
+            }
+        }
+    }
+
+    // After explosion, detect any floating bubbles
+    detectCluster();
+}
+
 void detectCluster()
 {
     visitConnectedGraphFromTop();
@@ -2287,10 +2402,12 @@ void drawGrid()
         }
     }
 }
+
 void DrawOutline()
 {
     iRectangle(0, 0, GAME_WINDOW_WIDTH, GAME_WINDOW_HEIGHT);
 }
+
 void ShowIncrementAnimation(int PoppedBubbleColor)
 {
     switch (PoppedBubbleColor)
@@ -2549,6 +2666,22 @@ void iDraw()
                 }
             }
             drawStyledBall(310, 40, shootingBallColorNext);
+
+            // Draw bomb counter and icon
+            iSetColor(255, 255, 255);
+            char bombText[30];
+            sprintf(bombText, "Bombs : %d", bombCount);
+            iText(GAME_WINDOW_WIDTH - 180, 60, bombText, GLUT_BITMAP_HELVETICA_18);
+
+            // Draw bomb icon with glow effect when selected
+            if (bombSelected)
+            {
+                // Glow effect
+                iSetColor(255, 200, 0);
+                iFilledCircle(GAME_WINDOW_WIDTH - 40, 40, BUBBLE_RADIUS + 4);
+            }
+            drawBombIcon(GAME_WINDOW_WIDTH - 40, 40, bombSelected);
+
             // Level text (no background for performance)
             iSetColor(255, 255, 255);
             char levelText[30];
@@ -2859,6 +2992,26 @@ void iMouse(int button, int state, int mx, int my)
                 {
                     inPauseMenu = true; // Show pause menu instead of directly exiting
                 }
+
+                // Check for bomb icon click
+                else if (!isBallMoving && isPointInRect(mx, my, GAME_WINDOW_WIDTH - 60, 20, 40, 40))
+                {
+                    if (bombCount > 0)
+                    {
+                        bombSelected = !bombSelected; // Toggle bomb selection
+                        if (bombSelected)
+                        {
+                            // Store current shooting ball color and swap with bomb
+                            shootingBallColorNow = -1; // -1 represents a bomb
+                        }
+                        else
+                        {
+                            // Restore the original color if bomb is deselected
+                            shootingBallColorNow = getRandomLevelColor();
+                        }
+                    }
+                }
+
                 // Normal shooting logic
                 else if (!isBallMoving)
                 {
@@ -2880,8 +3033,16 @@ void iMouse(int button, int state, int mx, int my)
                         ballBounceCount = 0; // Reset bounce counter for new ball
                         moveCounted = false; // Reset move counter flag for new ball
                         isBallMoving = true;
+                        int bomb = 0;
+                        if (bombSelected)
+                        {
+                            bombCount--;
+                            bomb = 1;
+                            bombSelected = false;
+                        }
                         // Decrease ball count when shot
-                        ballsRemaining--;
+                        if (!bomb)
+                            ballsRemaining--;
                     }
                 }
             } // Close the else block for normal game logic
