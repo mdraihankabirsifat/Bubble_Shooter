@@ -2810,10 +2810,10 @@ void iMouse(int button, int state, int mx, int my)
                 inNameInput = false;
                 inHomepage = true;
                 // Start background music when going back to homepage
-                if (musicEnabled)
-                {
-                    backgroundMusicChannel = iPlaySound("assets/sounds/bg.wav", true, musicVolume);
-                }
+                // if (musicEnabled)
+                // {
+                //     backgroundMusicChannel = iPlaySound("assets/sounds/bg.wav", true, musicVolume);
+                // }
             }
         }
         else if (inGame)
@@ -2974,7 +2974,7 @@ void iKeyboard(unsigned char key, int state)
         return; // Don't process other keys when in name input
     }
 
-    if (key == 'q')
+    if (key == '?')
         exit(0);
     // Single-press ball swapping (Space key)
     if ((key == ' ') && inGame && !isBallMoving && state == GLUT_DOWN)
