@@ -1584,19 +1584,19 @@ void drawLevelComplete()
     // Display background image
     iShowImage(0, 0, "assets/images/bouncing ball/setttings.png");
     // Level Complete background
-    iSetColor(20, 80, 20); // Dark green background
+    iSetColor(0, 51, 102); // Dark green background
     iFilledRectangle(150, 200, 500, 400);
-    iSetColor(100, 200, 100); // Light green border
+    iSetColor(51, 153, 255); // Light green border
     iRectangle(150, 200, 500, 400);
     // Inner border
-    iSetColor(150, 220, 150);
+    iSetColor(51,153, 255);
     iRectangle(160, 210, 480, 380);
 
     // Title - green color for success
-    iSetColor(100, 255, 100);
-    drawCenteredText(150 + 10, 530, 500, 50, "LEVEL COMPLETE!", "assets/fonts/arial.ttf", 42);
+    iSetColor(204, 204, 0);
+    drawCenteredText(150 + 10, 530, 500, 50, "LEVEL COMPLETED!", "assets/fonts/arial.ttf", 42);
     // Subtitle
-    iSetColor(200, 255, 200);
+    iSetColor(255, 255, 255);
     char levelText[50];
     sprintf(levelText, "Level %d completed successfully!", currentLevel);
     drawCenteredText(150 + 54, 480, 500, 30, levelText, "assets/fonts/arial.ttf", 20);
@@ -1614,9 +1614,9 @@ void drawLevelComplete()
     int nextLevelY = isNextLevelHovering ? startY - 2 : startY;
     if (currentLevel < 20)
     {
-        iSetColor(180, 140, 0); // Gold background
+        iSetColor(76, 0, 153); // Gold background
         iFilledRectangle(nextLevelX, nextLevelY, nextLevelWidth, nextLevelHeight);
-        iSetColor(255, 215, 0); // Gold border
+        iSetColor(178, 102, 255); // Gold border
         iRectangle(nextLevelX, nextLevelY, nextLevelWidth, nextLevelHeight);
 
         if (isNextLevelHovering)
@@ -1625,7 +1625,7 @@ void drawLevelComplete()
         }
         else
         {
-            iSetColor(255, 255, 255); // White text normally
+            iSetColor(0, 0, 0); // White text normally
         }
         drawCenteredText(nextLevelX + 15, nextLevelY, nextLevelWidth, nextLevelHeight, "Next Level", "assets/fonts/arial.ttf", 24);
     }
@@ -1635,9 +1635,9 @@ void drawLevelComplete()
     int backHeight = isBackHovering ? buttonHeight + 4 : buttonHeight;
     int backX = isBackHovering ? centerX - 4 : centerX;
     int backY = isBackHovering ? (startY - buttonSpacing - 2) : (startY - buttonSpacing);
-    iSetColor(50, 50, 150);
+    iSetColor(102,0, 204);
     iFilledRectangle(backX, backY, backWidth, backHeight);
-    iSetColor(135, 206, 250);
+    iSetColor(178, 102, 255);
     iRectangle(backX, backY, backWidth, backHeight);
     if (isBackHovering)
     {
@@ -1645,7 +1645,7 @@ void drawLevelComplete()
     }
     else
     {
-        iSetColor(255, 255, 255);
+        iSetColor(0, 0, 0);
     }
     drawCenteredText(backX + 24, backY, backWidth, backHeight, "Back to Levels", "assets/fonts/arial.ttf", 24);
 }
