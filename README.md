@@ -66,4 +66,4 @@ Watch the full gameplay and feature demonstration here:
 **Institution:** Bangladesh University of Engineering and Technology (BUET)
 
 ### Tribute to Our Supervisor  
-<img src="assets/images/Game/honour.png" alt="tribute to supervisor" width="900"/>
+<img src="assets/images/Game/honour.jpeg" alt="tribute to supervisor" width="900"/>
