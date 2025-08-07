@@ -61,7 +61,7 @@ Watch the full gameplay and feature demonstration here:
 ## 👨‍🏫 Supervisor Information
 
 **Course Name:** CSE 102 — Structured Programming Language Sessional  
-**Supervisor Name:** *Mahir Labib Dihan*  *Adjunct Lecturer* *CSE, BUET*  
+**Supervisor Name:** *Mahir Labib Dihan*, *Adjunct Lecturer*, *CSE, BUET*  
 **Department:** Computer Science and Engineering  
 **Institution:** Bangladesh University of Engineering and Technology (BUET)
 
