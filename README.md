@@ -64,3 +64,6 @@ Watch the full gameplay and feature demonstration here:
 **Supervisor Name:** *Mahir Labib Dihan*  *Adjunct Lecturer* *CSE, BUET*  
 **Department:** Computer Science and Engineering  
 **Institution:** Bangladesh University of Engineering and Technology (BUET)
+
+### Tribute to Our Supervisor  
+<img src="assets/images/Game/honour.png" alt="tribute to supervisor" width="900"/>
